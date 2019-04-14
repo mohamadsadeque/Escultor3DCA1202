@@ -21,9 +21,9 @@ protected:
   int nx,ny,nz; // Dimensions
   float r,g,b,a; // Current drawing color
 public:
-  sculptor3d(int nx, int ny, int nz);
+  sculptor3d(int _nx, int _ny, int _nz);
   ~sculptor3d();
-  void setColor(float r, float g, float b, float alpha);
+  void setColor(float _r, float _g, float _b, float _a);
   void putVoxel(int x, int y, int z);
   void cutVoxel(int x, int y, int z);
   void putBox(int x0, int x1, int y0, int y1, int z0, int z1);
