@@ -14,9 +14,14 @@ sculptor3d::sculptor3d(int nx, int ny, int nz)
         }
     }
     setColor(1,1,1,1);
-
 }
 
+sculptor3d::~sculptor3d()
+{
+    free(v[0][0]);
+    free(v[0]);
+    free(v);
+}
 
 void sculptor3d::setColor(float r, float g, float b, float alpha){
     for(int i = 0; i<nx; i++){
@@ -48,6 +53,7 @@ void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
         }
     }
 };
+
 void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
     for(int i = x0; i<x1; i++){
         for(int j = y0; i<y1;j++){
@@ -57,7 +63,10 @@ void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
         }
     }
 };
-void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){};
+
+void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){
+
+};
 void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){};
 void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){};
 void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){};
