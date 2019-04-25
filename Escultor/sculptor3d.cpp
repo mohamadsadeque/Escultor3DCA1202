@@ -1,9 +1,10 @@
 #include "sculptor3d.h"
+#include "exportvoxel.h"
 #include <string.h>
 #include <cmath>
+
 sculptor3d::sculptor3d(int nx, int ny, int nz)
 {
-
     v =  new Voxel **[nx];
     v[0] = new Voxel *[nx*ny];
     v[0][0] = new Voxel[nx*ny*nz];
@@ -19,8 +20,6 @@ sculptor3d::sculptor3d(int nx, int ny, int nz)
 }
 
 sculptor3d::~sculptor3d(){
-
-
     for(int i = 0 ; i < nx; i++){
         for(int j= 0; j<ny; j++){
             delete []v[i][j];
@@ -29,6 +28,7 @@ sculptor3d::~sculptor3d(){
     }
     delete []v;
 }
+
 void sculptor3d::setColor(float r, float g, float b, float alpha){
     for(int i = 0; i<nx; i++){
         for(int j = 0; i<ny;j++){
@@ -108,6 +108,7 @@ void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
             }
         }
 };
+
 void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
     for(int k = 0; k<= zcenter; k++){
             for(int i = 0; i<nx; i++){
@@ -121,7 +122,14 @@ void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
             }
         }
 };
-void sculptor3d::writeOFF(string filename){};
+
+void sculptor3d::writeOFF(string filename){
+    exportVoxel exp(this->v);
+
+    exp.toOFF("arquivo");
+
+
+};
 void sculptor3d::writeVECT(string filename){};
 
 
