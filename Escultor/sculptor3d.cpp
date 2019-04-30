@@ -20,13 +20,12 @@ sculptor3d::sculptor3d(int nx, int ny, int nz)
 }
 
 sculptor3d::~sculptor3d(){
-    for(int i = 0 ; i < nx; i++){
-        for(int j= 0; j<ny; j++){
-            delete []v[i][j];
-        }
-        delete []v[i];
-    }
-    delete []v;
+    if(nx == 0 || ny == 0 || nz == 0)
+           return;
+
+    delete [] v[0][0];
+    delete [] v[0];
+    delete [] v;
 }
 
 void sculptor3d::setColor(float r, float g, float b, float alpha){
