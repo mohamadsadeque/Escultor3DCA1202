@@ -28,25 +28,28 @@ sculptor3d::~sculptor3d(){
     delete [] v;
 }
 
-void sculptor3d::setColor(float r, float g, float b, float alpha){
-    for(int i = 0; i<nx; i++){
-        for(int j = 0; i<ny;j++){
-            for (int k = 0; k<nz;k++) {
-                v[i][j][k].r = r;
-                v[i][j][k].g = g;
-                v[i][j][k].b = b;
-                v[i][j][k].a = alpha;
-            }
-        }
-    }
+void sculptor3d::setColor(float _r, float _g, float _b, float _alpha){
+     this->r = _r;
+     this->g = _g;
+     this->b = _b;
+     this->a = _alpha;
+
 }
 
 void sculptor3d::putVoxel(int x, int y, int z){
     v[x][y][z].isOn = true;
+    v[x][y][z].r = this->r;
+    v[x][y][z].g = this->g;
+    v[x][y][z].b = this->b;
+    v[x][y][z].a = this->a;
 };
 
 void sculptor3d::cutVoxel(int x, int y, int z){
     v[x][y][z].isOn = false;
+    v[x][y][z].r = this->r;
+    v[x][y][z].g = this->g;
+    v[x][y][z].b = this->b;
+    v[x][y][z].a = this->a;
 };
 
 void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
@@ -54,6 +57,10 @@ void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
         for(int j = y0; j<y1;j++){
             for (int k = z0; k<z1;k++) {
                 v[i][j][k].isOn = true;
+                v[i][j][k].r = this->r;
+                v[i][j][k].g = this->g;
+                v[i][j][k].b = this->b;
+                v[i][j][k].a = this->a;
             }
         }
     }
@@ -63,6 +70,10 @@ void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
         for(int j = y0; j<y1;j++){
             for (int k = z0; k<z1;k++) {
                 v[i][j][k].isOn = false;
+                v[i][j][k].r = this->r;
+                v[i][j][k].g = this->g;
+                v[i][j][k].b = this->b;
+                v[i][j][k].a = this->a;
             }
         }
     }
@@ -73,6 +84,10 @@ void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){
                 for(int j = 0; j<ny; j++){
                     if( (pow(((i-xcenter)/radius), 2)) +(pow(((j-ycenter)/radius), 2)) + (pow(((k-zcenter)/radius), 2)) <= 1 ){
                         v[i][j][k].isOn = true;
+                        v[i][j][k].r = this->r;
+                        v[i][j][k].g = this->g;
+                        v[i][j][k].b = this->b;
+                        v[i][j][k].a = this->a;
                     }
                     int mk = (nz-1) - k;
                     v[i][j][mk].isOn = v[i][j][k].isOn;
@@ -86,6 +101,10 @@ void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
                 for(int j = 0; j<ny; j++){
                     if( (pow(((i-xcenter)/radius), 2)) +(pow(((j-ycenter)/radius), 2)) + (pow(((k-zcenter)/radius), 2)) <= 1 ){
                         v[i][j][k].isOn = false;
+                        v[i][j][k].r = this->r;
+                        v[i][j][k].g = this->g;
+                        v[i][j][k].b = this->b;
+                        v[i][j][k].a = this->a;
                     }
                     int mk = (nz-1) - k;
                     v[i][j][mk].isOn = v[i][j][k].isOn;
@@ -100,6 +119,11 @@ void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
                 for(int j = 0; j<ny; j++){
                     if( (pow(((i-xcenter)/rx), 2)) +(pow(((j-ycenter)/ry), 2)) + (pow(((k-zcenter)/rz), 2)) <= 1 ){
                         v[i][j][k].isOn = true;
+                        v[i][j][k].r = this->r;
+                        v[i][j][k].g = this->g;
+                        v[i][j][k].b = this->b;
+                        v[i][j][k].a = this->a;
+
                     }
                     int mk = (nz-1) - k;
                     v[i][j][mk].isOn = v[i][j][k].isOn;
@@ -117,6 +141,10 @@ void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
                     }
                     int mk = (nz-1) - k;
                     v[i][j][mk].isOn = v[i][j][k].isOn;
+                    v[i][j][mk].r = this->r;
+                    v[i][j][mk].g = this->g;
+                    v[i][j][mk].b = this->b;
+                    v[i][j][mk].a = this->a;
                 }
             }
         }
