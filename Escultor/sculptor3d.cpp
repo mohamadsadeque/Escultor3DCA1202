@@ -125,8 +125,11 @@ void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
 
 void sculptor3d::writeOFF(string filename){
     exportVoxel exporter(this->v);
-    exporter.toOFF(filename");
+    exporter.toOFF(filename);
 };
-void sculptor3d::writeVECT(string filename){};
+void sculptor3d::writeVECT(string filename){
+    exportVoxel exporter(this->v);
+    exporter.toVECT(filename);
+};
 
 
