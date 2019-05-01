@@ -33,7 +33,6 @@ void sculptor3d::setColor(float _r, float _g, float _b, float _alpha){
      this->g = _g;
      this->b = _b;
      this->a = _alpha;
-
 }
 
 void sculptor3d::putVoxel(int x, int y, int z){
@@ -154,6 +153,7 @@ void sculptor3d::writeOFF(string filename){
     exportVoxel exporter(this->v);
     exporter.toOFF(filename);
 };
+
 void sculptor3d::writeVECT(string filename){
     exportVoxel exporter(this->v);
     exporter.toVECT(filename);

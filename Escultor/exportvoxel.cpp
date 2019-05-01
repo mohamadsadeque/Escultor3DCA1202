@@ -15,6 +15,9 @@ void exportVoxel::toOFF(string filename){
     filename = tratarExtensao(filename, ".off");
     ofstream output (filename);
 
+     //output << "OFF" << endl;
+
+    output.close()
 }
 
 /**
@@ -26,6 +29,8 @@ void exportVoxel::toVECT(string filename){
 
     ofstream output (filename);
 
+
+    output.close()
 }
 
 //Tratamento para filename com ou sem referência, ambos são aceitos
@@ -36,3 +41,4 @@ string exportVoxel::tratarExtensao(string filename, string extensao ){
 
     return filename;
 }
+
