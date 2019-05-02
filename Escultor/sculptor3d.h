@@ -34,6 +34,11 @@ public:
   void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
   void writeOFF(string filename);
   void writeVECT(string filename);
+  int countVoxels();
+  int getNx();
+  int getNy();
+  int getNz();
+
 };
 
 #endif // SCULPTOR3D_H
