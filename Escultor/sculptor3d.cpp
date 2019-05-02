@@ -145,11 +145,16 @@ void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
         exit(0);
     }
 
-    for(int k = 0; k< nz; k++)
-        for(int i = 0; i<nx; i++)
-            for(int j = 0; j<ny; j++)
-                if( (pow(((i-xcenter)/radius), 2)) +(pow(((j-ycenter)/radius), 2)) + (pow(((k-zcenter)/radius), 2)) <= 1 )
-                    cutVoxel(i, j, k);
+    for(int i=xcenter-radius; i< xcenter+radius; i++)
+        for(int j=ycenter-radius; j< ycenter+radius; j++)
+            for(int k=zcenter-radius; k< zcenter+radius; k++)
+            {
+                float calc1 = ((float)pow((i-xcenter),2)/(pow(radius,2)));
+                float calc2 = ((float)pow((j-ycenter),2))/(float)(pow(radius,2));
+                float calc3 = (((float)pow((k-zcenter),2))/(float)(pow(radius,2)));
+                if ((calc1 + calc2 + calc3) <= 1.0)
+                    cutVoxel(i,j,k);
+            }
 };
 
 void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
@@ -206,14 +211,11 @@ void sculptor3d::writeOFF(string filename){
                 if(v[i-1][j][k].isOn && v[i+1][j][k].isOn)
                     emVoltaX = true;
 
-
                 if(v[i][j-1][k].isOn && v[i][j+1][k].isOn)
                     emVoltaY = true;
 
-
                 if(v[i][j][k-1].isOn && v[i][j][k+1].isOn)
                     emVoltaZ = true;
-
 
                 if(emVoltaX && emVoltaY && emVoltaZ)
                     pontosAoRedor[i][j][k] = 1;
@@ -257,12 +259,12 @@ void sculptor3d::writeOFF(string filename){
         for(int j = 0; j<ny; j++){
             for(int i = 0; i < nx; i++){
                 if(v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
-                    arquivo << "4 " << 0+count*8 << " " << 8*count+3 << " " << 8*count+2<< " "<< 8*count+1 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl
-                            << "4 " << 8*count+4 << " " << 8*count+5 << " " << 8*count+6<< " "<< 8*count+7 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl
-                            << "4 " << 8*count+0 << " " << 8*count+1 << " " << 8*count+5<< " "<< 8*count+4 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl
-                            << "4 " << 8*count+0 << " " << 8*count+4 << " " << 8*count+7<< " "<< 8*count+3 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl
-                            << "4 " << 8*count+3 << " " << 8*count+7 << " " << 8*count+6<< " "<< 8*count+2 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl
-                            << "4 " << 8*count+1 << " " << 8*count+2 << " " << 8*count+6<< " "<< 8*count+5 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 0+count*8 << " " << 8*count+3 << " " << 8*count+2<< " "<< 8*count+1 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 8*count+4 << " " << 8*count+5 << " " << 8*count+6<< " "<< 8*count+7 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 8*count+0 << " " << 8*count+1 << " " << 8*count+5<< " "<< 8*count+4 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 8*count+0 << " " << 8*count+4 << " " << 8*count+7<< " "<< 8*count+3 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 8*count+3 << " " << 8*count+7 << " " << 8*count+6<< " "<< 8*count+2 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 8*count+1 << " " << 8*count+2 << " " << 8*count+6<< " "<< 8*count+5 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
                     count++;
                 }
             }
@@ -302,7 +304,7 @@ void sculptor3d::writeVECT(string filename){
                 if(v[i][j][k-1].isOn && v[i][j][k+1].isOn)
                     emVoltaZ = true;
 
-                if(emVoltaX || emVoltaY || emVoltaZ)
+                if(emVoltaX && emVoltaY && emVoltaZ)
                     pontosAoRedor[i][j][k] = 1;
             }
 
@@ -376,16 +378,4 @@ bool vCol(float r,float g,float b){
     if(b<0 || b>1) return false;
     return true;
 
-}
-
-unsigned long int sculptor3d::countVoxels(){
-    unsigned long int numeroDeVoxels = 0;
-
-    for(int i = 0; i < nx; i++)
-        for(int j = 0; j < ny; j++)
-            for(int k = 0; k < nz; k++)
-                if (v[i][j][k].isOn == true)
-                    numeroDeVoxels++;
-
-    return numeroDeVoxels;
 }
