@@ -2,6 +2,7 @@
 #include <string.h>
 #include <cmath>
 #include <fstream>
+#include <vector>
 
 bool vPos(int x, int y,int z, int nx, int ny, int nz);
 bool vCol(float r,float g,float b);
@@ -236,39 +237,75 @@ void sculptor3d::writeOFF(string filename){
 void sculptor3d::writeVECT(string filename){
     filename = tratarExtensao(filename, ".vect");
 
-    int numeroVoxels = countVoxels();
+    /*
+        O conjunto de for a seguir define os arredores dos pontos que foram definidos como isOn = true.
+        Isso é necessário, senão teríamos uma série de pontos soltos, não formando uma face
+    */
+    int pontosAoRedor[nx][ny][nz];
+
+    for(int i = 0; i < this->nx; i++)
+        for(int j = 0; j < this->ny; j++)
+            for(int k = 0; k < this->nz; k++)
+                pontosAoRedor[i][j][k] = 0;
+
+    bool emVoltaX, emVoltaY, emVoltaZ;
+
+    for(int i = 1; i < nx-1; i++)
+        for(int j = 1; j < ny-1; j++)
+            for(int k = 1; k < nz-1; k++){
+                emVoltaX = false; emVoltaY = false; emVoltaZ=false;
+
+                if(v[i-1][j][k].isOn && v[i+1][j][k].isOn)
+                    emVoltaX = true;
+
+                if(v[i][j-1][k].isOn && v[i][j+1][k].isOn)
+                    emVoltaY = true;
+
+                if(v[i][j][k-1].isOn && v[i][j][k+1].isOn)
+                    emVoltaZ = true;
+
+                if(emVoltaX || emVoltaY || emVoltaZ)
+                    pontosAoRedor[i][j][k] = 1;
+            }
+
+    int numeroDeVoxels = 0;
+
+    for(int i = 0; i < nx; i++)
+        for(int j = 0; j < ny; j++)
+            for(int k = 0; k < nz; k++)
+                if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0)
+                    numeroDeVoxels++;
 
     ofstream arquivo (filename);
     arquivo << "VECT" << endl;
-    arquivo << numeroVoxels << " " << numeroVoxels << " " << numeroVoxels << endl;
+    arquivo << numeroDeVoxels << " " << numeroDeVoxels << " " << numeroDeVoxels << endl;
 
     for(int i = 0; i <= 1; i++){
-        for (int j =0; j < numeroVoxels; j++) {
+        for (int j =0; j < numeroDeVoxels; j++) {
             arquivo << "1" << " ";
         }
         arquivo << endl;
     }
 
-    for(int i = 0; i < nx; i++){
-        for(int j = 0; j < ny; j++){
-            for(int k = 0; k < nz; k++){
-                if (v[i][j][k].isOn){
+    for(int i = 0; i < this->nx; i++){
+        for(int j = 0; j < this->ny; j++){
+            for(int k = 0; k < this->nz; k++){
+                if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
                     arquivo << i <<" "<< j <<" "<< k << endl;
                 }
             }
         }
     }
 
-    for(int i = 0; i < nx; i++){
-        for(int j = 0; j < ny; j++){
-            for(int k = 0; k < nz; k++){
-                if (v[i][j][k].isOn){
-                    arquivo << v[i][j][k].r <<" "<< v[i][j][k].g <<" "<< v[i][j][k].b <<" "<< v[i][j][k].a << endl;
+    for(int i = 0; i < this->nx; i++){
+        for(int j = 0; j < this->ny; j++){
+            for(int k = 0; k < this->nz; k++){
+                if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
+                    arquivo << v[i][j][k].r << " " << v[i][j][k].g << " " << v[i][j][k].b << " " << v[i][j][k].a << endl;
                 }
             }
         }
     }
-
 
     arquivo.close();
 };
@@ -276,9 +313,8 @@ void sculptor3d::writeVECT(string filename){
 
 //Tratamento para filename com ou sem referência, ambos são aceitos
 string tratarExtensao(string filename, string extensao ){
-    if (filename.find(extensao) == std::string::npos) {
+    if (filename.find(extensao) == std::string::npos)
         filename = filename + extensao;
-    }
 
     return filename;
 }
@@ -297,33 +333,14 @@ bool vPos(int x, int y,int z, int nx, int ny, int nz){
 }
 
 bool vCol(float r,float g,float b){
-    if(r<0 || r>1) return false;
-    if(g<0 || g>1) return false;
-    if(b<0 || b>1) return false;
+    if(r<0 || r>1)
+        return false;
+
+    if(g<0 || g>1)
+        return false;
+    if(b<0 || b>1)
+        return false;
+
     return true;
-
 }
 
-int sculptor3d::getNx(){
-    return nx;
-}
-
-int sculptor3d::getNy(){
-    return ny;
-}
-
-int sculptor3d::getNz(){
-    return nz;
-}
-
-int sculptor3d::countVoxels(){
-    int numeroDeVoxels = 0;
-
-    for(int i = 0; i < nx; i++)
-        for(int j = 0; j < ny; j++)
-            for(int k = 0; k < nz; k++)
-                if (v[i][j][k].isOn == true)
-                    numeroDeVoxels++;
-
-    return numeroDeVoxels;
-}

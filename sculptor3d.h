@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <string.h>
+#include <vector>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ protected:
   // 3D matrix
   int nx,ny,nz; // Dimensions
   float r,g,b,a; // Current drawing color
+
 public:
   sculptor3d(int nx, int ny, int nz);
   ~sculptor3d();
@@ -35,10 +37,6 @@ public:
   void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
   void writeOFF(string filename);
   void writeVECT(string filename);
-  int countVoxels();
-  int getNx();
-  int getNy();
-  int getNz();
 };
 
 #endif // SCULPTOR3D_H
