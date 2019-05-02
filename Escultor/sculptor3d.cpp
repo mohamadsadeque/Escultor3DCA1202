@@ -70,29 +70,23 @@ void sculptor3d::cutVoxel(int x, int y, int z){
 };
 
 void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
-
     if(!vPos(x0,y0,z0,nx,ny,nz)){
         cout << "Erro: posição invalida" << endl;
         exit(0);
     }
-
     if(!vPos(x1,y1,z1,nx,ny,nz)){
         cout << "Erro: posição invalida" << endl;
         exit(0);
     }
-
     if(x0>=x1 || z0>=z1 || z0>=z1){
         cout << "Erro: posição trocada" << endl;
         exit(0);
     }
 
-    for(int i = x0; i < x1; i++){
-        for(int j = y0; j < y1; j++){
-            for (int k = z0; k < z1; k++) {
+    for(int i = x0; i < x1; i++)
+        for(int j = y0; j < y1; j++)
+            for (int k = z0; k < z1; k++)
                 putVoxel(i, j, k);
-            }
-        }
-    }
 };
 
 void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
@@ -128,15 +122,16 @@ void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){
         exit(0);
     }
 
-    for(int k = 0; k< nz; k++){
-        for(int i = 0; i<nx; i++){
-            for(int j = 0; j<ny; j++){
-                if( (pow(((i-xcenter)/radius), 2)) +(pow(((j-ycenter)/radius), 2)) + (pow(((k-zcenter)/radius), 2)) <= 1 ){
-                    putVoxel(i, j, k);
-                }
+    for(int i=xcenter-radius; i< xcenter+radius; i++)
+        for(int j=ycenter-radius; j< ycenter+radius; j++)
+            for(int k=zcenter-radius; k< zcenter+radius; k++)
+            {
+                float calc1 = ((float)pow((i-xcenter),2)/(pow(radius,2)));
+                float calc2 = ((float)pow((j-ycenter),2))/(float)(pow(radius,2));
+                float calc3 = (((float)pow((k-zcenter),2))/(float)(pow(radius,2)));
+                if ((calc1 + calc2 + calc3) <= 1.0)
+                    putVoxel(i,j,k);
             }
-        }
-    }
 };
 
 void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
@@ -194,11 +189,11 @@ void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
 void sculptor3d::writeOFF(string filename){
     filename = tratarExtensao(filename, ".off");
 
-    unsigned long pontosAoRedor[nx][ny][nz];
+    char pontosAoRedor[nx][ny][nz];
 
-    for(int i = 0; i < this->nx; i++)
-        for(int j = 0; j < this->ny; j++)
-            for(int k = 0; k < this->nz; k++)
+    for(int i = 0; i < nx; i++)
+        for(int j = 0; j < ny; j++)
+            for(int k = 0; k < nz; k++)
                 pontosAoRedor[i][j][k] = 0;
 
     bool emVoltaX, emVoltaY, emVoltaZ;
@@ -211,17 +206,18 @@ void sculptor3d::writeOFF(string filename){
                 if(v[i-1][j][k].isOn && v[i+1][j][k].isOn)
                     emVoltaX = true;
 
+
                 if(v[i][j-1][k].isOn && v[i][j+1][k].isOn)
                     emVoltaY = true;
+
 
                 if(v[i][j][k-1].isOn && v[i][j][k+1].isOn)
                     emVoltaZ = true;
 
-                if(emVoltaX || emVoltaY || emVoltaZ)
+
+                if(emVoltaX && emVoltaY && emVoltaZ)
                     pontosAoRedor[i][j][k] = 1;
             }
-
-
 
     int numeroDeVoxels = 0;
 
@@ -231,27 +227,29 @@ void sculptor3d::writeOFF(string filename){
                 if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0)
                     numeroDeVoxels++;
 
-    ofstream arquivo (filename);
+    cout << "NX = " << nx << endl;
+    cout << "NY = " << ny << endl;
+    cout << "NZ = " << nz << endl;
+    cout << "Número de voxels: " << numeroDeVoxels << endl;
 
+    ofstream arquivo (filename);
     arquivo << "OFF" << endl;
     arquivo << numeroDeVoxels*8 << " " << numeroDeVoxels*6 << " " << 0 << endl;
 
-    for(int k = 0; k < nz; k++){
-        for(int j = 0; j < ny; j++){
+    for(int k = 0; k < nz; k++)
+        for(int j = 0; j < ny; j++)
             for(int i = 0; i < nx; i++){
                 if(v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
-                    arquivo << -0.5+i << " " << j+0.5 << " " << k-0.5 << endl;
-                    arquivo << -0.5+i << " " << j-0.5 << " " << k-0.5 << endl;
-                    arquivo << 0.5+i << " " << j-0.5 << " " << k-0.5 << endl;
-                    arquivo << 0.5+i << " " << j+0.5 << " " << k-0.5 << endl;
+                    arquivo << -0.5+i << " " << j+0.5 << " " << -0.5+k << endl;
+                    arquivo << -0.5+i << " " << -0.5+j << " " << -0.5+k << endl;
+                    arquivo << 0.5+i << " " << -0.5+j << " " << -0.5+k << endl;
+                    arquivo << 0.5+i << " " << j+0.5 << " " << -0.5+k << endl;
                     arquivo << -0.5+i << " " << j+0.5 << " " << k+0.5 << endl;
-                    arquivo << -0.5+i << " " << j-0.5 << " " << k+0.5 << endl;
-                    arquivo << 0.5+i << " " << j-0.5 << " " << k+0.5 << endl;
-                    arquivo << 0.5+i << " " << j+0.5 << " " << k+0.5 << endl;
+                    arquivo << -0.5+i << " " << -0.5+j << " " << k+0.5 << endl;
+                    arquivo << 0.5+i << " " << -0.5+j << " " << k+0.5 << endl;
+                    arquivo << 0.5+i << " " << 0.5+j << " " << k+0.5 << endl;
                 }
             }
-        }
-    }
 
     int count = 0;
 
@@ -259,12 +257,12 @@ void sculptor3d::writeOFF(string filename){
         for(int j = 0; j<ny; j++){
             for(int i = 0; i < nx; i++){
                 if(v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
-                    arquivo << "4 " << count*8 << " " << 8*count+3 << " " << 8*count+2<< " "<< 8*count+1 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
-                    arquivo << "4 " << 8*count+4 << " " << 8*count+5 << " " << 8*count+6<< " "<< 8*count+7 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
-                    arquivo << "4 " << 8*count << " " << 8*count+1 << " " << 8*count+5<< " "<< 8*count+4 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
-                    arquivo << "4 " << 8*count << " " << 8*count+4 << " " << 8*count+7<< " "<< 8*count+3 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
-                    arquivo << "4 " << 8*count+3 << " " << 8*count+7 << " " << 8*count+6<< " "<< 8*count+2 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
-                    arquivo << "4 " << 8*count+1 << " " << 8*count+2 << " " << 8*count+6<< " "<< 8*count+5 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 0+count*8 << " " << 8*count+3 << " " << 8*count+2<< " "<< 8*count+1 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl
+                            << "4 " << 8*count+4 << " " << 8*count+5 << " " << 8*count+6<< " "<< 8*count+7 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl
+                            << "4 " << 8*count+0 << " " << 8*count+1 << " " << 8*count+5<< " "<< 8*count+4 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl
+                            << "4 " << 8*count+0 << " " << 8*count+4 << " " << 8*count+7<< " "<< 8*count+3 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl
+                            << "4 " << 8*count+3 << " " << 8*count+7 << " " << 8*count+6<< " "<< 8*count+2 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl
+                            << "4 " << 8*count+1 << " " << 8*count+2 << " " << 8*count+6<< " "<< 8*count+5 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
                     count++;
                 }
             }
@@ -379,19 +377,6 @@ bool vCol(float r,float g,float b){
     return true;
 
 }
-
-int sculptor3d::getNx(){
-    return nx;
-}
-
-int sculptor3d::getNy(){
-    return ny;
-}
-
-int sculptor3d::getNz(){
-    return nz;
-}
-
 
 unsigned long int sculptor3d::countVoxels(){
     unsigned long int numeroDeVoxels = 0;
