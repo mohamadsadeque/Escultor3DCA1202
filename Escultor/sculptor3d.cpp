@@ -1,5 +1,4 @@
 #include "sculptor3d.h"
-#include "exportvoxel.h"
 #include <string.h>
 #include <cmath>
 #include <fstream>
@@ -75,14 +74,17 @@ void sculptor3d::cutVoxel(int x, int y, int z){
 void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
 
     if(!vPos(x0,y0,z0,nx,ny,nz)){
+        cout << "Erro: posição invalida" << endl;
         exit(0);
     }
 
     if(!vPos(x1,y1,z1,nx,ny,nz)){
+        cout << "Erro: posição invalida" << endl;
         exit(0);
     }
 
     if(x0>=x1 || z0>=z1 || z0>=z1){
+        cout << "Erro: posição trocada" << endl;
         exit(0);
     }
 
@@ -127,11 +129,16 @@ void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
 
 void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){
     if(!vPos(xcenter,ycenter,zcenter,nx,ny,nz)){
+        cout << "Erro: posição invalida" << endl;
         exit(0);
+
+
     }
 
     if(radius == 0){
+        cout << "Erro: raio invalido" << endl;
         exit(0);
+
     }
 
     for(int k = 0; k< nz; k++){
@@ -226,10 +233,46 @@ void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
 };
 
 void sculptor3d::writeOFF(string filename){
-    filename = tratarExtensao(filename, ".vect");
-
+    filename = tratarExtensao(filename, ".off");
+    int numeroVoxels = countVoxels();
+    int count = 0;
     ofstream output (filename);
     output << "OFF" << endl;
+    output << numeroVoxels*8 << " " << numeroVoxels*6 << " 0"<< endl;
+    for(int i = 0; i<nx; i++){
+        for(int j = 0; j<ny; j++){
+            for(int k = 0; k<nz; k++){
+                if(v[i][j][k].isOn){
+                    output << i-0.5 << " " << j+0.5 << " " << k-0.5 << endl;
+                    output << i-0.5 << " " << j-0.5 << " " << k-0.5 << endl;
+                    output << i+0.5 << " " << j-0.5 << " " << k-0.5 << endl;
+                    output << i+0.5 << " " << j+0.5 << " " << k-0.5 << endl;
+                    output << i-0.5 << " " << j+0.5 << " " << k+0.5 << endl;
+                    output << i-0.5 << " " << j-0.5 << " " << k+0.5 << endl;
+                    output << i+0.5 << " " << j-0.5 << " " << k+0.5 << endl;
+                    output << i+0.5 << " " << j+0.5 << " " << k+0.5 << endl;
+
+                }
+            }
+
+        }
+    }
+
+    for(int i = 0; i < nx; i++){
+        for(int j = 0; j<ny; j++){
+            for(int k = 0; k<nz; k++){
+                if(v[i][j][k].isOn){
+                output << "4 " << count << " " << count+3 << " " << count+2<< " "<< count+1 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
+                output << "4 " << count+4 << " " << count+5 << " " << count+6<< " "<< count+7 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
+                output << "4 " << count << " " << count+1 << " " << count+5<< " "<< count+4 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
+                output << "4 " << count << " " << count+4 << " " << count+7<< " "<< count+3 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
+                output << "4 " << count+3 << " " << count+7 << " " << count+6<< " "<< count+2 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
+                output << "4 " << count+1 << " " << count+2 << " " << count+6<< " "<< count+5 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
+               count++;
+                }
+            }
+        }
+    }
 
     output.close();
 };
@@ -237,7 +280,7 @@ void sculptor3d::writeOFF(string filename){
 void sculptor3d::writeVECT(string filename){
     filename = tratarExtensao(filename, ".vect");
 
-    int numeroVoxels = countVoxels();
+    unsigned long int numeroVoxels = countVoxels();
 
     ofstream arquivo (filename);
     arquivo << "VECT" << endl;
@@ -318,8 +361,8 @@ int sculptor3d::getNz(){
 }
 
 
-int sculptor3d::countVoxels(){
-    int numeroDeVoxels = 0;
+unsigned long int sculptor3d::countVoxels(){
+    unsigned long int numeroDeVoxels = 0;
 
     for(int i = 0; i < nx; i++)
         for(int j = 0; j < ny; j++)
