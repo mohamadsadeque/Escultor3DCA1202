@@ -49,26 +49,24 @@ void sculptor3d::setColor(float _r, float _g, float _b, float _alpha){
 
 void sculptor3d::putVoxel(int x, int y, int z){
     if(!vPos(x,y,z,nx,ny,nz)){
-        // mata o programa
+        cout << "A posicao que deseja acessar nao existe" << endl;
+        exit(0);
     }
 
     v[x][y][z].isOn = true;
-    v[x][y][z].r = this->r;
-    v[x][y][z].g = this->g;
-    v[x][y][z].b = this->b;
-    v[x][y][z].a = this->a;
+    v[x][y][z].r = r;
+    v[x][y][z].g = g;
+    v[x][y][z].b = b;
+    v[x][y][z].a = a;
 };
 
 void sculptor3d::cutVoxel(int x, int y, int z){
     if(!vPos(x,y,z,nx,ny,nz)){
-        // mata o programa~~ posição que não existe
+        cout << "A posicao que deseja acessar nao existe" << endl;
+        exit(0);
     }
 
     v[x][y][z].isOn = false;
-    v[x][y][z].r = this->r;
-    v[x][y][z].g = this->g;
-    v[x][y][z].b = this->b;
-    v[x][y][z].a = this->a;
 };
 
 void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
@@ -88,14 +86,10 @@ void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
         exit(0);
     }
 
-    for(int i = x0; i<x1+1; i++){
-        for(int j = y0; j<y1+1;j++){
-            for (int k = z0; k<z1+1;k++) {
-                v[i][j][k].isOn = true;
-                v[i][j][k].r = this->r;
-                v[i][j][k].g = this->g;
-                v[i][j][k].b = this->b;
-                v[i][j][k].a = this->a;
+    for(int i = x0; i < x1; i++){
+        for(int j = y0; j < y1; j++){
+            for (int k = z0; k < z1; k++) {
+                putVoxel(i, j, k);
             }
         }
     }
@@ -114,14 +108,10 @@ void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
         exit(0);
     }
 
-    for(int i = x0; i<x1; i++){
-        for(int j = y0; j<y1;j++){
-            for (int k = z0; k<z1;k++) {
-                v[i][j][k].isOn = false;
-                v[i][j][k].r = this->r;
-                v[i][j][k].g = this->g;
-                v[i][j][k].b = this->b;
-                v[i][j][k].a = this->a;
+    for(int i = x0; i < x1 ; i++){
+        for(int j = y0; j < y1; j++){
+            for (int k = z0; k < z1; k++) {
+                cutVoxel(i, j, k);
             }
         }
     }
@@ -131,25 +121,18 @@ void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){
     if(!vPos(xcenter,ycenter,zcenter,nx,ny,nz)){
         cout << "Erro: posição invalida" << endl;
         exit(0);
-
-
     }
 
     if(radius == 0){
         cout << "Erro: raio invalido" << endl;
         exit(0);
-
     }
 
     for(int k = 0; k< nz; k++){
         for(int i = 0; i<nx; i++){
             for(int j = 0; j<ny; j++){
                 if( (pow(((i-xcenter)/radius), 2)) +(pow(((j-ycenter)/radius), 2)) + (pow(((k-zcenter)/radius), 2)) <= 1 ){
-                    v[i][j][k].isOn = true;
-                    v[i][j][k].r = this->r;
-                    v[i][j][k].g = this->g;
-                    v[i][j][k].b = this->b;
-                    v[i][j][k].a = this->a;
+                    putVoxel(i, j, k);
                 }
             }
         }
@@ -167,19 +150,11 @@ void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
         exit(0);
     }
 
-    for(int k = 0; k< nz; k++){
-        for(int i = 0; i<nx; i++){
-            for(int j = 0; j<ny; j++){
-                if( (pow(((i-xcenter)/radius), 2)) +(pow(((j-ycenter)/radius), 2)) + (pow(((k-zcenter)/radius), 2)) <= 1 ){
-                    v[i][j][k].isOn = false;
-                    v[i][j][k].r = this->r;
-                    v[i][j][k].g = this->g;
-                    v[i][j][k].b = this->b;
-                    v[i][j][k].a = this->a;
-                }
-            }
-        }
-    }
+    for(int k = 0; k< nz; k++)
+        for(int i = 0; i<nx; i++)
+            for(int j = 0; j<ny; j++)
+                if( (pow(((i-xcenter)/radius), 2)) +(pow(((j-ycenter)/radius), 2)) + (pow(((k-zcenter)/radius), 2)) <= 1 )
+                    cutVoxel(i, j, k);
 };
 
 void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
@@ -193,19 +168,11 @@ void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
         exit(0);
     }
 
-    for(int k = 0;k< nz; k++){
-        for(int i = 0; i<nx; i++){
-            for(int j = 0; j<ny; j++){
-                if( (pow(((i-xcenter)/rx), 2)) +(pow(((j-ycenter)/ry), 2)) + (pow(((k-zcenter)/rz), 2)) <= 1 ){
-                    v[i][j][k].isOn = true;
-                    v[i][j][k].r = this->r;
-                    v[i][j][k].g = this->g;
-                    v[i][j][k].b = this->b;
-                    v[i][j][k].a = this->a;
-                }
-            }
-        }
-    }
+    for(int k = 0;k< nz; k++)
+        for(int i = 0; i<nx; i++)
+            for(int j = 0; j<ny; j++)
+                if( (pow(((i-xcenter)/rx), 2)) +(pow(((j-ycenter)/ry), 2)) + (pow(((k-zcenter)/rz), 2)) <= 1 )
+                    putVoxel(i, j, k);
 };
 
 void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
@@ -217,106 +184,171 @@ void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
         // mata o programa ~~ o raio não pode ser zero
     }
 
-    for(int k = 0; k< nz; k++){
-        for(int i = 0; i<nx; i++){
-            for(int j = 0; j<ny; j++){
-                if( (pow(((i-xcenter)/rx), 2)) +(pow(((j-ycenter)/ry), 2)) + (pow(((k-zcenter)/rz), 2)) <= 1 ){
-                    v[i][j][k].isOn = false;
-                    v[i][j][k].r = this->r;
-                    v[i][j][k].g = this->g;
-                    v[i][j][k].b = this->b;
-                    v[i][j][k].a = this->a;
-                }
-            }
-        }
-    }
+    for(int k = 0; k< nz; k++)
+        for(int i = 0; i<nx; i++)
+            for(int j = 0; j<ny; j++)
+                if( (pow(((i-xcenter)/rx), 2)) +(pow(((j-ycenter)/ry), 2)) + (pow(((k-zcenter)/rz), 2)) <= 1 )
+                    cutVoxel(i, j, k);
 };
 
 void sculptor3d::writeOFF(string filename){
     filename = tratarExtensao(filename, ".off");
-    int numeroVoxels = countVoxels();
+
+    unsigned long pontosAoRedor[nx][ny][nz];
+
+    for(int i = 0; i < this->nx; i++)
+        for(int j = 0; j < this->ny; j++)
+            for(int k = 0; k < this->nz; k++)
+                pontosAoRedor[i][j][k] = 0;
+
+    bool emVoltaX, emVoltaY, emVoltaZ;
+
+    for(int i = 1; i < nx-1; i++)
+        for(int j = 1; j < ny-1; j++)
+            for(int k = 1; k < nz-1; k++){
+                emVoltaX = false; emVoltaY = false; emVoltaZ=false;
+
+                if(v[i-1][j][k].isOn && v[i+1][j][k].isOn)
+                    emVoltaX = true;
+
+                if(v[i][j-1][k].isOn && v[i][j+1][k].isOn)
+                    emVoltaY = true;
+
+                if(v[i][j][k-1].isOn && v[i][j][k+1].isOn)
+                    emVoltaZ = true;
+
+                if(emVoltaX || emVoltaY || emVoltaZ)
+                    pontosAoRedor[i][j][k] = 1;
+            }
+
+
+
+    int numeroDeVoxels = 0;
+
+    for(int i = 0; i < nx; i++)
+        for(int j = 0; j < ny; j++)
+            for(int k = 0; k < nz; k++)
+                if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0)
+                    numeroDeVoxels++;
+
+    ofstream arquivo (filename);
+
+    arquivo << "OFF" << endl;
+    arquivo << numeroDeVoxels*8 << " " << numeroDeVoxels*6 << " " << 0 << endl;
+
+    for(int k = 0; k < nz; k++){
+        for(int j = 0; j < ny; j++){
+            for(int i = 0; i < nx; i++){
+                if(v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
+                    arquivo << -0.5+i << " " << j+0.5 << " " << k-0.5 << endl;
+                    arquivo << -0.5+i << " " << j-0.5 << " " << k-0.5 << endl;
+                    arquivo << 0.5+i << " " << j-0.5 << " " << k-0.5 << endl;
+                    arquivo << 0.5+i << " " << j+0.5 << " " << k-0.5 << endl;
+                    arquivo << -0.5+i << " " << j+0.5 << " " << k+0.5 << endl;
+                    arquivo << -0.5+i << " " << j-0.5 << " " << k+0.5 << endl;
+                    arquivo << 0.5+i << " " << j-0.5 << " " << k+0.5 << endl;
+                    arquivo << 0.5+i << " " << j+0.5 << " " << k+0.5 << endl;
+                }
+            }
+        }
+    }
+
     int count = 0;
-    ofstream output (filename);
-    output << "OFF" << endl;
-    output << numeroVoxels*8 << " " << numeroVoxels*6 << " 0"<< endl;
-    for(int i = 0; i<nx; i++){
+
+    for(int k = 0; k < nz; k++){
         for(int j = 0; j<ny; j++){
-            for(int k = 0; k<nz; k++){
-                if(v[i][j][k].isOn){
-                    output << i-0.5 << " " << j+0.5 << " " << k-0.5 << endl;
-                    output << i-0.5 << " " << j-0.5 << " " << k-0.5 << endl;
-                    output << i+0.5 << " " << j-0.5 << " " << k-0.5 << endl;
-                    output << i+0.5 << " " << j+0.5 << " " << k-0.5 << endl;
-                    output << i-0.5 << " " << j+0.5 << " " << k+0.5 << endl;
-                    output << i-0.5 << " " << j-0.5 << " " << k+0.5 << endl;
-                    output << i+0.5 << " " << j-0.5 << " " << k+0.5 << endl;
-                    output << i+0.5 << " " << j+0.5 << " " << k+0.5 << endl;
-
-                }
-            }
-
-        }
-    }
-
-    for(int i = 0; i < nx; i++){
-        for(int j = 0; j<ny; j++){
-            for(int k = 0; k<nz; k++){
-                if(v[i][j][k].isOn){
-                output << "4 " << count << " " << count+3 << " " << count+2<< " "<< count+1 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
-                output << "4 " << count+4 << " " << count+5 << " " << count+6<< " "<< count+7 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
-                output << "4 " << count << " " << count+1 << " " << count+5<< " "<< count+4 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
-                output << "4 " << count << " " << count+4 << " " << count+7<< " "<< count+3 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
-                output << "4 " << count+3 << " " << count+7 << " " << count+6<< " "<< count+2 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
-                output << "4 " << count+1 << " " << count+2 << " " << count+6<< " "<< count+5 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a <<endl;
-               count++;
+            for(int i = 0; i < nx; i++){
+                if(v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
+                    arquivo << "4 " << count*8 << " " << 8*count+3 << " " << 8*count+2<< " "<< 8*count+1 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 8*count+4 << " " << 8*count+5 << " " << 8*count+6<< " "<< 8*count+7 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 8*count << " " << 8*count+1 << " " << 8*count+5<< " "<< 8*count+4 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 8*count << " " << 8*count+4 << " " << 8*count+7<< " "<< 8*count+3 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 8*count+3 << " " << 8*count+7 << " " << 8*count+6<< " "<< 8*count+2 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    arquivo << "4 " << 8*count+1 << " " << 8*count+2 << " " << 8*count+6<< " "<< 8*count+5 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
+                    count++;
                 }
             }
         }
     }
 
-    output.close();
+    arquivo.close();
 };
 
 void sculptor3d::writeVECT(string filename){
     filename = tratarExtensao(filename, ".vect");
 
-    unsigned long int numeroVoxels = countVoxels();
+    /*
+        O conjunto de for a seguir define os arredores dos pontos que foram definidos como isOn = true.
+        Isso é necessário, senão teríamos uma série de pontos soltos, não formando uma face
+    */
+    int pontosAoRedor[nx][ny][nz];
+
+    for(int i = 0; i < this->nx; i++)
+        for(int j = 0; j < this->ny; j++)
+            for(int k = 0; k < this->nz; k++)
+                pontosAoRedor[i][j][k] = 0;
+
+    bool emVoltaX, emVoltaY, emVoltaZ;
+
+    for(int i = 1; i < nx-1; i++)
+        for(int j = 1; j < ny-1; j++)
+            for(int k = 1; k < nz-1; k++){
+                emVoltaX = false; emVoltaY = false; emVoltaZ=false;
+
+                if(v[i-1][j][k].isOn && v[i+1][j][k].isOn)
+                    emVoltaX = true;
+
+                if(v[i][j-1][k].isOn && v[i][j+1][k].isOn)
+                    emVoltaY = true;
+
+                if(v[i][j][k-1].isOn && v[i][j][k+1].isOn)
+                    emVoltaZ = true;
+
+                if(emVoltaX || emVoltaY || emVoltaZ)
+                    pontosAoRedor[i][j][k] = 1;
+            }
+
+    int numeroDeVoxels = 0;
+
+    for(int i = 0; i < nx; i++)
+        for(int j = 0; j < ny; j++)
+            for(int k = 0; k < nz; k++)
+                if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0)
+                    numeroDeVoxels++;
 
     ofstream arquivo (filename);
     arquivo << "VECT" << endl;
-    arquivo << numeroVoxels << " " << numeroVoxels << " " << numeroVoxels << endl;
+    arquivo << numeroDeVoxels << " " << numeroDeVoxels << " " << numeroDeVoxels << endl;
 
     for(int i = 0; i <= 1; i++){
-        for (int j =0; j < numeroVoxels; j++) {
+        for (int j =0; j < numeroDeVoxels; j++) {
             arquivo << "1" << " ";
         }
         arquivo << endl;
     }
 
-    for(int i = 0; i < nx; i++){
-        for(int j = 0; j < ny; j++){
-            for(int k = 0; k < nz; k++){
-                if (v[i][j][k].isOn){
+    for(int i = 0; i < this->nx; i++){
+        for(int j = 0; j < this->ny; j++){
+            for(int k = 0; k < this->nz; k++){
+                if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
                     arquivo << i <<" "<< j <<" "<< k << endl;
                 }
             }
         }
     }
 
-    for(int i = 0; i < nx; i++){
-        for(int j = 0; j < ny; j++){
-            for(int k = 0; k < nz; k++){
-                if (v[i][j][k].isOn){
-                    arquivo << v[i][j][k].r <<" "<< v[i][j][k].g <<" "<< v[i][j][k].b <<" "<< v[i][j][k].a << endl;
+    for(int i = 0; i < this->nx; i++){
+        for(int j = 0; j < this->ny; j++){
+            for(int k = 0; k < this->nz; k++){
+                if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
+                    arquivo << v[i][j][k].r << " " << v[i][j][k].g << " " << v[i][j][k].b << " " << v[i][j][k].a << endl;
                 }
             }
         }
     }
 
-
     arquivo.close();
 };
-
 
 //Tratamento para filename com ou sem referência, ambos são aceitos
 string tratarExtensao(string filename, string extensao ){
