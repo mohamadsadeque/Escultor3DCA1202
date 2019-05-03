@@ -32,10 +32,10 @@ int main()
         ***** putVoxel                                              *****
         ******************************************************************
 
+    */
         s.setColor(0, 0, 1, 0.3);
         s.putBox(40,95,40,95,40,95);
-        s.cutBox(80,95,80,95,80,95);
-    */
+        s.cutBox(50,95,50,95,50,95);
 
     /*
         ***************************************************************
@@ -44,13 +44,12 @@ int main()
         ***** e alpha = 0.7 .Nesse exemplo também é utilizado os  *****
         ***** métodos cutVoxel e putVoxel                         *****
         ***************************************************************
+        s.setColor(0, 1, 0, 0.3);
         s.putEllipsoid(50,50,50,49,49,49);
         s.cutEllipsoid(40,40,40,39,39,39);
-
-
     */
 
-    s.writeOFF("C:/Users/moham/Desktop/arquivos3d/arquivo");
+    s.writeOFF("/home/emerson/box-cut-put");
 
     cout << "O arquivo foi gerado" << endl;
 
