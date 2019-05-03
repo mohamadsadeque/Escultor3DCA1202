@@ -47,8 +47,11 @@ int main()
 
 
     */
-    s.putEllipsoid(50,50,50,49,49,49);
-    s.cutEllipsoid(40,40,40,39,39,39);
+    s.setColor(0.5,0.9,0.4,1.0);
+    s.putEllipsoid(50,50,50,29,39,49);
+    s.cutEllipsoid(50,50,50,28,38,48);
+    s.setColor(0.3,0.4,0.5,1.0);
+    s.putBox(0,15,0,15,0,15);
 
     s.writeOFF("C:/Users/moham/Desktop/arquivos3d/arquivo");
 

@@ -40,8 +40,13 @@ struct Voxel {
 };
 
 /**
- * @brief The sculptor3d class
+ * @brief A  classe sculptor3d foi feita para modelar desenhos 3D em arquivos que fossem capazes de serem interpretados
+ * por algum software, os formatos escolhidos foramo *.vect e o *.off. Para desenhar as figuras é utilizado uma unidade
+ * chamada de Voxels (volume elements), que carrega alguns atributos que definem sua cor,transparência e seu estado. Para produzir as figuras
+ * é necessário construir um objeto dessa classe e determinar as dimensões máximas, após isso os métodos de construção e edição estão habilitados
+ *  para serem utilizados.
  */
+
 class sculptor3d {
 protected:
   Voxel ***v;
@@ -85,7 +90,7 @@ public:
   void cutVoxel(int x, int y, int z);
   /**
    * @brief putBox Método insere voxels de um paralelepípedo é construído dando as coordenadas iniciais
-  e finais de cada eixo, assim, tendo controle sobre sua posição e dimensão.
+   * e finais de cada eixo, assim, tendo controle sobre sua posição e dimensão.
    * @param x0 Ponto inicial do eixo x.
    * @param x1 Ponto final do eixo x.
    * @param y0 Ponto inicial do eixo y.
@@ -123,7 +128,7 @@ public:
   void cutSphere(int xcenter, int ycenter, int zcenter, int radius);/** */
   /**
    * @brief putEllipsoid  Método insere um elipsóide formada por voxels passando como parâmpetro as coornadas do
-seu centro e os raios em cada eixo.
+   * seu centro e os raios em cada eixo.
    * @param xcenter Posição do centro do elipsóide no eixo x.
    * @param ycenter Posição do centro do elipsóide no eixo y.
    * @param zcenter Posição do centro do elipsóide no eixo z.
@@ -134,7 +139,7 @@ seu centro e os raios em cada eixo.
   void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
   /**
    * @brief cutEllipsoid Método remove um elipsóide formada por voxels passando como parâmpetro as coornadas do
-seu centro e os raios em cada eixo.
+   * seu centro e os raios em cada eixo.
    * @param xcenter Posição do centro do elipsóide no eixo x.
    * @param ycenter Posição do centro do elipsóide no eixo y.
    * @param zcenter Posição do centro do elipsóide no eixo z.

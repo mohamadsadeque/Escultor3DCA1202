@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>The <a class="el" href="classsculptor3d.html" title="The sculptor3d class.">sculptor3d</a> class.  
+<p>A classe <a class="el" href="classsculptor3d.html" title="A classe sculptor3d foi feita para modelar desenhos 3D em arquivos que fossem capazes de serem interp...">sculptor3d</a> foi feita para modelar desenhos 3D em arquivos que fossem capazes de serem interpretados por algum software, os formatos escolhidos foramo *.vect e o *.off. Para desenhar as figuras é utilizado uma unidade chamada de Voxels (volume elements), que carrega alguns atributos que definem sua cor,transparência e seu estado. Para produzir as figuras é necessário construir um objeto dessa classe e determinar as dimensões máximas, após isso os métodos de construção e edição estão habilitados para serem utilizados.  
  <a href="classsculptor3d.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="sculptor3d_8h_source.html">sculptor3d.h</a>&gt;</code></p>
@@ -107,8 +107,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1e8bf7a173f21c6fd805291ae76e94e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">cutSphere Método remove uma esfera de voxels na matriz principal, passando como parâmetro as coordenas do centro e o seu raio.  <a href="#a1e8bf7a173f21c6fd805291ae76e94e8">More...</a><br /></td></tr>
 <tr class="separator:a1e8bf7a173f21c6fd805291ae76e94e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dbd7e2f4ad70f379a38678df1fe7583"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsculptor3d.html#a0dbd7e2f4ad70f379a38678df1fe7583">putEllipsoid</a> (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)</td></tr>
+<tr class="memdesc:a0dbd7e2f4ad70f379a38678df1fe7583"><td class="mdescLeft">&#160;</td><td class="mdescRight">putEllipsoid Método insere um elipsóide formada por voxels passando como parâmpetro as coornadas do seu centro e os raios em cada eixo.  <a href="#a0dbd7e2f4ad70f379a38678df1fe7583">More...</a><br /></td></tr>
 <tr class="separator:a0dbd7e2f4ad70f379a38678df1fe7583"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab65ed666a86d01f428d6f735ad860cc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsculptor3d.html#ab65ed666a86d01f428d6f735ad860cc6">cutEllipsoid</a> (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)</td></tr>
+<tr class="memdesc:ab65ed666a86d01f428d6f735ad860cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">cutEllipsoid Método remove um elipsóide formada por voxels passando como parâmpetro as coornadas do seu centro e os raios em cada eixo.  <a href="#ab65ed666a86d01f428d6f735ad860cc6">More...</a><br /></td></tr>
 <tr class="separator:ab65ed666a86d01f428d6f735ad860cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d9b24f6775441135936b184bb4079e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsculptor3d.html#a7d9b24f6775441135936b184bb4079e0">writeOFF</a> (string filename)</td></tr>
 <tr class="memdesc:a7d9b24f6775441135936b184bb4079e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">writeOFF Método exporta a figura criada para um arquivo em extensão *.off,que pode ser visualizado pelo software Meshlab ou Geomview. A passagem de parâmetro é feita com uma String dando o endereço do diretório e o nome do arquivo que você deseja salvar.  <a href="#a7d9b24f6775441135936b184bb4079e0">More...</a><br /></td></tr>
@@ -157,7 +159,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>a</b></td></tr>
 <tr class="separator:a899685e3854e58c2eb44b8a4b7f78455"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="classsculptor3d.html" title="The sculptor3d class.">sculptor3d</a> class. </p>
+<div class="textblock"><p>A classe <a class="el" href="classsculptor3d.html" title="A classe sculptor3d foi feita para modelar desenhos 3D em arquivos que fossem capazes de serem interp...">sculptor3d</a> foi feita para modelar desenhos 3D em arquivos que fossem capazes de serem interpretados por algum software, os formatos escolhidos foramo *.vect e o *.off. Para desenhar as figuras é utilizado uma unidade chamada de Voxels (volume elements), que carrega alguns atributos que definem sua cor,transparência e seu estado. Para produzir as figuras é necessário construir um objeto dessa classe e determinar as dimensões máximas, após isso os métodos de construção e edição estão habilitados para serem utilizados. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a36be08ef50a69161c1332f4a1cff226c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36be08ef50a69161c1332f4a1cff226c">&#9670;&nbsp;</a></span>sculptor3d()</h2>
@@ -192,7 +194,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>a</b></td></tr>
 </div><div class="memdoc">
 
 <p>Construtor da classe. </p>
-<p><a class="el" href="classsculptor3d.html" title="The sculptor3d class.">sculptor3d</a> Classe responsável pelo armazenamento e manipulação da matriz de Voxels utilizado para representar figuras geométricas</p>
+<p><a class="el" href="classsculptor3d.html" title="A classe sculptor3d foi feita para modelar desenhos 3D em arquivos que fossem capazes de serem interp...">sculptor3d</a> Classe responsável pelo armazenamento e manipulação da matriz de Voxels utilizado para representar figuras geométricas</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nx</td><td>Dimensão X da matriz de Voxels </td></tr>
@@ -339,8 +341,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>a</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment"> @brief cutEllipsoid Método remove um elipsóide formada por voxels passando como parâmpetro as coornadas do
-</pre><p> seu centro e os raios em cada eixo. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>cutEllipsoid Método remove um elipsóide formada por voxels passando como parâmpetro as coornadas do seu centro e os raios em cada eixo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">xcenter</td><td>Posição do centro do elipsóide no eixo x. </td></tr>
     <tr><td class="paramname">ycenter</td><td>Posição do centro do elipsóide no eixo y. </td></tr>
@@ -623,8 +626,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>a</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment"> @brief putEllipsoid  Método insere um elipsóide formada por voxels passando como parâmpetro as coornadas do
-</pre><p> seu centro e os raios em cada eixo. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>putEllipsoid Método insere um elipsóide formada por voxels passando como parâmpetro as coornadas do seu centro e os raios em cada eixo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">xcenter</td><td>Posição do centro do elipsóide no eixo x. </td></tr>
     <tr><td class="paramname">ycenter</td><td>Posição do centro do elipsóide no eixo y. </td></tr>

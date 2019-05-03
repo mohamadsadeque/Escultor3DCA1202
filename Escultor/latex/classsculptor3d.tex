@@ -2,7 +2,7 @@
 \label{classsculptor3d}\index{sculptor3d@{sculptor3d}}
 
 
-The \mbox{\hyperlink{classsculptor3d}{sculptor3d}} class.  
+A classe \mbox{\hyperlink{classsculptor3d}{sculptor3d}} foi feita para modelar desenhos 3D em arquivos que fossem capazes de serem interpretados por algum software, os formatos escolhidos foramo $\ast$.vect e o $\ast$.off. Para desenhar as figuras é utilizado uma unidade chamada de Voxels (volume elements), que carrega alguns atributos que definem sua cor,transparência e seu estado. Para produzir as figuras é necessário construir um objeto dessa classe e determinar as dimensões máximas, após isso os métodos de construção e edição estão habilitados para serem utilizados.  
 
 
 
@@ -32,9 +32,9 @@ void \mbox{\hyperlink{classsculptor3d_a81b399736b253ef298e7cf04feed9607}{put\+Sp
 void \mbox{\hyperlink{classsculptor3d_a1e8bf7a173f21c6fd805291ae76e94e8}{cut\+Sphere}} (int xcenter, int ycenter, int zcenter, int radius)
 \begin{DoxyCompactList}\small\item\em cut\+Sphere Método remove uma esfera de voxels na matriz principal, passando como parâmetro as coordenas do centro e o seu raio. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classsculptor3d_a0dbd7e2f4ad70f379a38678df1fe7583}{put\+Ellipsoid}} (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
-\item 
+\begin{DoxyCompactList}\small\item\em put\+Ellipsoid Método insere um elipsóide formada por voxels passando como parâmpetro as coornadas do seu centro e os raios em cada eixo. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classsculptor3d_ab65ed666a86d01f428d6f735ad860cc6}{cut\+Ellipsoid}} (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
-\item 
+\begin{DoxyCompactList}\small\item\em cut\+Ellipsoid Método remove um elipsóide formada por voxels passando como parâmpetro as coornadas do seu centro e os raios em cada eixo. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classsculptor3d_a7d9b24f6775441135936b184bb4079e0}{write\+O\+FF}} (string filename)
 \begin{DoxyCompactList}\small\item\em write\+O\+FF Método exporta a figura criada para um arquivo em extensão $\ast$.off,que pode ser visualizado pelo software Meshlab ou Geomview. A passagem de parâmetro é feita com uma String dando o endereço do diretório e o nome do arquivo que você deseja salvar. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classsculptor3d_a60f471805c52556e564477beccc72f6b}{write\+V\+E\+CT}} (string filename)
@@ -77,7 +77,7 @@ float {\bfseries a}
 
 
 \subsection{Detailed Description}
-The \mbox{\hyperlink{classsculptor3d}{sculptor3d}} class. 
+A classe \mbox{\hyperlink{classsculptor3d}{sculptor3d}} foi feita para modelar desenhos 3D em arquivos que fossem capazes de serem interpretados por algum software, os formatos escolhidos foramo $\ast$.vect e o $\ast$.off. Para desenhar as figuras é utilizado uma unidade chamada de Voxels (volume elements), que carrega alguns atributos que definem sua cor,transparência e seu estado. Para produzir as figuras é necessário construir um objeto dessa classe e determinar as dimensões máximas, após isso os métodos de construção e edição estão habilitados para serem utilizados. 
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classsculptor3d_a36be08ef50a69161c1332f4a1cff226c}\label{classsculptor3d_a36be08ef50a69161c1332f4a1cff226c}} 
@@ -148,9 +148,11 @@ cut\+Box Método remove voxels de um paralelepípedo que é construído dando as
 \subsubsection{\texorpdfstring{cutEllipsoid()}{cutEllipsoid()}}
 {\footnotesize\ttfamily void sculptor3d\+::cut\+Ellipsoid (\begin{DoxyParamCaption}\item[{int}]{xcenter,  }\item[{int}]{ycenter,  }\item[{int}]{zcenter,  }\item[{int}]{rx,  }\item[{int}]{ry,  }\item[{int}]{rz }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb} @brief cutEllipsoid Método remove um elipsóide formada por voxels passando como parâmpetro as coornadas do
-\end{DoxyVerb}
- seu centro e os raios em cada eixo. 
+
+
+cut\+Ellipsoid Método remove um elipsóide formada por voxels passando como parâmpetro as coornadas do seu centro e os raios em cada eixo. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em xcenter} & Posição do centro do elipsóide no eixo x. \\
 \hline
@@ -275,9 +277,11 @@ put\+Box Método insere voxels de um paralelepípedo é construído dando as coo
 \subsubsection{\texorpdfstring{putEllipsoid()}{putEllipsoid()}}
 {\footnotesize\ttfamily void sculptor3d\+::put\+Ellipsoid (\begin{DoxyParamCaption}\item[{int}]{xcenter,  }\item[{int}]{ycenter,  }\item[{int}]{zcenter,  }\item[{int}]{rx,  }\item[{int}]{ry,  }\item[{int}]{rz }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb} @brief putEllipsoid  Método insere um elipsóide formada por voxels passando como parâmpetro as coornadas do
-\end{DoxyVerb}
- seu centro e os raios em cada eixo. 
+
+
+put\+Ellipsoid Método insere um elipsóide formada por voxels passando como parâmpetro as coornadas do seu centro e os raios em cada eixo. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em xcenter} & Posição do centro do elipsóide no eixo x. \\
 \hline
