@@ -7,6 +7,12 @@ bool vPos(int x, int y,int z, int nx, int ny, int nz);
 bool vCol(float r,float g,float b);
 string tratarExtensao(string filename, string extensao);
 
+/**
+ * @brief sculptor3d Classe responsável pelo armazenamento e manipulação da matriz de Voxels utilizado para representar figuras geométricas
+ * @param nx Dimensão X da matriz de Voxels
+ * @param ny Dimensão Y da matriz de Voxels
+ * @param nz Dimensão Z da matriz de Voxels
+ */
 sculptor3d::sculptor3d(int _nx, int _ny, int _nz)
 {
     nx = _nx;

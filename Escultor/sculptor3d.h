@@ -19,9 +19,7 @@ struct Voxel {
 };
 
 /**
- * @brief The sculptor3d class
- * PEI PEI POW
- * PIU
+ * @brief sculptor3d Classe responsável pelo armazenamento e manipulação da matriz de Voxels utilizado para representar figuras geométricas
  */
 class sculptor3d {
 protected:
@@ -31,10 +29,10 @@ protected:
   float r,g,b,a; // Current drawing color
 public:
   /**
-   * @brief sculptor3d pei
-   * @param nx pow
-   * @param ny fu per
-   * @param nz
+   * @brief sculptor3d Classe responsável pelo armazenamento e manipulação da matriz de Voxels utilizado para representar figuras geométricas
+   * @param nx Dimensão X da matriz de Voxels
+   * @param ny Dimensão Y da matriz de Voxels
+   * @param nz Dimensão Z da matriz de Voxels
    */
   sculptor3d(int nx, int ny, int nz);/** Construtor da classe, para inicializar a criação das figuras é feito um dimensionamento
 da sua área de trabalho, assim, os parametros passados são as dimensões máximas do eixo x,y e z respectivamente. */
