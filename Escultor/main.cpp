@@ -50,7 +50,7 @@ int main()
     s.putEllipsoid(50,50,50,49,49,49);
     s.cutEllipsoid(40,40,40,39,39,39);
 
-    s.writeOFF("/home/emerson/workspace/arquivo");
+    s.writeOFF("C:/Users/moham/Desktop/arquivos3d/arquivo");
 
     cout << "O arquivo foi gerado" << endl;
 

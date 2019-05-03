@@ -33,6 +33,7 @@ sculptor3d::sculptor3d(int _nx, int _ny, int _nz)
     setColor(1,1,1,1);
 }
 
+
 sculptor3d::~sculptor3d(){
     if(nx == 0 || ny == 0 || nz == 0)
         return;
@@ -41,6 +42,7 @@ sculptor3d::~sculptor3d(){
     delete [] v[0];
     delete [] v;
 }
+
 
 void sculptor3d::setColor(float _r, float _g, float _b, float _alpha){
     if(!vCol(r,g,b)){

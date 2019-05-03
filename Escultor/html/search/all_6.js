@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7esculptor3d',['~sculptor3d',['../classsculptor3d.html#ac0aa5ebfa033c54aad6a8d995ecbede8',1,'sculptor3d']]]
+  ['r',['r',['../struct_voxel.html#a06872ec79b836120b551a848968c0f1b',1,'Voxel']]]
 ];
