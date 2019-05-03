@@ -1,0 +1,86 @@
+\hypertarget{classsculptor3d}{}\section{sculptor3d Class Reference}
+\label{classsculptor3d}\index{sculptor3d@{sculptor3d}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsculptor3d_a36be08ef50a69161c1332f4a1cff226c}\label{classsculptor3d_a36be08ef50a69161c1332f4a1cff226c}} 
+{\bfseries sculptor3d} (int nx, int ny, int nz)
+\item 
+\mbox{\Hypertarget{classsculptor3d_aba9db4181e1087a09f1de6eee3d03705}\label{classsculptor3d_aba9db4181e1087a09f1de6eee3d03705}} 
+void {\bfseries set\+Color} (float r, float g, float b, float alpha)
+\item 
+\mbox{\Hypertarget{classsculptor3d_a15cb3ad622cf1b85f3c5811af1fe1ff3}\label{classsculptor3d_a15cb3ad622cf1b85f3c5811af1fe1ff3}} 
+void {\bfseries put\+Voxel} (int x, int y, int z)
+\item 
+\mbox{\Hypertarget{classsculptor3d_a3bc32c45bd4de88a0316e709e63fb54f}\label{classsculptor3d_a3bc32c45bd4de88a0316e709e63fb54f}} 
+void {\bfseries cut\+Voxel} (int x, int y, int z)
+\item 
+\mbox{\Hypertarget{classsculptor3d_a33ad346684939cacea6c469afad99ffd}\label{classsculptor3d_a33ad346684939cacea6c469afad99ffd}} 
+void {\bfseries put\+Box} (int x0, int x1, int y0, int y1, int z0, int z1)
+\item 
+\mbox{\Hypertarget{classsculptor3d_ac92f60c7e3fd6ec3df820ddd118d7918}\label{classsculptor3d_ac92f60c7e3fd6ec3df820ddd118d7918}} 
+void {\bfseries cut\+Box} (int x0, int x1, int y0, int y1, int z0, int z1)
+\item 
+\mbox{\Hypertarget{classsculptor3d_a81b399736b253ef298e7cf04feed9607}\label{classsculptor3d_a81b399736b253ef298e7cf04feed9607}} 
+void {\bfseries put\+Sphere} (int xcenter, int ycenter, int zcenter, int radius)
+\item 
+\mbox{\Hypertarget{classsculptor3d_a1e8bf7a173f21c6fd805291ae76e94e8}\label{classsculptor3d_a1e8bf7a173f21c6fd805291ae76e94e8}} 
+void {\bfseries cut\+Sphere} (int xcenter, int ycenter, int zcenter, int radius)
+\item 
+\mbox{\Hypertarget{classsculptor3d_a0dbd7e2f4ad70f379a38678df1fe7583}\label{classsculptor3d_a0dbd7e2f4ad70f379a38678df1fe7583}} 
+void {\bfseries put\+Ellipsoid} (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
+\item 
+\mbox{\Hypertarget{classsculptor3d_ab65ed666a86d01f428d6f735ad860cc6}\label{classsculptor3d_ab65ed666a86d01f428d6f735ad860cc6}} 
+void {\bfseries cut\+Ellipsoid} (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)
+\item 
+\mbox{\Hypertarget{classsculptor3d_a7d9b24f6775441135936b184bb4079e0}\label{classsculptor3d_a7d9b24f6775441135936b184bb4079e0}} 
+void {\bfseries write\+O\+FF} (string filename)
+\item 
+\mbox{\Hypertarget{classsculptor3d_a60f471805c52556e564477beccc72f6b}\label{classsculptor3d_a60f471805c52556e564477beccc72f6b}} 
+void {\bfseries write\+V\+E\+CT} (string filename)
+\item 
+\mbox{\Hypertarget{classsculptor3d_a39cb80b54a93e7e2cf8b2beddd7f1b74}\label{classsculptor3d_a39cb80b54a93e7e2cf8b2beddd7f1b74}} 
+unsigned long int {\bfseries count\+Voxels} ()
+\item 
+\mbox{\Hypertarget{classsculptor3d_a6f5974b59748b404ac44fef855dbf9ee}\label{classsculptor3d_a6f5974b59748b404ac44fef855dbf9ee}} 
+int {\bfseries get\+Nx} ()
+\item 
+\mbox{\Hypertarget{classsculptor3d_aa354fdd753a7567f782971893f63e05a}\label{classsculptor3d_aa354fdd753a7567f782971893f63e05a}} 
+int {\bfseries get\+Ny} ()
+\item 
+\mbox{\Hypertarget{classsculptor3d_ab393938c4dfdf621eb966d73b82bf705}\label{classsculptor3d_ab393938c4dfdf621eb966d73b82bf705}} 
+int {\bfseries get\+Nz} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsculptor3d_aa203c37fa6a40ce6a96b818b999291f0}\label{classsculptor3d_aa203c37fa6a40ce6a96b818b999291f0}} 
+\mbox{\hyperlink{struct_voxel}{Voxel}} $\ast$$\ast$$\ast$ {\bfseries v}
+\item 
+\mbox{\Hypertarget{classsculptor3d_ae609eab63f0f21d15e2713928001212c}\label{classsculptor3d_ae609eab63f0f21d15e2713928001212c}} 
+int {\bfseries nx}
+\item 
+\mbox{\Hypertarget{classsculptor3d_a270d21a9e67e1bf6cc7103c9c6356c0f}\label{classsculptor3d_a270d21a9e67e1bf6cc7103c9c6356c0f}} 
+int {\bfseries ny}
+\item 
+\mbox{\Hypertarget{classsculptor3d_a64f2963f1cb9e3a2ce0cce2c085ca7a2}\label{classsculptor3d_a64f2963f1cb9e3a2ce0cce2c085ca7a2}} 
+int {\bfseries nz}
+\item 
+\mbox{\Hypertarget{classsculptor3d_ac9efb16a4567c5823eb5d0e1bc44c103}\label{classsculptor3d_ac9efb16a4567c5823eb5d0e1bc44c103}} 
+float {\bfseries r}
+\item 
+\mbox{\Hypertarget{classsculptor3d_ad7e2e9e417b52b665de53ec8dbcc8388}\label{classsculptor3d_ad7e2e9e417b52b665de53ec8dbcc8388}} 
+float {\bfseries g}
+\item 
+\mbox{\Hypertarget{classsculptor3d_a183f4013dfd30806b881363dc6bef47e}\label{classsculptor3d_a183f4013dfd30806b881363dc6bef47e}} 
+float {\bfseries b}
+\item 
+\mbox{\Hypertarget{classsculptor3d_a899685e3854e58c2eb44b8a4b7f78455}\label{classsculptor3d_a899685e3854e58c2eb44b8a4b7f78455}} 
+float {\bfseries a}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sculptor3d.\+h\item 
+sculptor3d.\+cpp\end{DoxyCompactItemize}
