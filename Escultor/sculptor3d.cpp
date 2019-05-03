@@ -162,40 +162,29 @@ void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
                     cutVoxel(i,j,k);
             }
 };
-
 void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
-    if(!vPos(xcenter,ycenter,zcenter,nx,ny,nz)){
-        // mata o programa~~ posição que não existe
-        exit(0);
-    }
-
-    if(rx == 0||ry == 0 || rz == 0){
-        // mata o programa ~~ o raio não pode ser zero
-        exit(0);
-    }
-
-    for(int k = 0;k< nz; k++)
-        for(int i = 0; i<nx; i++)
-            for(int j = 0; j<ny; j++)
-                if( (pow(((i-xcenter)/rx), 2)) +(pow(((j-ycenter)/ry), 2)) + (pow(((k-zcenter)/rz), 2)) <= 1 )
-                    putVoxel(i, j, k);
-};
+    for(int i=xcenter-rx; i< xcenter+rx; i++)
+        for(int j=ycenter-ry; j< ycenter+ry; j++)
+            for(int k=zcenter - rz; k< zcenter + rz; k++){
+                float calc1 = ((float)pow((i-xcenter),2)/(pow(rx,2)));
+                float calc2 = ((float)pow((j-ycenter),2)/(pow(ry,2)));
+                float calc3 = ((float)pow((k-zcenter),2)/(pow(rz,2)));
+                if ((calc1 + calc2 + calc3) <=1.0)
+                    putVoxel(i,j,k);
+            }
+}
 
 void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
-    if(!vPos(xcenter,ycenter,zcenter,nx,ny,nz)){
-        // mata o programa~~ posição que não existe
-    }
-
-    if(rx == 0||ry == 0 || rz == 0){
-        // mata o programa ~~ o raio não pode ser zero
-    }
-
-    for(int k = 0; k< nz; k++)
-        for(int i = 0; i<nx; i++)
-            for(int j = 0; j<ny; j++)
-                if( (pow(((i-xcenter)/rx), 2)) +(pow(((j-ycenter)/ry), 2)) + (pow(((k-zcenter)/rz), 2)) <= 1 )
-                    cutVoxel(i, j, k);
-};
+    for(int i=xcenter-rx; i< xcenter+rx; i++)
+        for(int j=ycenter-ry; j< ycenter+ry; j++)
+            for(int k=zcenter - rz; k< zcenter + rz; k++){
+                float calc1 = ((float)pow((i-xcenter),2)/(pow(rx,2)));
+                float calc2 = ((float)pow((j-ycenter),2)/(pow(ry,2)));
+                float calc3 = ((float)pow((k-zcenter),2)/(pow(rz,2)));
+                if ((calc1 + calc2 + calc3) <=1.0)
+                    cutVoxel(i,j,k);
+            }
+}
 
 void sculptor3d::writeOFF(string filename){
     filename = tratarExtensao(filename, ".off");

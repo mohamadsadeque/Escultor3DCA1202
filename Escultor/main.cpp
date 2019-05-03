@@ -45,9 +45,10 @@ int main()
         ***** métodos cutVoxel e putVoxel                         *****
         ***************************************************************
 
-        s.putEllipsoid(50,50,50,49,49,49);
-        s.cutEllipsoid(40,40,40,39,39,39);
+
     */
+    s.putEllipsoid(50,50,50,49,49,49);
+    s.cutEllipsoid(40,40,40,39,39,39);
 
     s.writeOFF("/home/emerson/workspace/arquivo");
 
