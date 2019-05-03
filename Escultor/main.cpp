@@ -50,7 +50,7 @@ int main()
 
     */
 
-    s.writeOFF("/home/emerson/workspace/arquivo");
+    s.writeOFF("C:/Users/moham/Desktop/arquivos3d/arquivo");
 
     cout << "O arquivo foi gerado" << endl;
 

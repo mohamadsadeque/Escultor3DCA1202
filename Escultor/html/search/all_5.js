@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['writeoff',['writeOFF',['../classsculptor3d.html#a7d9b24f6775441135936b184bb4079e0',1,'sculptor3d']]],
-  ['writevect',['writeVECT',['../classsculptor3d.html#a60f471805c52556e564477beccc72f6b',1,'sculptor3d']]]
+  ['putbox',['putBox',['../classsculptor3d.html#a33ad346684939cacea6c469afad99ffd',1,'sculptor3d']]],
+  ['putellipsoid',['putEllipsoid',['../classsculptor3d.html#a0dbd7e2f4ad70f379a38678df1fe7583',1,'sculptor3d']]],
+  ['putsphere',['putSphere',['../classsculptor3d.html#a81b399736b253ef298e7cf04feed9607',1,'sculptor3d']]],
+  ['putvoxel',['putVoxel',['../classsculptor3d.html#a15cb3ad622cf1b85f3c5811af1fe1ff3',1,'sculptor3d']]]
 ];

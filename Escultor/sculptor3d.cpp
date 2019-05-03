@@ -4,7 +4,7 @@
 #include <fstream>
 
 bool vPos(int x, int y,int z, int nx, int ny, int nz);
-bool vCol(float r,float g,float b);
+bool vCol(float r,float g,float b,float a);
 string tratarExtensao(string filename, string extensao);
 
 /**
@@ -30,8 +30,9 @@ sculptor3d::sculptor3d(int _nx, int _ny, int _nz)
         }
     }
 
-    setColor(1,1,1,1);
+    setColor(0.5,0.5,0.5,0.5);
 }
+
 
 sculptor3d::~sculptor3d(){
     if(nx == 0 || ny == 0 || nz == 0)
@@ -42,8 +43,10 @@ sculptor3d::~sculptor3d(){
     delete [] v;
 }
 
+
 void sculptor3d::setColor(float _r, float _g, float _b, float _alpha){
-    if(!vCol(r,g,b)){
+    if(!vCol(_r,_g,_b,_alpha)){
+        cout << "Erro: cor invalida" << endl;
         exit(0);
     }
 
@@ -97,14 +100,18 @@ void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
 
 void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
     if(!vPos(x0,y0,z0,nx,ny,nz)){
+        cout << "Erro: posição invalida" << endl;
+
         exit(0);
     }
 
     if(!vPos(x1,y1,z1,nx,ny,nz)){
+        cout << "Erro: posição invalida" << endl;
         exit(0);
     }
 
     if(x0>=x1 || z0>=z1 || z0>=z1){
+        cout << "Erro: parametros invalidos" << endl;
         exit(0);
     }
 
@@ -143,11 +150,13 @@ void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){
 void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
     if(!vPos(xcenter,ycenter,zcenter,nx,ny,nz)){
         // mata o programa~~ posição que não existe
+        cout <<"Erro: posição invalida" << endl;
         exit(0);
     }
 
     if(radius == 0){
         // mata o programa ~~ o raio não pode ser zero
+        cout << "Erro: raio invalido" << endl;
         exit(0);
     }
 
@@ -367,10 +376,11 @@ bool vPos(int x, int y,int z, int nx, int ny, int nz){
     return true;
 }
 
-bool vCol(float r,float g,float b){
-    if(r<0 || r>1) return false;
-    if(g<0 || g>1) return false;
-    if(b<0 || b>1) return false;
+bool vCol(float r,float g,float b,float a){
+    if(r<0.0 || r>1.0) return false;
+    if(g<0.0 || g>1.0) return false;
+    if(b<0.0 || b>1.0) return false;
+    if(a<0.0 || a>1.0) return false;
     return true;
 
 }
