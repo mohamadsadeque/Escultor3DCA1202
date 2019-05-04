@@ -88,7 +88,7 @@ void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
         exit(0);
     }
     if(x0>=x1 || z0>=z1 || z0>=z1){
-        cout << "Erro: posição trocada" << endl;
+        cout << "Erro: posição trocado. Fim menor que o inicio" << endl;
         exit(0);
     }
 
@@ -106,7 +106,6 @@ void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
 void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
     if(!vPos(x0,y0,z0,nx,ny,nz)){
         cout << "Erro: posição invalida" << endl;
-
         exit(0);
     }
 
@@ -116,7 +115,7 @@ void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
     }
 
     if(x0>=x1 || z0>=z1 || z0>=z1){
-        cout << "Erro: parametros invalidos" << endl;
+        cout << "Erro: Parametros finais menor que os iniciais. Necessario correcao" << endl;
         exit(0);
     }
 
@@ -157,13 +156,11 @@ void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){
 
 void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
     if(!vPos(xcenter,ycenter,zcenter,nx,ny,nz)){
-        // mata o programa~~ posição que não existe
         cout <<"Erro: posição invalida" << endl;
         exit(0);
     }
 
     if(radius == 0){
-        // mata o programa ~~ o raio não pode ser zero
         cout << "Erro: raio invalido" << endl;
         exit(0);
     }
@@ -227,19 +224,20 @@ void sculptor3d::writeOFF(string filename){
             for(int k = 1; k < nz-1; k++){
                 emVoltaX = false; emVoltaY = false; emVoltaZ=false;
 
-                if(v[i-1][j][k].isOn && v[i+1][j][k].isOn)
-                    emVoltaX = true;
+                if(v[i][j][k-1].isOn && v[i][j][k+1].isOn)
+                    emVoltaZ = true;
 
                 if(v[i][j-1][k].isOn && v[i][j+1][k].isOn)
                     emVoltaY = true;
 
-                if(v[i][j][k-1].isOn && v[i][j][k+1].isOn)
-                    emVoltaZ = true;
+                if(v[i-1][j][k].isOn && v[i+1][j][k].isOn)
+                    emVoltaX = true;
 
                 if(emVoltaX && emVoltaY && emVoltaZ)
                     pontosAoRedor[i][j][k] = 1;
             }
 
+    //Número de voxel com pontos On e ao redor vazio. Arquivo .vect dando problema aqui
     int numeroDeVoxels = 0;
 
     for(int i = 0; i < nx; i++)
@@ -247,11 +245,6 @@ void sculptor3d::writeOFF(string filename){
             for(int k = 0; k < nz; k++)
                 if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0)
                     numeroDeVoxels++;
-
-    cout << "NX = " << nx << endl;
-    cout << "NY = " << ny << endl;
-    cout << "NZ = " << nz << endl;
-    cout << "Número de voxels: " << numeroDeVoxels << endl;
 
     ofstream arquivo (filename);
     arquivo << "OFF" << endl;
@@ -261,23 +254,24 @@ void sculptor3d::writeOFF(string filename){
         for(int j = 0; j < ny; j++)
             for(int i = 0; i < nx; i++){
                 if(v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
-                    arquivo << -0.5+i << " " << j+0.5 << " " << -0.5+k << endl;
-                    arquivo << -0.5+i << " " << -0.5+j << " " << -0.5+k << endl;
-                    arquivo << 0.5+i << " " << -0.5+j << " " << -0.5+k << endl;
-                    arquivo << 0.5+i << " " << j+0.5 << " " << -0.5+k << endl;
-                    arquivo << -0.5+i << " " << j+0.5 << " " << k+0.5 << endl;
-                    arquivo << -0.5+i << " " << -0.5+j << " " << k+0.5 << endl;
-                    arquivo << 0.5+i << " " << -0.5+j << " " << k+0.5 << endl;
+                    arquivo << i-0.5 << " " << j+0.5 << " " << k-0.5 << endl;
+                    arquivo << i-0.5 << " " << j-0.5 << " " << k-0.5 << endl;
+                    arquivo << 0.5+i << " " << j-0.5 << " " << k-0.5 << endl;
+                    arquivo << 0.5+i << " " << j+0.5 << " " << k-0.5 << endl;
+                    arquivo << i-0.5 << " " << j+0.5 << " " << k+0.5 << endl;
+                    arquivo << i-0.5 << " " << j-0.5 << " " << k+0.5 << endl;
+                    arquivo << 0.5+i << " " << j-0.5 << " " << k+0.5 << endl;
                     arquivo << 0.5+i << " " << 0.5+j << " " << k+0.5 << endl;
                 }
             }
 
     int count = 0;
 
-    for(int k = 0; k < nz; k++){
-        for(int j = 0; j<ny; j++){
+    for(int k = 0; k < nz; k++)
+        for(int j = 0; j<ny; j++)
             for(int i = 0; i < nx; i++){
                 if(v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
+                    //Ver exemplo de agostinho para um cubo unitário e replicar a numeração aqui para os incrementos
                     arquivo << "4 " << 0+count*8 << " " << 8*count+3 << " " << 8*count+2<< " "<< 8*count+1 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
                     arquivo << "4 " << 8*count+4 << " " << 8*count+5 << " " << 8*count+6<< " "<< 8*count+7 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
                     arquivo << "4 " << 8*count+0 << " " << 8*count+1 << " " << 8*count+5<< " "<< 8*count+4 <<" " <<v[i][j][k].r << " " <<v[i][j][k].g << " " <<v[i][j][k].b << " "<<v[i][j][k].a << endl;
@@ -287,8 +281,6 @@ void sculptor3d::writeOFF(string filename){
                     count++;
                 }
             }
-        }
-    }
 
     arquivo.close();
 };
