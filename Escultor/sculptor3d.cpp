@@ -94,8 +94,13 @@ void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
 
     for(int i = x0; i < x1; i++)
         for(int j = y0; j < y1; j++)
-            for (int k = z0; k < z1; k++)
-                putVoxel(i, j, k);
+            for (int k = z0; k < z1; k++){
+                v[i][j][k].isOn = true;
+                v[i][j][k].r = r;
+                v[i][j][k].g = g;
+                v[i][j][k].b = b;
+                v[i][j][k].a = a;
+            }
 };
 
 void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
@@ -115,13 +120,11 @@ void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
         exit(0);
     }
 
-    for(int i = x0; i < x1 ; i++){
-        for(int j = y0; j < y1; j++){
-            for (int k = z0; k < z1; k++) {
-                cutVoxel(i, j, k);
-            }
-        }
-    }
+    for(int i = x0; i < x1 ; i++)
+        for(int j = y0; j < y1; j++)
+            for (int k = z0; k < z1; k++) 
+                v[i][j][k].isOn = false;
+
 };
 
 void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){
@@ -142,8 +145,13 @@ void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){
                 float calc1 = ((float)pow((i-xcenter),2)/(pow(radius,2)));
                 float calc2 = ((float)pow((j-ycenter),2))/(float)(pow(radius,2));
                 float calc3 = (((float)pow((k-zcenter),2))/(float)(pow(radius,2)));
-                if ((calc1 + calc2 + calc3) <= 1.0)
-                    putVoxel(i,j,k);
+                if ((calc1 + calc2 + calc3) <= 1.0) {
+                    v[i][j][k].isOn = true;
+                    v[i][j][k].r = r;
+                    v[i][j][k].g = g;
+                    v[i][j][k].b = b;
+                    v[i][j][k].a = a;
+                }
             }
 };
 
@@ -168,9 +176,10 @@ void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
                 float calc2 = ((float)pow((j-ycenter),2))/(float)(pow(radius,2));
                 float calc3 = (((float)pow((k-zcenter),2))/(float)(pow(radius,2)));
                 if ((calc1 + calc2 + calc3) <= 1.0)
-                    cutVoxel(i,j,k);
+                    v[i][j][k].isOn = false;
             }
 };
+
 void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
     for(int i=xcenter-rx; i< xcenter+rx; i++)
         for(int j=ycenter-ry; j< ycenter+ry; j++)
@@ -178,8 +187,13 @@ void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
                 float calc1 = ((float)pow((i-xcenter),2)/(pow(rx,2)));
                 float calc2 = ((float)pow((j-ycenter),2)/(pow(ry,2)));
                 float calc3 = ((float)pow((k-zcenter),2)/(pow(rz,2)));
-                if ((calc1 + calc2 + calc3) <=1.0)
-                    putVoxel(i,j,k);
+                if ((calc1 + calc2 + calc3) <=1.0) {
+                    v[i][j][k].isOn = true;
+                    v[i][j][k].r = r;
+                    v[i][j][k].g = g;
+                    v[i][j][k].b = b;
+                    v[i][j][k].a = a;
+                }
             }
 }
 
@@ -191,7 +205,8 @@ void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
                 float calc2 = ((float)pow((j-ycenter),2)/(pow(ry,2)));
                 float calc3 = ((float)pow((k-zcenter),2)/(pow(rz,2)));
                 if ((calc1 + calc2 + calc3) <=1.0)
-                    cutVoxel(i,j,k);
+                    v[i][j][k].isOn = false;
+                
             }
 }
 
@@ -382,5 +397,4 @@ bool vCol(float r,float g,float b,float a){
     if(b<0.0 || b>1.0) return false;
     if(a<0.0 || a>1.0) return false;
     return true;
-
 }
