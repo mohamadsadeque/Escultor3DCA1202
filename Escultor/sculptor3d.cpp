@@ -210,6 +210,7 @@ void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
 void sculptor3d::writeOFF(string filename){
     filename = tratarExtensao(filename, ".off");
 
+    //Essa construção não funciona no compilador VSMS do Windows. Necessário utilizar GCC!!!!
     char pontosAoRedor[nx][ny][nz];
 
     for(int i = 0; i < nx; i++)
@@ -292,6 +293,8 @@ void sculptor3d::writeVECT(string filename){
         O conjunto de for a seguir define os arredores dos pontos que foram definidos como isOn = true.
         Isso é necessário, senão teríamos uma série de pontos soltos, não formando uma face
     */
+
+    //Essa construção não funciona no compilador VSMS do Windows. Necessário utilizar GCC!!!!
     int pontosAoRedor[nx][ny][nz];
 
     for(int i = 0; i < this->nx; i++)
@@ -306,14 +309,14 @@ void sculptor3d::writeVECT(string filename){
             for(int k = 1; k < nz-1; k++){
                 emVoltaX = false; emVoltaY = false; emVoltaZ=false;
 
-                if(v[i-1][j][k].isOn && v[i+1][j][k].isOn)
-                    emVoltaX = true;
+                if(v[i][j][k-1].isOn && v[i][j][k+1].isOn)
+                    emVoltaZ = true;
 
                 if(v[i][j-1][k].isOn && v[i][j+1][k].isOn)
                     emVoltaY = true;
 
-                if(v[i][j][k-1].isOn && v[i][j][k+1].isOn)
-                    emVoltaZ = true;
+                if(v[i-1][j][k].isOn && v[i+1][j][k].isOn)
+                    emVoltaX = true;
 
                 if(emVoltaX && emVoltaY && emVoltaZ)
                     pontosAoRedor[i][j][k] = 1;
@@ -338,25 +341,21 @@ void sculptor3d::writeVECT(string filename){
         arquivo << endl;
     }
 
-    for(int i = 0; i < this->nx; i++){
-        for(int j = 0; j < this->ny; j++){
+    for(int i = 0; i < this->nx; i++)
+        for(int j = 0; j < this->ny; j++)
             for(int k = 0; k < this->nz; k++){
                 if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
                     arquivo << i <<" "<< j <<" "<< k << endl;
                 }
             }
-        }
-    }
 
-    for(int i = 0; i < this->nx; i++){
-        for(int j = 0; j < this->ny; j++){
+    for(int i = 0; i < this->nx; i++)
+        for(int j = 0; j < this->ny; j++)
             for(int k = 0; k < this->nz; k++){
                 if (v[i][j][k].isOn && pontosAoRedor[i][j][k] == 0){
                     arquivo << v[i][j][k].r << " " << v[i][j][k].g << " " << v[i][j][k].b << " " << v[i][j][k].a << endl;
                 }
             }
-        }
-    }
 
     arquivo.close();
 };
