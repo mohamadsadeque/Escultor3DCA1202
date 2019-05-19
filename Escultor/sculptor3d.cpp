@@ -25,7 +25,7 @@ sculptor3d::sculptor3d(int _nx, int _ny, int _nz)
     for(int i=0; i< nx; i++)
     {
         v[i+1] = v[i]+ny;
-        for(int j= 0; j<ny;j++){
+        for(int j= 0; j<ny;j++){ 
             v[i][j+1] = v[i][j]+nz;
         }
     }
