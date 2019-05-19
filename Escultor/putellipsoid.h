@@ -3,6 +3,8 @@
 
 #include "figurageometrica.h"
 
+using namespace std;
+
 class PutEllipsoid : public FiguraGeometrica
 {
 public:

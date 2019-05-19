@@ -3,6 +3,8 @@
 
 #include "figurageometrica.h"
 
+using namespace std;
+
 class CutEllipsoid : public FiguraGeometrica
 {
 public:
