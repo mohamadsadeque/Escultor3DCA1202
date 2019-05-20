@@ -34,8 +34,9 @@ int main()
 {
     //O sculptor é sempre necessário;
     sculptor3d *s;
+    //std::ifstream arquivoConfiguracao("/home/emerson/teste-1.txt");
+    //std::ifstream arquivoConfiguracao("/home/emerson/teste-2.txt");
 
-    std::ifstream arquivoConfiguracao("/home/emerson/figura.txt");
     if(arquivoConfiguracao.is_open()){
         string linha;
         while (getline(arquivoConfiguracao, linha)) {

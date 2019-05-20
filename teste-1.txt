@@ -1,0 +1,7 @@
+dim 100 100 100
+putbox 40 95 40 95 40 95 1 0 1 0.5
+cutbox 50 95 50 95 50 95
+putsphere 10 10 10 9 1 0 0 0.7
+cutsphere 25 25 25 24
+putellipsoid 50 50 50 20 30 40 0 1 1 0.6
+
