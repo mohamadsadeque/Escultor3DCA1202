@@ -12,6 +12,8 @@ public:
     CutEllipsoid(int _xcenter, int _ycenter, int _zcenter,
                                 int _rx, int _ry, int _rz);
     void draw(sculptor3d &t);
+    ~CutEllipsoid();
+
 };
 
 #endif // CUTELLIPSOID_H

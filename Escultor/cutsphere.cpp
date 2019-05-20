@@ -21,3 +21,5 @@ void CutSphere::draw(sculptor3d &t){
                 }
             }
 }
+
+CutSphere::~CutSphere(){}
