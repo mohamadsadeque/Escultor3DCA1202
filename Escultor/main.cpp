@@ -148,12 +148,12 @@ int main()
                 ce.draw(*s);
             }
 
-            if (linha.find("cutellipsoid") != std::string::npos) {
-                eraseSubStr(linha, "cutellipsoid");
+            if (linha.find("putellipsoid") != std::string::npos) {
+                eraseSubStr(linha, "putellipsoid");
 
                 std::istringstream linhaEmStream(linha);
 
-                cout << "Encontrei cutellipsoid" << endl;
+                cout << "Encontrei putellipsoid" << endl;
                 int x0, y0, z0, rx, ry, rz, r, g, b;
                 float a;
 

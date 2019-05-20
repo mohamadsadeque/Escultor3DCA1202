@@ -15,6 +15,8 @@ PutEllipsoid::PutEllipsoid(int _xcenter, int _ycenter, int _zcenter,
 }
 
 void PutEllipsoid::draw(sculptor3d &t){
+    t.setColor(r, g, b, a);
+
     for(int i=xcenter-rx; i< xcenter+rx; i++)
         for(int j=ycenter-ry; j< ycenter+ry; j++)
             for(int k=zcenter - rz; k< zcenter + rz; k++){
