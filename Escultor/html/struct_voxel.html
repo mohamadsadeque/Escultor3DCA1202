@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Sculptor3d: Voxel Struct Reference</title>
+<title>Escultor: Voxel Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Sculptor3d
+   <div id="projectname">Escultor
    </div>
-   <div id="projectbrief">Biblioteca feita para produzir figuras geométricas em três dimensões e exportar arquivos em format *.off e *.vect para outros programas exibirem.</div>
   </td>
  </tr>
  </tbody>
@@ -70,37 +69,113 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>O struct <a class="el" href="struct_voxel.html" title="O struct Voxel reuni as caracteristicas que definem a menor unidade que compõe o desenho 3D,...">Voxel</a> reuni as caracteristicas que definem a menor unidade que compõe o desenho 3D,sendo representado por um cubo de lado 1, possuindo os atributos de cor, sendo armazenado no padrão RGB, representados pelas variáveis 'r','g','b', com cada intensidade definida no intervalo aberto de 0 à 1, tendo também o atributo 'a' que define o nivel de transparência do voxel, se ele vai ser translúcido ou opaco, por fim o último atributo é o 'isOn' que define se o voxel vai aparecer no desenho ou não.  
+<p>O struct <a class="el" href="struct_voxel.html" title="O struct Voxel reune as caracteristicas que definem a menor unidade que compõe o desenho 3D,...">Voxel</a> reune as caracteristicas que definem a menor unidade que compõe o desenho 3D,sendo representado por um cubo de lado 1, possuindo os atributos de cor, sendo armazenado no padrão RGB, representados pelas variáveis 'r','g','b', com cada intensidade definida no intervalo aberto de 0 à 1, tendo também o atributo 'a' que define o nivel de transparência do voxel, se ele vai ser translúcido ou opaco, por fim o último atributo é o 'isOn' que define se o voxel vai aparecer no desenho ou não.  
  <a href="struct_voxel.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="sculptor3d_8h_source.html">sculptor3d.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a06872ec79b836120b551a848968c0f1b"><td class="memItemLeft" align="right" valign="top"><a id="a06872ec79b836120b551a848968c0f1b"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voxel.html#a06872ec79b836120b551a848968c0f1b">r</a></td></tr>
-<tr class="memdesc:a06872ec79b836120b551a848968c0f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável para armazenar o valor da cor vermelha no intervalo [0,1]. <br /></td></tr>
+<tr class="memitem:a06872ec79b836120b551a848968c0f1b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voxel.html#a06872ec79b836120b551a848968c0f1b">r</a></td></tr>
+<tr class="memdesc:a06872ec79b836120b551a848968c0f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável para armazenar o valor da cor vermelha no intervalo [0,1].  <a href="#a06872ec79b836120b551a848968c0f1b">More...</a><br /></td></tr>
 <tr class="separator:a06872ec79b836120b551a848968c0f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27c0da1ed2ff430401d23ff171612a73"><td class="memItemLeft" align="right" valign="top"><a id="a27c0da1ed2ff430401d23ff171612a73"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voxel.html#a27c0da1ed2ff430401d23ff171612a73">g</a></td></tr>
-<tr class="memdesc:a27c0da1ed2ff430401d23ff171612a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável para armazenar o valor da cor verde no intervalo [0,1]. <br /></td></tr>
+<tr class="memitem:a27c0da1ed2ff430401d23ff171612a73"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voxel.html#a27c0da1ed2ff430401d23ff171612a73">g</a></td></tr>
+<tr class="memdesc:a27c0da1ed2ff430401d23ff171612a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável para armazenar o valor da cor verde no intervalo [0,1].  <a href="#a27c0da1ed2ff430401d23ff171612a73">More...</a><br /></td></tr>
 <tr class="separator:a27c0da1ed2ff430401d23ff171612a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cd8432b1d7d0fd8b79e0fc7d10373a8"><td class="memItemLeft" align="right" valign="top"><a id="a5cd8432b1d7d0fd8b79e0fc7d10373a8"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voxel.html#a5cd8432b1d7d0fd8b79e0fc7d10373a8">b</a></td></tr>
-<tr class="memdesc:a5cd8432b1d7d0fd8b79e0fc7d10373a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável para armazenar o valor da cor azul no intervalo [0,1]. <br /></td></tr>
+<tr class="memitem:a5cd8432b1d7d0fd8b79e0fc7d10373a8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voxel.html#a5cd8432b1d7d0fd8b79e0fc7d10373a8">b</a></td></tr>
+<tr class="memdesc:a5cd8432b1d7d0fd8b79e0fc7d10373a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável para armazenar o valor da cor azul no intervalo [0,1].  <a href="#a5cd8432b1d7d0fd8b79e0fc7d10373a8">More...</a><br /></td></tr>
 <tr class="separator:a5cd8432b1d7d0fd8b79e0fc7d10373a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ce2579eb0a9f09a07112ce7498a638e"><td class="memItemLeft" align="right" valign="top"><a id="a3ce2579eb0a9f09a07112ce7498a638e"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voxel.html#a3ce2579eb0a9f09a07112ce7498a638e">a</a></td></tr>
-<tr class="memdesc:a3ce2579eb0a9f09a07112ce7498a638e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável para armazenar o valor da transparência no intervalo [0,1], sendo 0 transparente e 1 opaco. <br /></td></tr>
+<tr class="memitem:a3ce2579eb0a9f09a07112ce7498a638e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voxel.html#a3ce2579eb0a9f09a07112ce7498a638e">a</a></td></tr>
+<tr class="memdesc:a3ce2579eb0a9f09a07112ce7498a638e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável para armazenar o valor da transparência no intervalo [0,1], sendo 0 transparente e 1 opaco.  <a href="#a3ce2579eb0a9f09a07112ce7498a638e">More...</a><br /></td></tr>
 <tr class="separator:a3ce2579eb0a9f09a07112ce7498a638e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fbe8bd53f64685ac4210726d40fc775"><td class="memItemLeft" align="right" valign="top"><a id="a6fbe8bd53f64685ac4210726d40fc775"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voxel.html#a6fbe8bd53f64685ac4210726d40fc775">isOn</a></td></tr>
-<tr class="memdesc:a6fbe8bd53f64685ac4210726d40fc775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável para armazenar estado do voxel, se ele está ativo ou não. <br /></td></tr>
+<tr class="memitem:a6fbe8bd53f64685ac4210726d40fc775"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_voxel.html#a6fbe8bd53f64685ac4210726d40fc775">isOn</a></td></tr>
+<tr class="memdesc:a6fbe8bd53f64685ac4210726d40fc775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variável para armazenar estado do voxel, se ele está ativo ou não.  <a href="#a6fbe8bd53f64685ac4210726d40fc775">More...</a><br /></td></tr>
 <tr class="separator:a6fbe8bd53f64685ac4210726d40fc775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>O struct <a class="el" href="struct_voxel.html" title="O struct Voxel reuni as caracteristicas que definem a menor unidade que compõe o desenho 3D,...">Voxel</a> reuni as caracteristicas que definem a menor unidade que compõe o desenho 3D,sendo representado por um cubo de lado 1, possuindo os atributos de cor, sendo armazenado no padrão RGB, representados pelas variáveis 'r','g','b', com cada intensidade definida no intervalo aberto de 0 à 1, tendo também o atributo 'a' que define o nivel de transparência do voxel, se ele vai ser translúcido ou opaco, por fim o último atributo é o 'isOn' que define se o voxel vai aparecer no desenho ou não. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<div class="textblock"><p>O struct <a class="el" href="struct_voxel.html" title="O struct Voxel reune as caracteristicas que definem a menor unidade que compõe o desenho 3D,...">Voxel</a> reune as caracteristicas que definem a menor unidade que compõe o desenho 3D,sendo representado por um cubo de lado 1, possuindo os atributos de cor, sendo armazenado no padrão RGB, representados pelas variáveis 'r','g','b', com cada intensidade definida no intervalo aberto de 0 à 1, tendo também o atributo 'a' que define o nivel de transparência do voxel, se ele vai ser translúcido ou opaco, por fim o último atributo é o 'isOn' que define se o voxel vai aparecer no desenho ou não. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3ce2579eb0a9f09a07112ce7498a638e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ce2579eb0a9f09a07112ce7498a638e">&#9670;&nbsp;</a></span>a</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Voxel::a</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variável para armazenar o valor da transparência no intervalo [0,1], sendo 0 transparente e 1 opaco. </p>
+
+</div>
+</div>
+<a id="a5cd8432b1d7d0fd8b79e0fc7d10373a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cd8432b1d7d0fd8b79e0fc7d10373a8">&#9670;&nbsp;</a></span>b</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Voxel::b</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variável para armazenar o valor da cor azul no intervalo [0,1]. </p>
+
+</div>
+</div>
+<a id="a27c0da1ed2ff430401d23ff171612a73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27c0da1ed2ff430401d23ff171612a73">&#9670;&nbsp;</a></span>g</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Voxel::g</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variável para armazenar o valor da cor verde no intervalo [0,1]. </p>
+
+</div>
+</div>
+<a id="a6fbe8bd53f64685ac4210726d40fc775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fbe8bd53f64685ac4210726d40fc775">&#9670;&nbsp;</a></span>isOn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Voxel::isOn</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variável para armazenar estado do voxel, se ele está ativo ou não. </p>
+
+</div>
+</div>
+<a id="a06872ec79b836120b551a848968c0f1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06872ec79b836120b551a848968c0f1b">&#9670;&nbsp;</a></span>r</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Voxel::r</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Variável para armazenar o valor da cor vermelha no intervalo [0,1]. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="sculptor3d_8h_source.html">sculptor3d.h</a></li>
 </ul>
 </div><!-- contents -->

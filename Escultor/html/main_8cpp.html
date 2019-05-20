@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Scuptor3d: main.cpp File Reference</title>
+<title>Escultor: main.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Scuptor3d
+   <div id="projectname">Escultor
    </div>
-   <div id="projectbrief">Biblioteca feita para produzir figuras geométricas em três dimensões e exportar arquivos em format *.off e *.vect para outros programas exibirem.</div>
   </td>
  </tr>
  </tbody>
@@ -68,16 +67,58 @@ $(function() {
 <div class="title">main.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="sculptor3d_8h_source.html">sculptor3d.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="sculptor3d_8h_source.html">sculptor3d.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cutbox_8h_source.html">cutbox.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="putbox_8h_source.html">putbox.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cutsphere_8h_source.html">cutsphere.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="putsphere_8h_source.html">putsphere.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="putellipsoid_8h_source.html">putellipsoid.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cutellipsoid_8h_source.html">cutellipsoid.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="putvoxel_8h_source.html">putvoxel.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cutvoxel_8h_source.html">cutvoxel.h</a>&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a6fc41e832167ff0b9426bf4f02b2d9b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a6fc41e832167ff0b9426bf4f02b2d9b4">eraseSubStr</a> (std::string &amp;mainStr, const std::string &amp;toErase)</td></tr>
+<tr class="separator:a6fc41e832167ff0b9426bf4f02b2d9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a6fc41e832167ff0b9426bf4f02b2d9b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fc41e832167ff0b9426bf4f02b2d9b4">&#9670;&nbsp;</a></span>eraseSubStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void eraseSubStr </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>mainStr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>toErase</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
 
