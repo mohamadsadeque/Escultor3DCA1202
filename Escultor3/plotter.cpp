@@ -131,3 +131,25 @@ void Plotter::mousePressEvent(QMouseEvent *event){
 
   }
 }
+
+
+void Plotter::mudaCor(){
+  int r, g, b;
+  QColor cor;
+  QMessageBox box;
+  QString msg;
+  QColorDialog d;
+  d.exec();
+  cor = d.selectedColor();
+  lineColor = cor;
+  r = cor.red();
+  g = cor.green();
+  b = cor.blue();
+  msg = "r = <b>"+QString::number(r)+"</b> <br>"+
+      "g = <b>"+QString::number(g)+"</b> <br>"+
+      "b = <b>"+QString::number(b)+"</b>";
+  box.setText(msg);
+  box.exec();
+  repaint();
+}
+

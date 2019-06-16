@@ -34,6 +34,7 @@ public slots:
     void mudaPlanos(int p);
     void olhaPlano(int p);
     void clicou(int x, int y);
+    void mudaCor();
 
 };
 

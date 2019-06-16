@@ -17,6 +17,7 @@ public:
 public slots:
     void abreNovoArquivo();
     void fecha();
+    void selecionaCor();
 
 private:
     Ui::MainWindow *ui;

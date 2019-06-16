@@ -1,0 +1,10 @@
+debug/main.o
+debug/mainwindow.o
+debug/plotter.o
+debug/novoarquivo.o
+debug/dialogrgb.o
+debug/qrc_recursos.o
+debug/moc_mainwindow.o
+debug/moc_plotter.o
+debug/moc_novoarquivo.o
+debug/moc_dialogrgb.o

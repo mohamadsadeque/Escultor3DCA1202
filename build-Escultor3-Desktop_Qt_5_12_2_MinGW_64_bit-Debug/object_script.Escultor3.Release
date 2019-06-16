@@ -1,0 +1,10 @@
+release/main.o
+release/mainwindow.o
+release/plotter.o
+release/novoarquivo.o
+release/dialogrgb.o
+release/qrc_recursos.o
+release/moc_mainwindow.o
+release/moc_plotter.o
+release/moc_novoarquivo.o
+release/moc_dialogrgb.o

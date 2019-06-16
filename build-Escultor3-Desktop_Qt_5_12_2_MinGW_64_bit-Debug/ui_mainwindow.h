@@ -16,6 +16,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -28,11 +29,13 @@ class Ui_MainWindow
 {
 public:
     QAction *actionNovoArquivo;
+    QAction *actionRGB;
     QWidget *centralWidget;
     QSlider *horizontalSliderPlano;
     Plotter *widgetPlotter;
     QLCDNumber *lcdNumber;
     QLabel *label;
+    QPushButton *pushButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -45,8 +48,13 @@ public:
         actionNovoArquivo = new QAction(MainWindow);
         actionNovoArquivo->setObjectName(QString::fromUtf8("actionNovoArquivo"));
         QIcon icon;
-        icon.addFile(QString::fromUtf8("../../Desktop/9379.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8(":/icones/recursos/NovoArquivoIMG.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionNovoArquivo->setIcon(icon);
+        actionRGB = new QAction(MainWindow);
+        actionRGB->setObjectName(QString::fromUtf8("actionRGB"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8("recursos/RGBIMG.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionRGB->setIcon(icon1);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         horizontalSliderPlano = new QSlider(centralWidget);
@@ -65,6 +73,9 @@ public:
         QFont font;
         font.setPointSize(24);
         label->setFont(font);
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(10, 180, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -78,6 +89,7 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         mainToolBar->addAction(actionNovoArquivo);
+        mainToolBar->addAction(actionRGB);
 
         retranslateUi(MainWindow);
         QObject::connect(horizontalSliderPlano, SIGNAL(valueChanged(int)), lcdNumber, SLOT(display(int)));
@@ -89,7 +101,9 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         actionNovoArquivo->setText(QApplication::translate("MainWindow", "NovoArquivo", nullptr));
+        actionRGB->setText(QApplication::translate("MainWindow", "RGB", nullptr));
         label->setText(QApplication::translate("MainWindow", "Plano:", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 
 };

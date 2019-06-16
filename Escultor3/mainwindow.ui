@@ -65,6 +65,19 @@
      <string>Plano:</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>180</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -84,15 +97,25 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionNovoArquivo"/>
+   <addaction name="actionRGB"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNovoArquivo">
    <property name="icon">
     <iconset>
-     <normaloff>../../Desktop/9379.png</normaloff>../../Desktop/9379.png</iconset>
+     <normaloff>:/icones/recursos/NovoArquivoIMG.png</normaloff>:/icones/recursos/NovoArquivoIMG.png</iconset>
    </property>
    <property name="text">
     <string>NovoArquivo</string>
+   </property>
+  </action>
+  <action name="actionRGB">
+   <property name="icon">
+    <iconset>
+     <normaloff>recursos/RGBIMG.png</normaloff>recursos/RGBIMG.png</iconset>
+   </property>
+   <property name="text">
+    <string>RGB</string>
    </property>
   </action>
  </widget>
