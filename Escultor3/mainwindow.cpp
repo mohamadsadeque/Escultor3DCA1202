@@ -2,8 +2,15 @@
 #include "ui_mainwindow.h"
 #include <novoarquivo.h>
 #include <plotter.h>
-#include <dialogrgb.h>
 #include <QMessageBox>
+#include <QColorDialog>
+#include <QColor>
+#include <dialogsphere.h>
+#include <dialogellipsoid.h>
+#include <dialogvoxel.h>
+#include <dialogbox.h>
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -31,6 +38,24 @@ MainWindow::MainWindow(QWidget *parent) :
             this,
             SLOT(selecionaCor()));
 
+    connect(ui->actionEsfera,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(configuraEsfera()));
+
+    connect(ui->actionElipsoide,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(configuraElipsoide()));
+
+    connect(ui->actionVoxel,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(configuraVoxel()));
+    connect(ui->actionCaixa,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(configuraBox()));
 }
 
 MainWindow::~MainWindow()
@@ -58,20 +83,35 @@ void MainWindow::fecha()
 
 void MainWindow::selecionaCor()
 {
+QColor color = QColorDialog::getColor();
+if(color.isValid()){
 
-//  QMessageBox box;
-//  QString msg;
-//  DialogRgb dialog;
+}
 
-//  if(dialog.exec() == QDialog::Accepted){
-//    msg = "r = <b>"+QString::number(dialog.getR())+
-//        "</b> <br>"+
-//        "g = <b>"+QString::number(dialog.getG())+
-//        "</b> <br>"+
-//        "b = <b>"+QString::number(dialog.getB())+
-//        "</b>";
-//    box.setText(msg);
-//    box.exec();
-//  }
+
+}
+
+void MainWindow::configuraEsfera()
+{
+    DialogSphere s;
+    s.exec();
+}
+
+void MainWindow::configuraElipsoide()
+{
+    DialogEllipsoid e;
+    e.exec();
+}
+
+void MainWindow::configuraVoxel()
+{
+    DialogVoxel v;
+    v.exec();
+}
+
+void MainWindow::configuraBox()
+{
+    DialogBox b;
+    b.exec();
 }
 

@@ -2,9 +2,15 @@ release/main.o
 release/mainwindow.o
 release/plotter.o
 release/novoarquivo.o
-release/dialogrgb.o
+release/dialogsphere.o
+release/dialogellipsoid.o
+release/dialogvoxel.o
+release/dialogbox.o
 release/qrc_recursos.o
 release/moc_mainwindow.o
 release/moc_plotter.o
 release/moc_novoarquivo.o
-release/moc_dialogrgb.o
+release/moc_dialogsphere.o
+release/moc_dialogellipsoid.o
+release/moc_dialogvoxel.o
+release/moc_dialogbox.o

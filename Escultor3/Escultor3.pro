@@ -29,18 +29,27 @@ SOURCES += \
         mainwindow.cpp \
     plotter.cpp \
     novoarquivo.cpp \
-    dialogrgb.cpp
+    dialogsphere.cpp \
+    dialogellipsoid.cpp \
+    dialogvoxel.cpp \
+    dialogbox.cpp
 
 HEADERS += \
         mainwindow.h \
     plotter.h \
     novoarquivo.h \
-    dialogrgb.h
+    dialogsphere.h \
+    dialogellipsoid.h \
+    dialogvoxel.h \
+    dialogbox.h
 
 FORMS += \
         mainwindow.ui \
     novoarquivo.ui \
-    dialogrgb.ui
+    dialogsphere.ui \
+    dialogellipsoid.ui \
+    dialogvoxel.ui \
+    dialogbox.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -43,6 +43,12 @@
      <pointsize>20</pointsize>
     </font>
    </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>100</number>
+   </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
@@ -76,6 +82,12 @@
      <pointsize>20</pointsize>
     </font>
    </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>100</number>
+   </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -108,6 +120,12 @@
     <font>
      <pointsize>20</pointsize>
     </font>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>100</number>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">

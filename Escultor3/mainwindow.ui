@@ -32,16 +32,16 @@
      <rect>
       <x>300</x>
       <y>10</y>
-      <width>891</width>
-      <height>531</height>
+      <width>941</width>
+      <height>641</height>
      </rect>
     </property>
    </widget>
    <widget class="QLCDNumber" name="lcdNumber">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>70</y>
+      <x>150</x>
+      <y>60</y>
       <width>91</width>
       <height>41</height>
      </rect>
@@ -65,19 +65,6 @@
      <string>Plano:</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>180</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -88,6 +75,30 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuArquivos">
+    <property name="title">
+     <string>Arquivos</string>
+    </property>
+    <addaction name="actionNovoArquivo"/>
+   </widget>
+   <widget class="QMenu" name="menuEdi_o">
+    <property name="title">
+     <string>Edição</string>
+    </property>
+    <widget class="QMenu" name="menuFormas">
+     <property name="title">
+      <string>Formas</string>
+     </property>
+     <addaction name="actionEsfera"/>
+     <addaction name="actionElipsoide"/>
+     <addaction name="actionVoxel"/>
+     <addaction name="actionCaixa"/>
+    </widget>
+    <addaction name="menuFormas"/>
+    <addaction name="actionRGB"/>
+   </widget>
+   <addaction name="menuArquivos"/>
+   <addaction name="menuEdi_o"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -97,12 +108,17 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionNovoArquivo"/>
+   <addaction name="separator"/>
    <addaction name="actionRGB"/>
+   <addaction name="actionEsfera"/>
+   <addaction name="actionElipsoide"/>
+   <addaction name="actionVoxel"/>
+   <addaction name="actionCaixa"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNovoArquivo">
    <property name="icon">
-    <iconset>
+    <iconset resource="recursos.qrc">
      <normaloff>:/icones/recursos/NovoArquivoIMG.png</normaloff>:/icones/recursos/NovoArquivoIMG.png</iconset>
    </property>
    <property name="text">
@@ -111,11 +127,48 @@
   </action>
   <action name="actionRGB">
    <property name="icon">
-    <iconset>
-     <normaloff>recursos/RGBIMG.png</normaloff>recursos/RGBIMG.png</iconset>
+    <iconset resource="recursos.qrc">
+     <normaloff>:/icones/recursos/RGBIMG.png</normaloff>:/icones/recursos/RGBIMG.png</iconset>
    </property>
    <property name="text">
-    <string>RGB</string>
+    <string>Cor</string>
+   </property>
+  </action>
+  <action name="actionEsfera">
+   <property name="icon">
+    <iconset resource="recursos.qrc">
+     <normaloff>:/icones/recursos/sphere.png</normaloff>:/icones/recursos/sphere.png</iconset>
+   </property>
+   <property name="text">
+    <string>Esfera</string>
+   </property>
+  </action>
+  <action name="actionElipsoide">
+   <property name="icon">
+    <iconset resource="recursos.qrc">
+     <normaloff>:/icones/recursos/ellipse.jpg</normaloff>:/icones/recursos/ellipse.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>Elipsoide
+</string>
+   </property>
+  </action>
+  <action name="actionVoxel">
+   <property name="icon">
+    <iconset resource="recursos.qrc">
+     <normaloff>:/icones/recursos/voxel.png</normaloff>:/icones/recursos/voxel.png</iconset>
+   </property>
+   <property name="text">
+    <string>Voxel</string>
+   </property>
+  </action>
+  <action name="actionCaixa">
+   <property name="icon">
+    <iconset resource="recursos.qrc">
+     <normaloff>:/icones/recursos/cubo.png</normaloff>:/icones/recursos/cubo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Caixa</string>
    </property>
   </action>
  </widget>
@@ -133,7 +186,9 @@
    </slots>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="recursos.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>horizontalSliderPlano</sender>

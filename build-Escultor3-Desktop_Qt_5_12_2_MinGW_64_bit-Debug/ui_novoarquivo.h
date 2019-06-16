@@ -45,6 +45,8 @@ public:
         QFont font;
         font.setPointSize(20);
         spinBox_y->setFont(font);
+        spinBox_y->setMinimum(1);
+        spinBox_y->setMaximum(100);
         label_3 = new QLabel(NovoArquivo);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(50, 150, 191, 21));
@@ -55,6 +57,8 @@ public:
         spinBox_x->setObjectName(QString::fromUtf8("spinBox_x"));
         spinBox_x->setGeometry(QRect(260, 60, 91, 31));
         spinBox_x->setFont(font);
+        spinBox_x->setMinimum(1);
+        spinBox_x->setMaximum(100);
         label = new QLabel(NovoArquivo);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(50, 70, 191, 21));
@@ -63,6 +67,8 @@ public:
         spinBox_z->setObjectName(QString::fromUtf8("spinBox_z"));
         spinBox_z->setGeometry(QRect(260, 140, 91, 31));
         spinBox_z->setFont(font);
+        spinBox_z->setMinimum(1);
+        spinBox_z->setMaximum(100);
         label_2 = new QLabel(NovoArquivo);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(50, 110, 191, 21));

@@ -18,6 +18,11 @@ public slots:
     void abreNovoArquivo();
     void fecha();
     void selecionaCor();
+    void configuraEsfera();
+    void configuraElipsoide();
+    void configuraVoxel();
+    void configuraBox();
+
 
 private:
     Ui::MainWindow *ui;

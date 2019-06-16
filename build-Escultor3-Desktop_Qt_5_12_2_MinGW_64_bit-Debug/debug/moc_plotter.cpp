@@ -111,7 +111,6 @@ void Plotter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 5: _t->mudaPlanos((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 6: _t->olhaPlano((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 7: _t->clicou((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 8: _t->mudaCor(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
