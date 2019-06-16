@@ -80,6 +80,8 @@
      <string>Arquivos</string>
     </property>
     <addaction name="actionNovoArquivo"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
    </widget>
    <widget class="QMenu" name="menuEdi_o">
     <property name="title">
@@ -107,6 +109,8 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSave"/>
+   <addaction name="actionOpen"/>
    <addaction name="actionNovoArquivo"/>
    <addaction name="separator"/>
    <addaction name="actionRGB"/>
@@ -169,6 +173,24 @@
    </property>
    <property name="text">
     <string>Caixa</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="recursos.qrc">
+     <normaloff>:/icones/recursos/save-icon-31.png</normaloff>:/icones/recursos/save-icon-31.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="recursos.qrc">
+     <normaloff>:/icones/recursos/open.png</normaloff>:/icones/recursos/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
    </property>
   </action>
  </widget>

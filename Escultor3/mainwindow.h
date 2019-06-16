@@ -22,6 +22,7 @@ public slots:
     void configuraElipsoide();
     void configuraVoxel();
     void configuraBox();
+    void abrirArquivo();
 
 
 private:

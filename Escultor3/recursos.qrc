@@ -6,5 +6,7 @@
         <file>recursos/ellipse.jpg</file>
         <file>recursos/cubo.png</file>
         <file>recursos/voxel.png</file>
+        <file>recursos/save-icon-31.png</file>
+        <file>recursos/open.png</file>
     </qresource>
 </RCC>

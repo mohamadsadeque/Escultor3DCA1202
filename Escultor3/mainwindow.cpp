@@ -9,7 +9,7 @@
 #include <dialogellipsoid.h>
 #include <dialogvoxel.h>
 #include <dialogbox.h>
-
+#include <qfiledialog.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -56,6 +56,11 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(triggered(bool)),
             this,
             SLOT(configuraBox()));
+    connect(ui->actionOpen,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(abrirArquivo()));
+
 }
 
 MainWindow::~MainWindow()
@@ -113,5 +118,11 @@ void MainWindow::configuraBox()
 {
     DialogBox b;
     b.exec();
+}
+
+void MainWindow::abrirArquivo()
+{
+    QString filename=QFileDialog::getOpenFileName(this,tr("Abrir Arquivo"),"C://","Todos Arquivos (*.*);;OFF (*.off);; VECT (*.vect)");
+    QMessageBox::information(this,tr("Nome do Arquivo"),filename);
 }
 
