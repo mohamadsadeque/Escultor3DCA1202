@@ -13,6 +13,10 @@ MainWindow::MainWindow(QWidget *parent) :
             ui->widgetPlotter,
             SLOT(olhaPlano(int)));
 
+    connect(ui->widgetPlotter,
+            SIGNAL(clickXY(int,int)),
+            ui->widgetPlotter,
+            SLOT(clicou(int,int)));
 
 
     connect(ui->actionNovoArquivo,
@@ -32,7 +36,6 @@ void MainWindow::abreNovoArquivo()
 {
    NovoArquivo d;
    if( d.exec() == QDialog::Accepted){
-     //Plotter::mudaLinhas(d.getX());
      ui->widgetPlotter->mudaLinhas(d.getX());
      ui->widgetPlotter->mudaColunas(d.getY());
      ui->widgetPlotter->mudaPlanos(d.getZ());

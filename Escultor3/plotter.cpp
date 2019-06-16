@@ -18,29 +18,29 @@ linhas = 1;
 colunas = 1;
 planos = 1;
 planoAtual = 0;
+for(int k =0;k<100;k++){
+    for(int i =0; i<100; i++){
+        for(int j=0;j<100;j++){
+
+            matriz[i][j][k] = false;
+        }
+    }
+
+}
 }
 
 void Plotter::paintEvent(QPaintEvent *event){
     QPainter painter(this);
     QBrush brush,brush2;
     QPen pen;
-    bool matriz[linhas][colunas][planos];
-    for(int k =0;k<planos;k++){
-        for(int i =0; i<linhas; i++){
-            for(int j=0;j<colunas;j++){
 
-                matriz[i][j][k] = false;
-            }
-        }
 
-    }
-
-   for(int i =0; i<planos;i++) matriz[i][i][i] = true;
+  //for(int i =0; i<planos;i++) matriz[i][i][i] = true;
 
 
 
-    float largura = width()/colunas;
-    float altura = height()/linhas;
+     largura = width()/colunas;
+     altura = height()/linhas;
 
     brush.setColor(QColor(255,255,100));
     brush.setStyle(Qt::SolidPattern);
@@ -108,6 +108,15 @@ void Plotter::olhaPlano(int p)
 
 }
 
+void Plotter::clicou(int x, int y)
+{
+    int xPos = x/largura;
+    int yPos = y/altura;
+   matriz[xPos][yPos][planoAtual] = !matriz[xPos][yPos][planoAtual];
+   repaint();
+
+}
+
 
 
 void Plotter::mouseMoveEvent(QMouseEvent *event){
@@ -118,7 +127,7 @@ void Plotter::mouseMoveEvent(QMouseEvent *event){
 
 void Plotter::mousePressEvent(QMouseEvent *event){
   if(event->button() == Qt::LeftButton ){
-    emit clickX(event->x());
-    emit clickY(event->y());
+    emit clickXY(event->x(),event->y());
+
   }
 }

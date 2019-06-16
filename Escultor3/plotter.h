@@ -9,10 +9,12 @@ class Plotter : public QWidget
     Q_OBJECT
 private:
     int linhas,colunas,planos,planoAtual;
+    int largura, altura;
     int timerId;
     QColor lineColor;
     int cor;
     QAction *actionMudaCor;
+   bool matriz[100][100][100];
 
 
 public:
@@ -24,14 +26,14 @@ public:
 signals:
     void moveX(int);
     void moveY(int);
-    void clickX(int);
-    void clickY(int);
+    void clickXY(int,int);
 
 public slots:
     void mudaLinhas(int l);
     void mudaColunas(int c);
     void mudaPlanos(int p);
     void olhaPlano(int p);
+    void clicou(int x, int y);
 
 };
 

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Plotter_t {
-    QByteArrayData data[13];
-    char stringdata0[85];
+    QByteArrayData data[15];
+    char stringdata0[90];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,20 +35,22 @@ QT_MOC_LITERAL(0, 0, 7), // "Plotter"
 QT_MOC_LITERAL(1, 8, 5), // "moveX"
 QT_MOC_LITERAL(2, 14, 0), // ""
 QT_MOC_LITERAL(3, 15, 5), // "moveY"
-QT_MOC_LITERAL(4, 21, 6), // "clickX"
-QT_MOC_LITERAL(5, 28, 6), // "clickY"
-QT_MOC_LITERAL(6, 35, 10), // "mudaLinhas"
-QT_MOC_LITERAL(7, 46, 1), // "l"
-QT_MOC_LITERAL(8, 48, 11), // "mudaColunas"
-QT_MOC_LITERAL(9, 60, 1), // "c"
-QT_MOC_LITERAL(10, 62, 10), // "mudaPlanos"
-QT_MOC_LITERAL(11, 73, 1), // "p"
-QT_MOC_LITERAL(12, 75, 9) // "olhaPlano"
+QT_MOC_LITERAL(4, 21, 7), // "clickXY"
+QT_MOC_LITERAL(5, 29, 10), // "mudaLinhas"
+QT_MOC_LITERAL(6, 40, 1), // "l"
+QT_MOC_LITERAL(7, 42, 11), // "mudaColunas"
+QT_MOC_LITERAL(8, 54, 1), // "c"
+QT_MOC_LITERAL(9, 56, 10), // "mudaPlanos"
+QT_MOC_LITERAL(10, 67, 1), // "p"
+QT_MOC_LITERAL(11, 69, 9), // "olhaPlano"
+QT_MOC_LITERAL(12, 79, 6), // "clicou"
+QT_MOC_LITERAL(13, 86, 1), // "x"
+QT_MOC_LITERAL(14, 88, 1) // "y"
 
     },
-    "Plotter\0moveX\0\0moveY\0clickX\0clickY\0"
-    "mudaLinhas\0l\0mudaColunas\0c\0mudaPlanos\0"
-    "p\0olhaPlano"
+    "Plotter\0moveX\0\0moveY\0clickXY\0mudaLinhas\0"
+    "l\0mudaColunas\0c\0mudaPlanos\0p\0olhaPlano\0"
+    "clicou\0x\0y"
 };
 #undef QT_MOC_LITERAL
 
@@ -63,31 +65,31 @@ static const uint qt_meta_data_Plotter[] = {
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       4,       // signalCount
+       3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
        1,    1,   54,    2, 0x06 /* Public */,
        3,    1,   57,    2, 0x06 /* Public */,
-       4,    1,   60,    2, 0x06 /* Public */,
-       5,    1,   63,    2, 0x06 /* Public */,
+       4,    2,   60,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   66,    2, 0x0a /* Public */,
-       8,    1,   69,    2, 0x0a /* Public */,
-      10,    1,   72,    2, 0x0a /* Public */,
-      12,    1,   75,    2, 0x0a /* Public */,
+       5,    1,   65,    2, 0x0a /* Public */,
+       7,    1,   68,    2, 0x0a /* Public */,
+       9,    1,   71,    2, 0x0a /* Public */,
+      11,    1,   74,    2, 0x0a /* Public */,
+      12,    2,   77,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
-    QMetaType::Void, QMetaType::Int,    2,
-    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Int,    7,
-    QMetaType::Void, QMetaType::Int,    9,
-    QMetaType::Void, QMetaType::Int,   11,
-    QMetaType::Void, QMetaType::Int,   11,
+    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::Int,    8,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   13,   14,
 
        0        // eod
 };
@@ -100,12 +102,12 @@ void Plotter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         switch (_id) {
         case 0: _t->moveX((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 1: _t->moveY((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 2: _t->clickX((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 3: _t->clickY((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 4: _t->mudaLinhas((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 5: _t->mudaColunas((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 6: _t->mudaPlanos((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 7: _t->olhaPlano((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: _t->clickXY((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 3: _t->mudaLinhas((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->mudaColunas((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 5: _t->mudaPlanos((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: _t->olhaPlano((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->clicou((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -125,16 +127,9 @@ void Plotter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
             }
         }
         {
-            using _t = void (Plotter::*)(int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Plotter::clickX)) {
+            using _t = void (Plotter::*)(int , int );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Plotter::clickXY)) {
                 *result = 2;
-                return;
-            }
-        }
-        {
-            using _t = void (Plotter::*)(int );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Plotter::clickY)) {
-                *result = 3;
                 return;
             }
         }
@@ -196,17 +191,10 @@ void Plotter::moveY(int _t1)
 }
 
 // SIGNAL 2
-void Plotter::clickX(int _t1)
+void Plotter::clickXY(int _t1, int _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
-}
-
-// SIGNAL 3
-void Plotter::clickY(int _t1)
-{
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
-    QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE
