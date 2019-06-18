@@ -47,7 +47,7 @@
     <string>Forma: Elipsóide</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton_2">
+  <widget class="QRadioButton" name="radioButtonCut">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -65,7 +65,7 @@
     <string>Remover</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton">
+  <widget class="QRadioButton" name="radioButtonPut">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -101,7 +101,7 @@
     <string>Raio em X:</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="spinBoxRaioX">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -134,7 +134,7 @@
     <string>Raio em Y:</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_2">
+  <widget class="QSpinBox" name="spinBoxRaioY">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -167,7 +167,7 @@
     <string>Raio em Z:</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_3">
+  <widget class="QSpinBox" name="spinBoxRaioZ">
    <property name="geometry">
     <rect>
      <x>190</x>

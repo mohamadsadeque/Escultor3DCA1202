@@ -40,7 +40,6 @@ public:
     QWidget *centralWidget;
     QSlider *horizontalSliderPlano;
     Plotter *widgetPlotter;
-    QLCDNumber *lcdNumber;
     QLabel *label;
     QPushButton *pushButtonRefX;
     QPushButton *pushButtonRefY;
@@ -51,6 +50,7 @@ public:
     QLabel *label_3;
     QLCDNumber *lcdNumber_4;
     QLabel *label_4;
+    QLCDNumber *lcdNumber;
     QMenuBar *menuBar;
     QMenu *menuArquivos;
     QMenu *menuEdi_o;
@@ -107,14 +107,11 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         horizontalSliderPlano = new QSlider(centralWidget);
         horizontalSliderPlano->setObjectName(QString::fromUtf8("horizontalSliderPlano"));
-        horizontalSliderPlano->setGeometry(QRect(10, 70, 131, 41));
+        horizontalSliderPlano->setGeometry(QRect(20, 70, 131, 41));
         horizontalSliderPlano->setOrientation(Qt::Horizontal);
         widgetPlotter = new Plotter(centralWidget);
         widgetPlotter->setObjectName(QString::fromUtf8("widgetPlotter"));
-        widgetPlotter->setGeometry(QRect(360, 80, 881, 531));
-        lcdNumber = new QLCDNumber(centralWidget);
-        lcdNumber->setObjectName(QString::fromUtf8("lcdNumber"));
-        lcdNumber->setGeometry(QRect(150, 70, 101, 41));
+        widgetPlotter->setGeometry(QRect(360, 80, 1081, 671));
         label = new QLabel(centralWidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(30, 20, 221, 41));
@@ -139,30 +136,33 @@ public:
         pushButtonRefZ->setFont(font1);
         lcdNumberX = new QLCDNumber(centralWidget);
         lcdNumberX->setObjectName(QString::fromUtf8("lcdNumberX"));
-        lcdNumberX->setGeometry(QRect(80, 170, 111, 51));
+        lcdNumberX->setGeometry(QRect(430, 20, 111, 51));
         QFont font2;
         font2.setPointSize(16);
         lcdNumberX->setFont(font2);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(30, 170, 31, 41));
+        label_2->setGeometry(QRect(380, 20, 31, 41));
         label_2->setFont(font);
         lcdNumberY = new QLCDNumber(centralWidget);
         lcdNumberY->setObjectName(QString::fromUtf8("lcdNumberY"));
-        lcdNumberY->setGeometry(QRect(80, 230, 111, 51));
+        lcdNumberY->setGeometry(QRect(720, 20, 111, 51));
         lcdNumberY->setFont(font2);
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(30, 230, 31, 41));
+        label_3->setGeometry(QRect(670, 20, 31, 41));
         label_3->setFont(font);
         lcdNumber_4 = new QLCDNumber(centralWidget);
         lcdNumber_4->setObjectName(QString::fromUtf8("lcdNumber_4"));
-        lcdNumber_4->setGeometry(QRect(80, 290, 111, 51));
+        lcdNumber_4->setGeometry(QRect(1020, 20, 111, 51));
         lcdNumber_4->setFont(font2);
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(30, 290, 31, 41));
+        label_4->setGeometry(QRect(970, 20, 31, 41));
         label_4->setFont(font);
+        lcdNumber = new QLCDNumber(centralWidget);
+        lcdNumber->setObjectName(QString::fromUtf8("lcdNumber"));
+        lcdNumber->setGeometry(QRect(180, 70, 141, 51));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -203,10 +203,10 @@ public:
         mainToolBar->addAction(actionCaixa);
 
         retranslateUi(MainWindow);
-        QObject::connect(horizontalSliderPlano, SIGNAL(valueChanged(int)), lcdNumber, SLOT(display(int)));
         QObject::connect(widgetPlotter, SIGNAL(moveX(int)), lcdNumberX, SLOT(display(int)));
         QObject::connect(widgetPlotter, SIGNAL(moveY(int)), lcdNumberY, SLOT(display(int)));
         QObject::connect(widgetPlotter, SIGNAL(moveZ(int)), lcdNumber_4, SLOT(display(int)));
+        QObject::connect(horizontalSliderPlano, SIGNAL(valueChanged(int)), lcdNumber, SLOT(display(int)));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi

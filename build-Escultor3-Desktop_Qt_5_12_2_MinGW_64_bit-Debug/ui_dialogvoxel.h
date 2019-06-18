@@ -23,8 +23,8 @@ class Ui_DialogVoxel
 public:
     QDialogButtonBox *buttonBox;
     QLabel *label;
-    QRadioButton *radioButton_2;
-    QRadioButton *radioButton;
+    QRadioButton *radioButtonCut;
+    QRadioButton *radioButtonPut;
 
     void setupUi(QDialog *DialogVoxel)
     {
@@ -42,16 +42,16 @@ public:
         QFont font;
         font.setPointSize(16);
         label->setFont(font);
-        radioButton_2 = new QRadioButton(DialogVoxel);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
-        radioButton_2->setGeometry(QRect(220, 110, 121, 41));
+        radioButtonCut = new QRadioButton(DialogVoxel);
+        radioButtonCut->setObjectName(QString::fromUtf8("radioButtonCut"));
+        radioButtonCut->setGeometry(QRect(220, 110, 121, 41));
         QFont font1;
         font1.setPointSize(12);
-        radioButton_2->setFont(font1);
-        radioButton = new QRadioButton(DialogVoxel);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
-        radioButton->setGeometry(QRect(70, 110, 121, 41));
-        radioButton->setFont(font1);
+        radioButtonCut->setFont(font1);
+        radioButtonPut = new QRadioButton(DialogVoxel);
+        radioButtonPut->setObjectName(QString::fromUtf8("radioButtonPut"));
+        radioButtonPut->setGeometry(QRect(70, 110, 121, 41));
+        radioButtonPut->setFont(font1);
 
         retranslateUi(DialogVoxel);
         QObject::connect(buttonBox, SIGNAL(accepted()), DialogVoxel, SLOT(accept()));
@@ -64,8 +64,8 @@ public:
     {
         DialogVoxel->setWindowTitle(QApplication::translate("DialogVoxel", "Dialog", nullptr));
         label->setText(QApplication::translate("DialogVoxel", "Forma: Voxel", nullptr));
-        radioButton_2->setText(QApplication::translate("DialogVoxel", "Remover", nullptr));
-        radioButton->setText(QApplication::translate("DialogVoxel", "Inserir", nullptr));
+        radioButtonCut->setText(QApplication::translate("DialogVoxel", "Remover", nullptr));
+        radioButtonPut->setText(QApplication::translate("DialogVoxel", "Inserir", nullptr));
     } // retranslateUi
 
 };

@@ -47,7 +47,7 @@
     <string>Forma: Esfera</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton">
+  <widget class="QRadioButton" name="radioButtonPut">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -65,7 +65,7 @@
     <string>Inserir</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton_2">
+  <widget class="QRadioButton" name="radioButtonCut">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -101,7 +101,7 @@
     <string>Raio:</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="spinBoxRaio">
    <property name="geometry">
     <rect>
      <x>110</x>

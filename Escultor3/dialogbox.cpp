@@ -12,3 +12,8 @@ DialogBox::~DialogBox()
 {
     delete ui;
 }
+
+bool DialogBox::getPut()
+{
+    return ui->radioButtonPut->isChecked();
+}

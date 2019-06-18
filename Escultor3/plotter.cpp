@@ -12,23 +12,24 @@
 #include <QMessageBox>
 #include <QString>
 #include <QColor>
+#include <qdebug.h>
 Plotter::Plotter(QWidget *parent) : QWidget(parent)
 {
-linhas = 1;
-colunas = 1;
-planos = 1;
-planoAtual = 0;
-referencia = 0;
-for(int k =0;k<100;k++){
-    for(int i =0; i<100; i++){
-        for(int j=0;j<100;j++){
+    linhas = 1;
+    colunas = 1;
+    planos = 1;
+    planoAtual = 0;
+    referencia = 0;
+    for(int k =0;k<100;k++){
+        for(int i =0; i<100; i++){
+            for(int j=0;j<100;j++){
 
-            matriz[i][j][k] = false;
+                matriz[i][j][k] = false;
+            }
         }
-    }
 
-}
-setMouseTracking(true);
+    }
+    setMouseTracking(true);
 
 }
 
@@ -38,24 +39,24 @@ void Plotter::paintEvent(QPaintEvent *event){
     QPen pen,penSeta;
 
 
-  //for(int i =0; i<planos;i++) matriz[i][i][i] = true;
+    //for(int i =0; i<planos;i++) matriz[i][i][i] = true;
 
     switch (referencia) {
     case 0:
         largura = width()/colunas;
         altura = height()/linhas;
-    break;
+        break;
 
     case 1:
         largura = width()/colunas;
         altura = height()/planos;
-    break;
+        break;
     case 2:
         largura = width()/linhas;
         altura = height()/planos;
-    break;
+        break;
 
-}
+    }
 
 
     brush.setColor(QColor(150,200,255));
@@ -79,16 +80,16 @@ void Plotter::paintEvent(QPaintEvent *event){
     painter.setPen(pen);
 
     switch (referencia) {
-        case 0:
+    case 0:
         for(int i = 0; i<linhas;i++){
             for(int j = 0; j<colunas; j++){
                 if(matriz[i][j][planoAtual]){
-                     painter.setBrush(brush);
+                    painter.setBrush(brush);
                 }
                 else{
                     painter.setBrush(brush2);
                 }
-                 painter.drawRect(largura*i+1,altura*j+1,largura+1,altura+1);
+                painter.drawRect(largura*i+1,altura*j+1,largura+1,altura+1);
             }
         }
         break;
@@ -96,12 +97,12 @@ void Plotter::paintEvent(QPaintEvent *event){
         for(int i = 0; i<linhas;i++){
             for(int j = 0; j<planos; j++){
                 if(matriz[i][planoAtual][j]){
-                     painter.setBrush(brush);
+                    painter.setBrush(brush);
                 }
                 else{
                     painter.setBrush(brush2);
                 }
-                 painter.drawRect(largura*i+1,altura*j+1,largura+1,altura+1);
+                painter.drawRect(largura*i+1,altura*j+1,largura+1,altura+1);
             }
         }
 
@@ -110,12 +111,12 @@ void Plotter::paintEvent(QPaintEvent *event){
         for(int i = 0; i<colunas;i++){
             for(int j = 0; j<planos; j++){
                 if(matriz[planoAtual][i][j]){
-                     painter.setBrush(brush);
+                    painter.setBrush(brush);
                 }
                 else{
                     painter.setBrush(brush2);
                 }
-                 painter.drawRect(largura*i+1,altura*j+1,largura+1,altura+1);
+                painter.drawRect(largura*i+1,altura*j+1,largura+1,altura+1);
             }
         }
         break;
@@ -151,15 +152,15 @@ void Plotter::olhaPlano(int p)
     switch (referencia) {
     case 0:
         if(planoAtual >= planos) planoAtual = planos-1;
-    break;
+        break;
     case 1:
         if(planoAtual >= colunas) planoAtual = colunas-1;
 
-    break;
+        break;
     case 2:
         if(planoAtual >= linhas) planoAtual = linhas-1;
 
-    break;
+        break;
 
     }
     repaint();
@@ -168,21 +169,72 @@ void Plotter::olhaPlano(int p)
 
 void Plotter::clicou(int x, int y)
 {
-    int xPos = x/largura;
-    int yPos = y/altura;
+    int xPos,yPos,zPos;
+
+
     switch (referencia) {
     case 0:
-        matriz[xPos][yPos][planoAtual] = !matriz[xPos][yPos][planoAtual];
-    break;
+        xPos = x/largura;
+        yPos = y/altura;
+        zPos = planoAtual;
+        break;
     case 1:
-        matriz[xPos][planoAtual][yPos] = !matriz[xPos][planoAtual][yPos];
-    break;
+        xPos = x/largura;
+        yPos = planoAtual;
+        zPos = y/altura;
+        break;
     case 2:
-        matriz[planoAtual][xPos][yPos] = !matriz[planoAtual][xPos][yPos];
-    break;
-
+        xPos = planoAtual;
+        yPos = x/largura;
+        zPos = y/altura;
+        break;
     }
-   repaint();
+
+        matriz[xPos][yPos][zPos] = !matriz[xPos][xPos][zPos];
+
+        switch (forma) {
+        case 0:
+            //putSphere
+            qDebug("Inseri Esfera");
+            break;
+        case 1:
+            //cutSphere
+            qDebug("Removi Esfera");
+            break;
+        case 2:
+            //putEllipsoid
+            qDebug("Inseri Elipsóide");
+
+            break;
+        case 3:
+            //cutEllipsoid
+            qDebug("Removi Elipsóide");
+            break;
+        case 4:
+            //putVoxel
+            qDebug("Inseri Voxel");
+
+            break;
+        case 5:
+            //cutVoxel
+            qDebug("Removi Voxel");
+
+            break;
+        case 6:
+            //putBox
+            qDebug("Inseri Caixa");
+
+            break;
+        case 7:
+            //cutBox
+            qDebug("Removi Caixa");
+
+            break;
+        }
+
+
+
+    repaint();
 
 }
 
@@ -190,6 +242,32 @@ void Plotter::setRefZ()
 {
     referencia = 0;
     repaint();
+}
+
+void Plotter::mudaForma(int a)
+{
+    forma = a;
+}
+
+void Plotter::setRaio(int r)
+{
+    raio = r;
+}
+
+void Plotter::setRaioX(int r)
+{
+    raioX = r;
+}
+
+void Plotter::setRaioY(int r)
+{
+    raioY = r;
+
+}
+
+void Plotter::setRaioZ(int r)
+{
+    raioZ = r;
 }
 void Plotter::setRefX()
 {
@@ -213,27 +291,27 @@ void Plotter::mouseMoveEvent(QMouseEvent *event){
         emit moveX(event->x()/largura);
         emit moveY(event->y()/altura);
         emit moveZ(planoAtual);
-    break;
+        break;
 
     case 1:
         emit moveX(event->x()/largura);
         emit moveY(planoAtual);
         emit moveZ(event->y()/altura);
-    break;
+        break;
     case 2:
         emit moveX(planoAtual);
         emit moveY(event->x()/largura);
         emit moveZ(event->y()/altura);
-    break;
+        break;
 
-}
+    }
 }
 
 void Plotter::mousePressEvent(QMouseEvent *event){
-  if(event->button() == Qt::LeftButton ){
-    emit clickXY(event->x(),event->y());
+    if(event->button() == Qt::LeftButton ){
+        emit clickXY(event->x(),event->y());
 
-  }
+    }
 }
 
 

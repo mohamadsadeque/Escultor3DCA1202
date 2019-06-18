@@ -12,3 +12,27 @@ DialogEllipsoid::~DialogEllipsoid()
 {
     delete ui;
 }
+
+bool DialogEllipsoid::getPut()
+{
+    return ui->radioButtonPut->isChecked();
+
+}
+
+int DialogEllipsoid::getRaioX()
+{
+    return ui->spinBoxRaioX->value();
+
+}
+
+int DialogEllipsoid::getRaioY()
+{
+    return ui->spinBoxRaioY->value();
+
+}
+
+int DialogEllipsoid::getRaioZ()
+{
+    return ui->spinBoxRaioZ->value();
+
+}

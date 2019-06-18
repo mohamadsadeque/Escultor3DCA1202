@@ -24,14 +24,14 @@ class Ui_DialogEllipsoid
 public:
     QDialogButtonBox *buttonBox;
     QLabel *label;
-    QRadioButton *radioButton_2;
-    QRadioButton *radioButton;
+    QRadioButton *radioButtonCut;
+    QRadioButton *radioButtonPut;
     QLabel *label_2;
-    QSpinBox *spinBox;
+    QSpinBox *spinBoxRaioX;
     QLabel *label_3;
-    QSpinBox *spinBox_2;
+    QSpinBox *spinBoxRaioY;
     QLabel *label_4;
-    QSpinBox *spinBox_3;
+    QSpinBox *spinBoxRaioZ;
 
     void setupUi(QDialog *DialogEllipsoid)
     {
@@ -49,40 +49,40 @@ public:
         QFont font;
         font.setPointSize(16);
         label->setFont(font);
-        radioButton_2 = new QRadioButton(DialogEllipsoid);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
-        radioButton_2->setGeometry(QRect(210, 60, 121, 41));
+        radioButtonCut = new QRadioButton(DialogEllipsoid);
+        radioButtonCut->setObjectName(QString::fromUtf8("radioButtonCut"));
+        radioButtonCut->setGeometry(QRect(210, 60, 121, 41));
         QFont font1;
         font1.setPointSize(12);
-        radioButton_2->setFont(font1);
-        radioButton = new QRadioButton(DialogEllipsoid);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
-        radioButton->setGeometry(QRect(60, 60, 121, 41));
-        radioButton->setFont(font1);
+        radioButtonCut->setFont(font1);
+        radioButtonPut = new QRadioButton(DialogEllipsoid);
+        radioButtonPut->setObjectName(QString::fromUtf8("radioButtonPut"));
+        radioButtonPut->setGeometry(QRect(60, 60, 121, 41));
+        radioButtonPut->setFont(font1);
         label_2 = new QLabel(DialogEllipsoid);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(70, 100, 121, 41));
         label_2->setFont(font);
-        spinBox = new QSpinBox(DialogEllipsoid);
-        spinBox->setObjectName(QString::fromUtf8("spinBox"));
-        spinBox->setGeometry(QRect(190, 110, 61, 21));
-        spinBox->setFont(font);
+        spinBoxRaioX = new QSpinBox(DialogEllipsoid);
+        spinBoxRaioX->setObjectName(QString::fromUtf8("spinBoxRaioX"));
+        spinBoxRaioX->setGeometry(QRect(190, 110, 61, 21));
+        spinBoxRaioX->setFont(font);
         label_3 = new QLabel(DialogEllipsoid);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(70, 140, 121, 41));
         label_3->setFont(font);
-        spinBox_2 = new QSpinBox(DialogEllipsoid);
-        spinBox_2->setObjectName(QString::fromUtf8("spinBox_2"));
-        spinBox_2->setGeometry(QRect(190, 150, 61, 21));
-        spinBox_2->setFont(font);
+        spinBoxRaioY = new QSpinBox(DialogEllipsoid);
+        spinBoxRaioY->setObjectName(QString::fromUtf8("spinBoxRaioY"));
+        spinBoxRaioY->setGeometry(QRect(190, 150, 61, 21));
+        spinBoxRaioY->setFont(font);
         label_4 = new QLabel(DialogEllipsoid);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setGeometry(QRect(70, 180, 121, 41));
         label_4->setFont(font);
-        spinBox_3 = new QSpinBox(DialogEllipsoid);
-        spinBox_3->setObjectName(QString::fromUtf8("spinBox_3"));
-        spinBox_3->setGeometry(QRect(190, 190, 61, 21));
-        spinBox_3->setFont(font);
+        spinBoxRaioZ = new QSpinBox(DialogEllipsoid);
+        spinBoxRaioZ->setObjectName(QString::fromUtf8("spinBoxRaioZ"));
+        spinBoxRaioZ->setGeometry(QRect(190, 190, 61, 21));
+        spinBoxRaioZ->setFont(font);
 
         retranslateUi(DialogEllipsoid);
         QObject::connect(buttonBox, SIGNAL(accepted()), DialogEllipsoid, SLOT(accept()));
@@ -95,8 +95,8 @@ public:
     {
         DialogEllipsoid->setWindowTitle(QApplication::translate("DialogEllipsoid", "Dialog", nullptr));
         label->setText(QApplication::translate("DialogEllipsoid", "Forma: Elips\303\263ide", nullptr));
-        radioButton_2->setText(QApplication::translate("DialogEllipsoid", "Remover", nullptr));
-        radioButton->setText(QApplication::translate("DialogEllipsoid", "Inserir", nullptr));
+        radioButtonCut->setText(QApplication::translate("DialogEllipsoid", "Remover", nullptr));
+        radioButtonPut->setText(QApplication::translate("DialogEllipsoid", "Inserir", nullptr));
         label_2->setText(QApplication::translate("DialogEllipsoid", "Raio em X:", nullptr));
         label_3->setText(QApplication::translate("DialogEllipsoid", "Raio em Y:", nullptr));
         label_4->setText(QApplication::translate("DialogEllipsoid", "Raio em Z:", nullptr));

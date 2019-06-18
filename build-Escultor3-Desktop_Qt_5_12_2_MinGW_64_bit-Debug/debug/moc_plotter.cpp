@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Plotter_t {
-    QByteArrayData data[19];
-    char stringdata0[120];
+    QByteArrayData data[24];
+    char stringdata0[165];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -49,13 +49,19 @@ QT_MOC_LITERAL(14, 92, 1), // "x"
 QT_MOC_LITERAL(15, 94, 1), // "y"
 QT_MOC_LITERAL(16, 96, 7), // "setRefX"
 QT_MOC_LITERAL(17, 104, 7), // "setRefY"
-QT_MOC_LITERAL(18, 112, 7) // "setRefZ"
+QT_MOC_LITERAL(18, 112, 7), // "setRefZ"
+QT_MOC_LITERAL(19, 120, 9), // "mudaForma"
+QT_MOC_LITERAL(20, 130, 7), // "setRaio"
+QT_MOC_LITERAL(21, 138, 8), // "setRaioX"
+QT_MOC_LITERAL(22, 147, 8), // "setRaioY"
+QT_MOC_LITERAL(23, 156, 8) // "setRaioZ"
 
     },
     "Plotter\0moveX\0\0moveY\0moveZ\0clickXY\0"
     "mudaLinhas\0l\0mudaColunas\0c\0mudaPlanos\0"
     "p\0olhaPlano\0clicou\0x\0y\0setRefX\0setRefY\0"
-    "setRefZ"
+    "setRefZ\0mudaForma\0setRaio\0setRaioX\0"
+    "setRaioY\0setRaioZ"
 };
 #undef QT_MOC_LITERAL
 
@@ -65,7 +71,7 @@ static const uint qt_meta_data_Plotter[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      17,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -73,20 +79,25 @@ static const uint qt_meta_data_Plotter[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   74,    2, 0x06 /* Public */,
-       3,    1,   77,    2, 0x06 /* Public */,
-       4,    1,   80,    2, 0x06 /* Public */,
-       5,    2,   83,    2, 0x06 /* Public */,
+       1,    1,   99,    2, 0x06 /* Public */,
+       3,    1,  102,    2, 0x06 /* Public */,
+       4,    1,  105,    2, 0x06 /* Public */,
+       5,    2,  108,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,   88,    2, 0x0a /* Public */,
-       8,    1,   91,    2, 0x0a /* Public */,
-      10,    1,   94,    2, 0x0a /* Public */,
-      12,    1,   97,    2, 0x0a /* Public */,
-      13,    2,  100,    2, 0x0a /* Public */,
-      16,    0,  105,    2, 0x0a /* Public */,
-      17,    0,  106,    2, 0x0a /* Public */,
-      18,    0,  107,    2, 0x0a /* Public */,
+       6,    1,  113,    2, 0x0a /* Public */,
+       8,    1,  116,    2, 0x0a /* Public */,
+      10,    1,  119,    2, 0x0a /* Public */,
+      12,    1,  122,    2, 0x0a /* Public */,
+      13,    2,  125,    2, 0x0a /* Public */,
+      16,    0,  130,    2, 0x0a /* Public */,
+      17,    0,  131,    2, 0x0a /* Public */,
+      18,    0,  132,    2, 0x0a /* Public */,
+      19,    1,  133,    2, 0x0a /* Public */,
+      20,    1,  136,    2, 0x0a /* Public */,
+      21,    1,  139,    2, 0x0a /* Public */,
+      22,    1,  142,    2, 0x0a /* Public */,
+      23,    1,  145,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
@@ -103,6 +114,11 @@ static const uint qt_meta_data_Plotter[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::Int,    2,
 
        0        // eod
 };
@@ -125,6 +141,11 @@ void Plotter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 9: _t->setRefX(); break;
         case 10: _t->setRefY(); break;
         case 11: _t->setRefZ(); break;
+        case 12: _t->mudaForma((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 13: _t->setRaio((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 14: _t->setRaioX((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 15: _t->setRaioY((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 16: _t->setRaioZ((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -189,13 +210,13 @@ int Plotter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 17;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 17)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 12;
+        _id -= 17;
     }
     return _id;
 }

@@ -15,7 +15,9 @@ private:
     int cor;
     bool matriz[100][100][100];
     int referencia;
-
+    int forma;
+    //parametros das figuras:
+    int raio,raioX,raioY,raioZ;
 
 public:
     explicit Plotter(QWidget *parent = nullptr);
@@ -38,6 +40,12 @@ public slots:
     void setRefX();
     void setRefY();
     void setRefZ();
+    void mudaForma(int);
+    void setRaio(int);
+    void setRaioX(int);
+    void setRaioY(int);
+    void setRaioZ(int);
+
 
 };
 

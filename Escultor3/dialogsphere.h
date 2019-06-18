@@ -14,6 +14,8 @@ class DialogSphere : public QDialog
 public:
     explicit DialogSphere(QWidget *parent = nullptr);
     ~DialogSphere();
+    bool getPut();
+    int getRaio();
 
 private:
     Ui::DialogSphere *ui;

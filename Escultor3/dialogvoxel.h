@@ -14,6 +14,7 @@ class DialogVoxel : public QDialog
 public:
     explicit DialogVoxel(QWidget *parent = nullptr);
     ~DialogVoxel();
+    bool getPut();
 
 private:
     Ui::DialogVoxel *ui;

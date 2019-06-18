@@ -23,8 +23,8 @@ class Ui_DialogBox
 public:
     QDialogButtonBox *buttonBox;
     QLabel *label;
-    QRadioButton *radioButton_2;
-    QRadioButton *radioButton;
+    QRadioButton *radioButtonCut;
+    QRadioButton *radioButtonPut;
 
     void setupUi(QDialog *DialogBox)
     {
@@ -42,16 +42,16 @@ public:
         QFont font;
         font.setPointSize(16);
         label->setFont(font);
-        radioButton_2 = new QRadioButton(DialogBox);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
-        radioButton_2->setGeometry(QRect(190, 60, 121, 41));
+        radioButtonCut = new QRadioButton(DialogBox);
+        radioButtonCut->setObjectName(QString::fromUtf8("radioButtonCut"));
+        radioButtonCut->setGeometry(QRect(190, 60, 121, 41));
         QFont font1;
         font1.setPointSize(12);
-        radioButton_2->setFont(font1);
-        radioButton = new QRadioButton(DialogBox);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
-        radioButton->setGeometry(QRect(40, 60, 121, 41));
-        radioButton->setFont(font1);
+        radioButtonCut->setFont(font1);
+        radioButtonPut = new QRadioButton(DialogBox);
+        radioButtonPut->setObjectName(QString::fromUtf8("radioButtonPut"));
+        radioButtonPut->setGeometry(QRect(40, 60, 121, 41));
+        radioButtonPut->setFont(font1);
 
         retranslateUi(DialogBox);
         QObject::connect(buttonBox, SIGNAL(accepted()), DialogBox, SLOT(accept()));
@@ -64,8 +64,8 @@ public:
     {
         DialogBox->setWindowTitle(QApplication::translate("DialogBox", "Dialog", nullptr));
         label->setText(QApplication::translate("DialogBox", "Forma: Caixa", nullptr));
-        radioButton_2->setText(QApplication::translate("DialogBox", "Remover", nullptr));
-        radioButton->setText(QApplication::translate("DialogBox", "Inserir", nullptr));
+        radioButtonCut->setText(QApplication::translate("DialogBox", "Remover", nullptr));
+        radioButtonPut->setText(QApplication::translate("DialogBox", "Inserir", nullptr));
     } // retranslateUi
 
 };

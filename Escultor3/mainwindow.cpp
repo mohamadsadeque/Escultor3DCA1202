@@ -114,25 +114,66 @@ if(color.isValid()){
 void MainWindow::configuraEsfera()
 {
     DialogSphere s;
-    s.exec();
+
+    if(s.exec()  == QDialog::Accepted){
+        if(s.getPut()){
+           ui->widgetPlotter->mudaForma(0);
+        }
+        else{
+            ui->widgetPlotter->mudaForma(1);
+        }
+
+        ui->widgetPlotter->setRaio(s.getRaio());
+
+    }
 }
 
 void MainWindow::configuraElipsoide()
 {
     DialogEllipsoid e;
-    e.exec();
+    if(e.exec()  == QDialog::Accepted){
+        if(e.getPut()){
+           ui->widgetPlotter->mudaForma(2);
+        }
+        else{
+            ui->widgetPlotter->mudaForma(3);
+        }
+
+        ui->widgetPlotter->setRaioX(e.getRaioX());
+        ui->widgetPlotter->setRaioY(e.getRaioY());
+        ui->widgetPlotter->setRaioZ(e.getRaioZ());
+
+    }
 }
 
 void MainWindow::configuraVoxel()
 {
     DialogVoxel v;
-    v.exec();
+    if(v.exec()  == QDialog::Accepted){
+        if(v.getPut()){
+           ui->widgetPlotter->mudaForma(4);
+        }
+        else{
+            ui->widgetPlotter->mudaForma(5);
+        }
+
+
+    }
 }
 
 void MainWindow::configuraBox()
 {
     DialogBox b;
-    b.exec();
+    if(b.exec()  == QDialog::Accepted){
+        if(b.getPut()){
+           ui->widgetPlotter->mudaForma(6);
+        }
+        else{
+            ui->widgetPlotter->mudaForma(7);
+        }
+
+
+    }
 }
 
 void MainWindow::abrirArquivo()

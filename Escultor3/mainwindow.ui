@@ -17,7 +17,7 @@
    <widget class="QSlider" name="horizontalSliderPlano">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>70</y>
       <width>131</width>
       <height>41</height>
@@ -32,18 +32,8 @@
      <rect>
       <x>360</x>
       <y>80</y>
-      <width>881</width>
-      <height>531</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLCDNumber" name="lcdNumber">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>70</y>
-      <width>101</width>
-      <height>41</height>
+      <width>1081</width>
+      <height>671</height>
      </rect>
     </property>
    </widget>
@@ -128,8 +118,8 @@
    <widget class="QLCDNumber" name="lcdNumberX">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>170</y>
+      <x>430</x>
+      <y>20</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -143,8 +133,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>170</y>
+      <x>380</x>
+      <y>20</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -161,8 +151,8 @@
    <widget class="QLCDNumber" name="lcdNumberY">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>230</y>
+      <x>720</x>
+      <y>20</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -176,8 +166,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>230</y>
+      <x>670</x>
+      <y>20</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -194,8 +184,8 @@
    <widget class="QLCDNumber" name="lcdNumber_4">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>290</y>
+      <x>1020</x>
+      <y>20</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -209,8 +199,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>290</y>
+      <x>970</x>
+      <y>20</y>
       <width>31</width>
       <height>41</height>
      </rect>
@@ -222,6 +212,16 @@
     </property>
     <property name="text">
      <string>Z</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="lcdNumber">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>70</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -373,22 +373,6 @@
  </resources>
  <connections>
   <connection>
-   <sender>horizontalSliderPlano</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>lcdNumber</receiver>
-   <slot>display(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>76</x>
-     <y>143</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>204</x>
-     <y>141</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>widgetPlotter</sender>
    <signal>moveX(int)</signal>
    <receiver>lcdNumberX</receiver>
@@ -399,8 +383,8 @@
      <y>271</y>
     </hint>
     <hint type="destinationlabel">
-     <x>170</x>
-     <y>246</y>
+     <x>520</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -415,8 +399,8 @@
      <y>318</y>
     </hint>
     <hint type="destinationlabel">
-     <x>175</x>
-     <y>305</y>
+     <x>815</x>
+     <y>95</y>
     </hint>
    </hints>
   </connection>
@@ -431,8 +415,24 @@
      <y>387</y>
     </hint>
     <hint type="destinationlabel">
-     <x>127</x>
-     <y>362</y>
+     <x>1067</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderPlano</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>125</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>230</x>
+     <y>154</y>
     </hint>
    </hints>
   </connection>

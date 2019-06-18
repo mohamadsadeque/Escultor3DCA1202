@@ -14,6 +14,7 @@ class DialogBox : public QDialog
 public:
     explicit DialogBox(QWidget *parent = nullptr);
     ~DialogBox();
+    bool getPut();
 
 private:
     Ui::DialogBox *ui;

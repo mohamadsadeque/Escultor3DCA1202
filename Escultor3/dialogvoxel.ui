@@ -47,7 +47,7 @@
     <string>Forma: Voxel</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton_2">
+  <widget class="QRadioButton" name="radioButtonCut">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -65,7 +65,7 @@
     <string>Remover</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton">
+  <widget class="QRadioButton" name="radioButtonPut">
    <property name="geometry">
     <rect>
      <x>70</x>

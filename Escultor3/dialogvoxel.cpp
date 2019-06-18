@@ -12,3 +12,8 @@ DialogVoxel::~DialogVoxel()
 {
     delete ui;
 }
+
+bool DialogVoxel::getPut()
+{
+    return ui->radioButtonPut->isChecked();
+}

@@ -14,6 +14,11 @@ class DialogEllipsoid : public QDialog
 public:
     explicit DialogEllipsoid(QWidget *parent = nullptr);
     ~DialogEllipsoid();
+    bool getPut();
+    int getRaioX();
+    int getRaioY();
+    int getRaioZ();
+
 
 private:
     Ui::DialogEllipsoid *ui;

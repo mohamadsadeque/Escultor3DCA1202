@@ -24,10 +24,10 @@ class Ui_DialogSphere
 public:
     QDialogButtonBox *buttonBox;
     QLabel *label;
-    QRadioButton *radioButton;
-    QRadioButton *radioButton_2;
+    QRadioButton *radioButtonPut;
+    QRadioButton *radioButtonCut;
     QLabel *label_2;
-    QSpinBox *spinBox;
+    QSpinBox *spinBoxRaio;
 
     void setupUi(QDialog *DialogSphere)
     {
@@ -45,24 +45,24 @@ public:
         QFont font;
         font.setPointSize(16);
         label->setFont(font);
-        radioButton = new QRadioButton(DialogSphere);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
-        radioButton->setGeometry(QRect(50, 60, 121, 41));
+        radioButtonPut = new QRadioButton(DialogSphere);
+        radioButtonPut->setObjectName(QString::fromUtf8("radioButtonPut"));
+        radioButtonPut->setGeometry(QRect(50, 60, 121, 41));
         QFont font1;
         font1.setPointSize(12);
-        radioButton->setFont(font1);
-        radioButton_2 = new QRadioButton(DialogSphere);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
-        radioButton_2->setGeometry(QRect(200, 60, 121, 41));
-        radioButton_2->setFont(font1);
+        radioButtonPut->setFont(font1);
+        radioButtonCut = new QRadioButton(DialogSphere);
+        radioButtonCut->setObjectName(QString::fromUtf8("radioButtonCut"));
+        radioButtonCut->setGeometry(QRect(200, 60, 121, 41));
+        radioButtonCut->setFont(font1);
         label_2 = new QLabel(DialogSphere);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(50, 120, 51, 41));
         label_2->setFont(font);
-        spinBox = new QSpinBox(DialogSphere);
-        spinBox->setObjectName(QString::fromUtf8("spinBox"));
-        spinBox->setGeometry(QRect(110, 130, 61, 21));
-        spinBox->setFont(font);
+        spinBoxRaio = new QSpinBox(DialogSphere);
+        spinBoxRaio->setObjectName(QString::fromUtf8("spinBoxRaio"));
+        spinBoxRaio->setGeometry(QRect(110, 130, 61, 21));
+        spinBoxRaio->setFont(font);
 
         retranslateUi(DialogSphere);
         QObject::connect(buttonBox, SIGNAL(accepted()), DialogSphere, SLOT(accept()));
@@ -75,8 +75,8 @@ public:
     {
         DialogSphere->setWindowTitle(QApplication::translate("DialogSphere", "Dialog", nullptr));
         label->setText(QApplication::translate("DialogSphere", "Forma: Esfera", nullptr));
-        radioButton->setText(QApplication::translate("DialogSphere", "Inserir", nullptr));
-        radioButton_2->setText(QApplication::translate("DialogSphere", "Remover", nullptr));
+        radioButtonPut->setText(QApplication::translate("DialogSphere", "Inserir", nullptr));
+        radioButtonCut->setText(QApplication::translate("DialogSphere", "Remover", nullptr));
         label_2->setText(QApplication::translate("DialogSphere", "Raio:", nullptr));
     } // retranslateUi
 
