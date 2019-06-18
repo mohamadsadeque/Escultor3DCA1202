@@ -13,8 +13,8 @@ private:
     int timerId;
     QColor lineColor;
     int cor;
-    QAction *actionMudaCor;
-   bool matriz[100][100][100];
+    bool matriz[100][100][100];
+    int referencia;
 
 
 public:
@@ -26,6 +26,7 @@ public:
 signals:
     void moveX(int);
     void moveY(int);
+    void moveZ(int);
     void clickXY(int,int);
 
 public slots:
@@ -34,7 +35,9 @@ public slots:
     void mudaPlanos(int p);
     void olhaPlano(int p);
     void clicou(int x, int y);
-    void mudaCor();
+    void setRefX();
+    void setRefY();
+    void setRefZ();
 
 };
 

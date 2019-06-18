@@ -23,6 +23,7 @@ public slots:
     void configuraVoxel();
     void configuraBox();
     void abrirArquivo();
+    void salvarArquivo();
 
 
 private:

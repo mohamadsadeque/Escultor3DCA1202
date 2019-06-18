@@ -17,6 +17,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -41,6 +42,15 @@ public:
     Plotter *widgetPlotter;
     QLCDNumber *lcdNumber;
     QLabel *label;
+    QPushButton *pushButtonRefX;
+    QPushButton *pushButtonRefY;
+    QPushButton *pushButtonRefZ;
+    QLCDNumber *lcdNumberX;
+    QLabel *label_2;
+    QLCDNumber *lcdNumberY;
+    QLabel *label_3;
+    QLCDNumber *lcdNumber_4;
+    QLabel *label_4;
     QMenuBar *menuBar;
     QMenu *menuArquivos;
     QMenu *menuEdi_o;
@@ -101,16 +111,58 @@ public:
         horizontalSliderPlano->setOrientation(Qt::Horizontal);
         widgetPlotter = new Plotter(centralWidget);
         widgetPlotter->setObjectName(QString::fromUtf8("widgetPlotter"));
-        widgetPlotter->setGeometry(QRect(300, 10, 941, 641));
+        widgetPlotter->setGeometry(QRect(360, 80, 881, 531));
         lcdNumber = new QLCDNumber(centralWidget);
         lcdNumber->setObjectName(QString::fromUtf8("lcdNumber"));
-        lcdNumber->setGeometry(QRect(150, 60, 91, 41));
+        lcdNumber->setGeometry(QRect(150, 70, 101, 41));
         label = new QLabel(centralWidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(30, 20, 221, 41));
         QFont font;
         font.setPointSize(24);
         label->setFont(font);
+        pushButtonRefX = new QPushButton(centralWidget);
+        pushButtonRefX->setObjectName(QString::fromUtf8("pushButtonRefX"));
+        pushButtonRefX->setGeometry(QRect(130, 30, 31, 23));
+        QFont font1;
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setWeight(75);
+        pushButtonRefX->setFont(font1);
+        pushButtonRefY = new QPushButton(centralWidget);
+        pushButtonRefY->setObjectName(QString::fromUtf8("pushButtonRefY"));
+        pushButtonRefY->setGeometry(QRect(170, 30, 31, 23));
+        pushButtonRefY->setFont(font1);
+        pushButtonRefZ = new QPushButton(centralWidget);
+        pushButtonRefZ->setObjectName(QString::fromUtf8("pushButtonRefZ"));
+        pushButtonRefZ->setGeometry(QRect(210, 30, 31, 23));
+        pushButtonRefZ->setFont(font1);
+        lcdNumberX = new QLCDNumber(centralWidget);
+        lcdNumberX->setObjectName(QString::fromUtf8("lcdNumberX"));
+        lcdNumberX->setGeometry(QRect(80, 170, 111, 51));
+        QFont font2;
+        font2.setPointSize(16);
+        lcdNumberX->setFont(font2);
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(30, 170, 31, 41));
+        label_2->setFont(font);
+        lcdNumberY = new QLCDNumber(centralWidget);
+        lcdNumberY->setObjectName(QString::fromUtf8("lcdNumberY"));
+        lcdNumberY->setGeometry(QRect(80, 230, 111, 51));
+        lcdNumberY->setFont(font2);
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setGeometry(QRect(30, 230, 31, 41));
+        label_3->setFont(font);
+        lcdNumber_4 = new QLCDNumber(centralWidget);
+        lcdNumber_4->setObjectName(QString::fromUtf8("lcdNumber_4"));
+        lcdNumber_4->setGeometry(QRect(80, 290, 111, 51));
+        lcdNumber_4->setFont(font2);
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(30, 290, 31, 41));
+        label_4->setFont(font);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -152,6 +204,9 @@ public:
 
         retranslateUi(MainWindow);
         QObject::connect(horizontalSliderPlano, SIGNAL(valueChanged(int)), lcdNumber, SLOT(display(int)));
+        QObject::connect(widgetPlotter, SIGNAL(moveX(int)), lcdNumberX, SLOT(display(int)));
+        QObject::connect(widgetPlotter, SIGNAL(moveY(int)), lcdNumberY, SLOT(display(int)));
+        QObject::connect(widgetPlotter, SIGNAL(moveZ(int)), lcdNumber_4, SLOT(display(int)));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -169,6 +224,12 @@ public:
         actionSave->setText(QApplication::translate("MainWindow", "Save", nullptr));
         actionOpen->setText(QApplication::translate("MainWindow", "Open", nullptr));
         label->setText(QApplication::translate("MainWindow", "Plano:", nullptr));
+        pushButtonRefX->setText(QApplication::translate("MainWindow", "X", nullptr));
+        pushButtonRefY->setText(QApplication::translate("MainWindow", "Y", nullptr));
+        pushButtonRefZ->setText(QApplication::translate("MainWindow", "Z", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "X", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "Y", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "Z", nullptr));
         menuArquivos->setTitle(QApplication::translate("MainWindow", "Arquivos", nullptr));
         menuEdi_o->setTitle(QApplication::translate("MainWindow", "Edi\303\247\303\243o", nullptr));
         menuFormas->setTitle(QApplication::translate("MainWindow", "Formas", nullptr));

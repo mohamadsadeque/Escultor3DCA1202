@@ -56,10 +56,25 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(triggered(bool)),
             this,
             SLOT(configuraBox()));
+
     connect(ui->actionOpen,
             SIGNAL(triggered(bool)),
             this,
             SLOT(abrirArquivo()));
+
+    connect(ui->pushButtonRefZ,
+            SIGNAL(clicked(bool)),
+            ui->widgetPlotter,
+            SLOT(setRefZ()));
+    connect(ui->pushButtonRefY,
+            SIGNAL(clicked(bool)),
+            ui->widgetPlotter,
+            SLOT(setRefY()));
+    connect(ui->pushButtonRefX,
+            SIGNAL(clicked(bool)),
+            ui->widgetPlotter,
+            SLOT(setRefX()));
+
 
 }
 
@@ -124,5 +139,10 @@ void MainWindow::abrirArquivo()
 {
     QString filename=QFileDialog::getOpenFileName(this,tr("Abrir Arquivo"),"C://","Todos Arquivos (*.*);;OFF (*.off);; VECT (*.vect)");
     QMessageBox::information(this,tr("Nome do Arquivo"),filename);
+}
+
+void MainWindow::salvarArquivo()
+{
+    QString filename=QFileDialog::getOpenFileName(this,tr("Abrir Arquivo"),"C://","Todos Arquivos (*.*);;OFF (*.off);; VECT (*.vect)");
 }
 
