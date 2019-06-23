@@ -30,7 +30,6 @@ Plotter::Plotter(QWidget *parent) : QWidget(parent)
 
     }
     setMouseTracking(true);
-
 }
 
 void Plotter::paintEvent(QPaintEvent *event){
@@ -55,7 +54,6 @@ void Plotter::paintEvent(QPaintEvent *event){
         largura = width()/linhas;
         altura = height()/planos;
         break;
-
     }
 
 
@@ -120,8 +118,6 @@ void Plotter::paintEvent(QPaintEvent *event){
             }
         }
         break;
-
-
     }
 
 }
@@ -235,7 +231,6 @@ void Plotter::clicou(int x, int y)
 
 
     repaint();
-
 }
 
 void Plotter::setRefZ()
@@ -262,27 +257,24 @@ void Plotter::setRaioX(int r)
 void Plotter::setRaioY(int r)
 {
     raioY = r;
-
 }
 
 void Plotter::setRaioZ(int r)
 {
     raioZ = r;
 }
+
 void Plotter::setRefX()
 {
     referencia = 2;
     repaint();
 }
+
 void Plotter::setRefY()
 {
     referencia = 1;
     repaint();
 }
-
-
-
-
 
 void Plotter::mouseMoveEvent(QMouseEvent *event){
 
@@ -303,14 +295,12 @@ void Plotter::mouseMoveEvent(QMouseEvent *event){
         emit moveY(event->x()/largura);
         emit moveZ(event->y()/altura);
         break;
-
     }
 }
 
 void Plotter::mousePressEvent(QMouseEvent *event){
     if(event->button() == Qt::LeftButton ){
         emit clickXY(event->x(),event->y());
-
     }
 }
 

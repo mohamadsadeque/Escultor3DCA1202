@@ -27,7 +27,6 @@ MainWindow::MainWindow(QWidget *parent) :
             ui->widgetPlotter,
             SLOT(clicou(int,int)));
 
-
     connect(ui->actionNovoArquivo,
             SIGNAL(triggered(bool)),
             this,
@@ -52,6 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(triggered(bool)),
             this,
             SLOT(configuraVoxel()));
+
     connect(ui->actionCaixa,
             SIGNAL(triggered(bool)),
             this,
@@ -66,16 +66,16 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(clicked(bool)),
             ui->widgetPlotter,
             SLOT(setRefZ()));
+
     connect(ui->pushButtonRefY,
             SIGNAL(clicked(bool)),
             ui->widgetPlotter,
             SLOT(setRefY()));
+
     connect(ui->pushButtonRefX,
             SIGNAL(clicked(bool)),
             ui->widgetPlotter,
             SLOT(setRefX()));
-
-
 }
 
 MainWindow::~MainWindow()
@@ -90,9 +90,8 @@ void MainWindow::abreNovoArquivo()
      ui->widgetPlotter->mudaLinhas(d.getX());
      ui->widgetPlotter->mudaColunas(d.getY());
      ui->widgetPlotter->mudaPlanos(d.getZ());
-
+     ui->horizontalSliderPlano->setMaximum((d.getZ()));
    }
-
 }
 
 void MainWindow::fecha()
@@ -100,15 +99,12 @@ void MainWindow::fecha()
     exit(0);
 }
 
-
 void MainWindow::selecionaCor()
 {
-QColor color = QColorDialog::getColor();
-if(color.isValid()){
+    QColor color = QColorDialog::getColor();
+    if(color.isValid()){
 
-}
-
-
+    }
 }
 
 void MainWindow::configuraEsfera()
@@ -124,7 +120,6 @@ void MainWindow::configuraEsfera()
         }
 
         ui->widgetPlotter->setRaio(s.getRaio());
-
     }
 }
 
@@ -156,8 +151,6 @@ void MainWindow::configuraVoxel()
         else{
             ui->widgetPlotter->mudaForma(5);
         }
-
-
     }
 }
 
@@ -171,8 +164,6 @@ void MainWindow::configuraBox()
         else{
             ui->widgetPlotter->mudaForma(7);
         }
-
-
     }
 }
 

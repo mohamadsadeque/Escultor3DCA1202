@@ -21,7 +21,6 @@ int NovoArquivo::getX()
 int NovoArquivo::getY()
 {
     return ui->spinBox_y->value();
-
 }
 
 int NovoArquivo::getZ()
