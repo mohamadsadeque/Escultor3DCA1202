@@ -17,7 +17,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -41,9 +40,6 @@ public:
     QSlider *horizontalSliderPlano;
     Plotter *widgetPlotter;
     QLabel *label;
-    QPushButton *pushButtonRefX;
-    QPushButton *pushButtonRefY;
-    QPushButton *pushButtonRefZ;
     QLCDNumber *lcdNumberX;
     QLabel *label_2;
     QLCDNumber *lcdNumberY;
@@ -107,62 +103,46 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         horizontalSliderPlano = new QSlider(centralWidget);
         horizontalSliderPlano->setObjectName(QString::fromUtf8("horizontalSliderPlano"));
-        horizontalSliderPlano->setGeometry(QRect(20, 80, 131, 41));
+        horizontalSliderPlano->setGeometry(QRect(240, 20, 131, 41));
         horizontalSliderPlano->setOrientation(Qt::Horizontal);
         widgetPlotter = new Plotter(centralWidget);
         widgetPlotter->setObjectName(QString::fromUtf8("widgetPlotter"));
         widgetPlotter->setGeometry(QRect(360, 80, 1081, 671));
         label = new QLabel(centralWidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(30, 20, 221, 41));
+        label->setGeometry(QRect(100, 20, 221, 41));
         QFont font;
         font.setPointSize(24);
         label->setFont(font);
-        pushButtonRefX = new QPushButton(centralWidget);
-        pushButtonRefX->setObjectName(QString::fromUtf8("pushButtonRefX"));
-        pushButtonRefX->setGeometry(QRect(130, 30, 31, 23));
-        QFont font1;
-        font1.setPointSize(12);
-        font1.setBold(true);
-        font1.setWeight(75);
-        pushButtonRefX->setFont(font1);
-        pushButtonRefY = new QPushButton(centralWidget);
-        pushButtonRefY->setObjectName(QString::fromUtf8("pushButtonRefY"));
-        pushButtonRefY->setGeometry(QRect(170, 30, 31, 23));
-        pushButtonRefY->setFont(font1);
-        pushButtonRefZ = new QPushButton(centralWidget);
-        pushButtonRefZ->setObjectName(QString::fromUtf8("pushButtonRefZ"));
-        pushButtonRefZ->setGeometry(QRect(210, 30, 31, 23));
-        pushButtonRefZ->setFont(font1);
         lcdNumberX = new QLCDNumber(centralWidget);
         lcdNumberX->setObjectName(QString::fromUtf8("lcdNumberX"));
-        lcdNumberX->setGeometry(QRect(430, 20, 111, 51));
-        QFont font2;
-        font2.setPointSize(16);
-        lcdNumberX->setFont(font2);
+        lcdNumberX->setGeometry(QRect(620, 10, 111, 51));
+        QFont font1;
+        font1.setPointSize(16);
+        lcdNumberX->setFont(font1);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(380, 20, 31, 41));
+        label_2->setGeometry(QRect(580, 20, 31, 41));
         label_2->setFont(font);
         lcdNumberY = new QLCDNumber(centralWidget);
         lcdNumberY->setObjectName(QString::fromUtf8("lcdNumberY"));
-        lcdNumberY->setGeometry(QRect(720, 20, 111, 51));
-        lcdNumberY->setFont(font2);
+        lcdNumberY->setGeometry(QRect(800, 10, 111, 51));
+        lcdNumberY->setFont(font1);
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(670, 20, 31, 41));
+        label_3->setGeometry(QRect(760, 20, 31, 41));
         label_3->setFont(font);
         lcdNumber_4 = new QLCDNumber(centralWidget);
         lcdNumber_4->setObjectName(QString::fromUtf8("lcdNumber_4"));
-        lcdNumber_4->setGeometry(QRect(1020, 20, 111, 51));
-        lcdNumber_4->setFont(font2);
+        lcdNumber_4->setGeometry(QRect(980, 10, 111, 51));
+        lcdNumber_4->setFont(font1);
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(970, 20, 31, 41));
+        label_4->setGeometry(QRect(940, 20, 31, 41));
         label_4->setFont(font);
         lcdNumber = new QLCDNumber(centralWidget);
         lcdNumber->setObjectName(QString::fromUtf8("lcdNumber"));
-        lcdNumber->setGeometry(QRect(180, 70, 141, 51));
+        lcdNumber->setGeometry(QRect(400, 10, 141, 51));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -223,10 +203,7 @@ public:
         actionCaixa->setText(QApplication::translate("MainWindow", "Caixa", nullptr));
         actionSave->setText(QApplication::translate("MainWindow", "Save", nullptr));
         actionOpen->setText(QApplication::translate("MainWindow", "Open", nullptr));
-        label->setText(QApplication::translate("MainWindow", "Plano:", nullptr));
-        pushButtonRefX->setText(QApplication::translate("MainWindow", "X", nullptr));
-        pushButtonRefY->setText(QApplication::translate("MainWindow", "Y", nullptr));
-        pushButtonRefZ->setText(QApplication::translate("MainWindow", "Z", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Plano Z:", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "X", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "Y", nullptr));
         label_4->setText(QApplication::translate("MainWindow", "Z", nullptr));

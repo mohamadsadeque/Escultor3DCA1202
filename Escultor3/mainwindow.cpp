@@ -61,21 +61,6 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(triggered(bool)),
             this,
             SLOT(abrirArquivo()));
-
-    connect(ui->pushButtonRefZ,
-            SIGNAL(clicked(bool)),
-            ui->widgetPlotter,
-            SLOT(setRefZ()));
-
-    connect(ui->pushButtonRefY,
-            SIGNAL(clicked(bool)),
-            ui->widgetPlotter,
-            SLOT(setRefY()));
-
-    connect(ui->pushButtonRefX,
-            SIGNAL(clicked(bool)),
-            ui->widgetPlotter,
-            SLOT(setRefX()));
 }
 
 MainWindow::~MainWindow()

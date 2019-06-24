@@ -13,6 +13,7 @@
 #include <QString>
 #include <QColor>
 #include <qdebug.h>
+
 Plotter::Plotter(QWidget *parent) : QWidget(parent)
 {
     linhas = 1;
@@ -20,16 +21,12 @@ Plotter::Plotter(QWidget *parent) : QWidget(parent)
     planos = 1;
     planoAtual = 0;
     referencia = 0;
-    for(int k =0;k<100;k++){
-        for(int i =0; i<100; i++){
-            for(int j=0;j<100;j++){
-
+    for(int k =0;k<100;k++)
+        for(int i =0; i<100; i++)
+            for(int j=0;j<100;j++)
                 matriz[i][j][k] = false;
-            }
-        }
 
-    }
-    setMouseTracking(true);
+     setMouseTracking(true);
 }
 
 void Plotter::paintEvent(QPaintEvent *event){
@@ -119,7 +116,6 @@ void Plotter::paintEvent(QPaintEvent *event){
         }
         break;
     }
-
 }
 
 void Plotter::mudaLinhas(int l)
