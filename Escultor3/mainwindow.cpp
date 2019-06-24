@@ -88,7 +88,7 @@ void MainWindow::selecionaCor()
 {
     QColor color = QColorDialog::getColor();
     if(color.isValid()){
-
+    ui->widgetPlotter->mudaCor(color);
     }
 }
 

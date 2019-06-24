@@ -16,17 +16,19 @@
 
 Plotter::Plotter(QWidget *parent) : QWidget(parent)
 {
-    linhas = 1;
-    colunas = 1;
-    planos = 1;
+    linhas = 10;
+    colunas = 10;
+    planos = 10;
     planoAtual = 0;
     referencia = 0;
+
     for(int k =0;k<100;k++)
         for(int i =0; i<100; i++)
             for(int j=0;j<100;j++)
                 matriz[i][j][k] = false;
 
-     setMouseTracking(true);
+    setMouseTracking(true);
+    corAtual = QColor(150,200,255);
 }
 
 void Plotter::paintEvent(QPaintEvent *event){
@@ -39,8 +41,8 @@ void Plotter::paintEvent(QPaintEvent *event){
 
     switch (referencia) {
     case 0:
-        largura = width()/colunas;
-        altura = height()/linhas;
+        largura = width()/(colunas+1);
+        altura = height()/(linhas+1);
         break;
 
     case 1:
@@ -54,7 +56,7 @@ void Plotter::paintEvent(QPaintEvent *event){
     }
 
 
-    brush.setColor(QColor(150,200,255));
+    brush.setColor(corAtual);
     brush.setStyle(Qt::SolidPattern);
     brush2.setColor(QColor(0,150,100));
     brush2.setStyle(Qt::SolidPattern);
@@ -84,7 +86,7 @@ void Plotter::paintEvent(QPaintEvent *event){
                 else{
                     painter.setBrush(brush2);
                 }
-                painter.drawRect(largura*i+1,altura*j+1,largura+1,altura+1);
+                painter.drawRect(largura*i,altura*j,largura,altura);
             }
         }
         break;
@@ -182,7 +184,7 @@ void Plotter::clicou(int x, int y)
         break;
     }
 
-        matriz[xPos][yPos][zPos] = !matriz[xPos][xPos][zPos];
+        matriz[xPos][yPos][zPos] = !matriz[xPos][yPos][zPos];
 
         switch (forma) {
         case 0:
@@ -258,6 +260,11 @@ void Plotter::setRaioY(int r)
 void Plotter::setRaioZ(int r)
 {
     raioZ = r;
+}
+
+void Plotter::mudaCor(QColor cor)
+{
+    corAtual = cor;
 }
 
 void Plotter::setRefX()

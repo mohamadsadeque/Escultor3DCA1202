@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Plotter_t {
-    QByteArrayData data[24];
-    char stringdata0[165];
+    QByteArrayData data[25];
+    char stringdata0[173];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -54,14 +54,15 @@ QT_MOC_LITERAL(19, 120, 9), // "mudaForma"
 QT_MOC_LITERAL(20, 130, 7), // "setRaio"
 QT_MOC_LITERAL(21, 138, 8), // "setRaioX"
 QT_MOC_LITERAL(22, 147, 8), // "setRaioY"
-QT_MOC_LITERAL(23, 156, 8) // "setRaioZ"
+QT_MOC_LITERAL(23, 156, 8), // "setRaioZ"
+QT_MOC_LITERAL(24, 165, 7) // "mudaCor"
 
     },
     "Plotter\0moveX\0\0moveY\0moveZ\0clickXY\0"
     "mudaLinhas\0l\0mudaColunas\0c\0mudaPlanos\0"
     "p\0olhaPlano\0clicou\0x\0y\0setRefX\0setRefY\0"
     "setRefZ\0mudaForma\0setRaio\0setRaioX\0"
-    "setRaioY\0setRaioZ"
+    "setRaioY\0setRaioZ\0mudaCor"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +72,7 @@ static const uint qt_meta_data_Plotter[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      17,   14, // methods
+      18,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,25 +80,26 @@ static const uint qt_meta_data_Plotter[] = {
        4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   99,    2, 0x06 /* Public */,
-       3,    1,  102,    2, 0x06 /* Public */,
-       4,    1,  105,    2, 0x06 /* Public */,
-       5,    2,  108,    2, 0x06 /* Public */,
+       1,    1,  104,    2, 0x06 /* Public */,
+       3,    1,  107,    2, 0x06 /* Public */,
+       4,    1,  110,    2, 0x06 /* Public */,
+       5,    2,  113,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    1,  113,    2, 0x0a /* Public */,
-       8,    1,  116,    2, 0x0a /* Public */,
-      10,    1,  119,    2, 0x0a /* Public */,
-      12,    1,  122,    2, 0x0a /* Public */,
-      13,    2,  125,    2, 0x0a /* Public */,
-      16,    0,  130,    2, 0x0a /* Public */,
-      17,    0,  131,    2, 0x0a /* Public */,
-      18,    0,  132,    2, 0x0a /* Public */,
-      19,    1,  133,    2, 0x0a /* Public */,
-      20,    1,  136,    2, 0x0a /* Public */,
-      21,    1,  139,    2, 0x0a /* Public */,
-      22,    1,  142,    2, 0x0a /* Public */,
-      23,    1,  145,    2, 0x0a /* Public */,
+       6,    1,  118,    2, 0x0a /* Public */,
+       8,    1,  121,    2, 0x0a /* Public */,
+      10,    1,  124,    2, 0x0a /* Public */,
+      12,    1,  127,    2, 0x0a /* Public */,
+      13,    2,  130,    2, 0x0a /* Public */,
+      16,    0,  135,    2, 0x0a /* Public */,
+      17,    0,  136,    2, 0x0a /* Public */,
+      18,    0,  137,    2, 0x0a /* Public */,
+      19,    1,  138,    2, 0x0a /* Public */,
+      20,    1,  141,    2, 0x0a /* Public */,
+      21,    1,  144,    2, 0x0a /* Public */,
+      22,    1,  147,    2, 0x0a /* Public */,
+      23,    1,  150,    2, 0x0a /* Public */,
+      24,    1,  153,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    2,
@@ -119,6 +121,7 @@ static const uint qt_meta_data_Plotter[] = {
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::QColor,    2,
 
        0        // eod
 };
@@ -146,6 +149,7 @@ void Plotter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 14: _t->setRaioX((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 15: _t->setRaioY((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 16: _t->setRaioZ((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 17: _t->mudaCor((*reinterpret_cast< QColor(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -210,13 +214,13 @@ int Plotter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 17)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 18;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 17)
+        if (_id < 18)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 17;
+        _id -= 18;
     }
     return _id;
 }
