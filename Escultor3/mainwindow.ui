@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1578</width>
-    <height>997</height>
+    <width>1220</width>
+    <height>641</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,10 +30,10 @@
    <widget class="Plotter" name="widgetPlotter" native="true">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>80</y>
-      <width>1081</width>
-      <height>671</height>
+      <x>20</x>
+      <y>70</y>
+      <width>1161</width>
+      <height>471</height>
      </rect>
     </property>
    </widget>
@@ -170,7 +170,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1578</width>
+     <width>1220</width>
      <height>25</height>
     </rect>
    </property>

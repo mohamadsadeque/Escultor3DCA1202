@@ -32,7 +32,8 @@ SOURCES += \
     dialogsphere.cpp \
     dialogellipsoid.cpp \
     dialogvoxel.cpp \
-    dialogbox.cpp
+    dialogbox.cpp \
+    sculptor3d.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +42,8 @@ HEADERS += \
     dialogsphere.h \
     dialogellipsoid.h \
     dialogvoxel.h \
-    dialogbox.h
+    dialogbox.h \
+    sculptor3d.h
 
 FORMS += \
         mainwindow.ui \

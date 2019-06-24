@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QColor>
+#include "sculptor3d.h"
 
 class Plotter : public QWidget
 {
@@ -19,12 +20,14 @@ private:
     int forma;
     //parametros das figuras:
     int raio,raioX,raioY,raioZ;
+    sculptor3d *escultor;
 
 public:
     explicit Plotter(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);
+    void configurarEscultor(int x, int y, int z);
 
 signals:
     void moveX(int);

@@ -59,7 +59,8 @@ SOURCES       = ../Escultor3/main.cpp \
 		../Escultor3/dialogsphere.cpp \
 		../Escultor3/dialogellipsoid.cpp \
 		../Escultor3/dialogvoxel.cpp \
-		../Escultor3/dialogbox.cpp qrc_recursos.cpp \
+		../Escultor3/dialogbox.cpp \
+		../Escultor3/sculptor3d.cpp qrc_recursos.cpp \
 		moc_mainwindow.cpp \
 		moc_plotter.cpp \
 		moc_novoarquivo.cpp \
@@ -75,6 +76,7 @@ OBJECTS       = main.o \
 		dialogellipsoid.o \
 		dialogvoxel.o \
 		dialogbox.o \
+		sculptor3d.o \
 		qrc_recursos.o \
 		moc_mainwindow.o \
 		moc_plotter.o \
@@ -235,6 +237,7 @@ DIST          = ../../../../Qt/5.12.3/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/features/spec_post.prf \
+		../Escultor3/.qmake.stash \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/features/default_pre.prf \
@@ -260,14 +263,16 @@ DIST          = ../../../../Qt/5.12.3/gcc_64/mkspecs/features/spec_pre.prf \
 		../Escultor3/dialogsphere.h \
 		../Escultor3/dialogellipsoid.h \
 		../Escultor3/dialogvoxel.h \
-		../Escultor3/dialogbox.h ../Escultor3/main.cpp \
+		../Escultor3/dialogbox.h \
+		../Escultor3/sculptor3d.h ../Escultor3/main.cpp \
 		../Escultor3/mainwindow.cpp \
 		../Escultor3/plotter.cpp \
 		../Escultor3/novoarquivo.cpp \
 		../Escultor3/dialogsphere.cpp \
 		../Escultor3/dialogellipsoid.cpp \
 		../Escultor3/dialogvoxel.cpp \
-		../Escultor3/dialogbox.cpp
+		../Escultor3/dialogbox.cpp \
+		../Escultor3/sculptor3d.cpp
 QMAKE_TARGET  = Escultor3
 DESTDIR       = 
 TARGET        = Escultor3
@@ -431,6 +436,7 @@ Makefile: ../Escultor3/Escultor3.pro ../../../../Qt/5.12.3/gcc_64/mkspecs/linux-
 		../../../../Qt/5.12.3/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.12.3/gcc_64/mkspecs/features/default_pre.prf \
@@ -608,6 +614,7 @@ Makefile: ../Escultor3/Escultor3.pro ../../../../Qt/5.12.3/gcc_64/mkspecs/linux-
 ../../../../Qt/5.12.3/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Qt/5.12.3/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Qt/5.12.3/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/5.12.3/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/5.12.3/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt/5.12.3/gcc_64/mkspecs/features/default_pre.prf:
@@ -648,8 +655,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Escultor3/recursos.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.12.3/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Escultor3/mainwindow.h ../Escultor3/plotter.h ../Escultor3/novoarquivo.h ../Escultor3/dialogsphere.h ../Escultor3/dialogellipsoid.h ../Escultor3/dialogvoxel.h ../Escultor3/dialogbox.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Escultor3/main.cpp ../Escultor3/mainwindow.cpp ../Escultor3/plotter.cpp ../Escultor3/novoarquivo.cpp ../Escultor3/dialogsphere.cpp ../Escultor3/dialogellipsoid.cpp ../Escultor3/dialogvoxel.cpp ../Escultor3/dialogbox.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Escultor3/mainwindow.h ../Escultor3/plotter.h ../Escultor3/novoarquivo.h ../Escultor3/dialogsphere.h ../Escultor3/dialogellipsoid.h ../Escultor3/dialogvoxel.h ../Escultor3/dialogbox.h ../Escultor3/sculptor3d.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Escultor3/main.cpp ../Escultor3/mainwindow.cpp ../Escultor3/plotter.cpp ../Escultor3/novoarquivo.cpp ../Escultor3/dialogsphere.cpp ../Escultor3/dialogellipsoid.cpp ../Escultor3/dialogvoxel.cpp ../Escultor3/dialogbox.cpp ../Escultor3/sculptor3d.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Escultor3/mainwindow.ui ../Escultor3/novoarquivo.ui ../Escultor3/dialogsphere.ui ../Escultor3/dialogellipsoid.ui ../Escultor3/dialogvoxel.ui ../Escultor3/dialogbox.ui $(DISTDIR)/
 
 
@@ -913,6 +920,7 @@ moc_plotter.cpp: ../Escultor3/plotter.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor \
 		moc_predefs.h \
 		../../../../Qt/5.12.3/gcc_64/bin/moc
 	/home/emerson/Qt/5.12.3/gcc_64/bin/moc $(DEFINES) --include /home/emerson/workspace/DCA1202/Escultor3DCA1202/build-Escultor3-Desktop_Qt_5_12_3_GCC_64bit-Debug/moc_predefs.h -I/home/emerson/Qt/5.12.3/gcc_64/mkspecs/linux-g++ -I/home/emerson/workspace/DCA1202/Escultor3DCA1202/Escultor3 -I/home/emerson/Qt/5.12.3/gcc_64/include -I/home/emerson/Qt/5.12.3/gcc_64/include/QtWidgets -I/home/emerson/Qt/5.12.3/gcc_64/include/QtGui -I/home/emerson/Qt/5.12.3/gcc_64/include/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Escultor3/plotter.h -o moc_plotter.cpp
@@ -1574,7 +1582,8 @@ ui_mainwindow.h: ../Escultor3/mainwindow.ui \
 		../../../../Qt/5.12.3/gcc_64/include/QtCore/qfile.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
-		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor
 	/home/emerson/Qt/5.12.3/gcc_64/bin/uic ../Escultor3/mainwindow.ui -o ui_mainwindow.h
 
 ui_novoarquivo.h: ../Escultor3/novoarquivo.ui \
@@ -1831,16 +1840,43 @@ mainwindow.o: ../Escultor3/mainwindow.cpp ../Escultor3/mainwindow.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qicon.h \
 		ui_mainwindow.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QAction \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qaction.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QLCDNumber \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qlcdnumber.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMenu \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmenu.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMenuBar \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmenubar.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QSlider \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QStatusBar \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QToolBar \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qtoolbar.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QWidget \
+		../Escultor3/plotter.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor \
 		../Escultor3/novoarquivo.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdialog.h \
-		../Escultor3/plotter.h \
-		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QColorDialog \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qcolordialog.h \
-		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor \
 		../Escultor3/dialogsphere.h \
 		../Escultor3/dialogellipsoid.h \
 		../Escultor3/dialogvoxel.h \
@@ -1954,6 +1990,7 @@ plotter.o: ../Escultor3/plotter.cpp ../Escultor3/plotter.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/QPainter \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qpainter.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtextoption.h \
@@ -1974,8 +2011,7 @@ plotter.o: ../Escultor3/plotter.cpp ../Escultor3/plotter.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qmessagebox.h \
-		../../../../Qt/5.12.3/gcc_64/include/QtCore/QString \
-		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o plotter.o ../Escultor3/plotter.cpp
 
 novoarquivo.o: ../Escultor3/novoarquivo.cpp ../Escultor3/novoarquivo.h \
@@ -2083,7 +2119,25 @@ novoarquivo.o: ../Escultor3/novoarquivo.cpp ../Escultor3/novoarquivo.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_novoarquivo.h
+		ui_novoarquivo.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qregularexpression.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o novoarquivo.o ../Escultor3/novoarquivo.cpp
 
 dialogsphere.o: ../Escultor3/dialogsphere.cpp ../Escultor3/dialogsphere.h \
@@ -2191,7 +2245,29 @@ dialogsphere.o: ../Escultor3/dialogsphere.cpp ../Escultor3/dialogsphere.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_dialogsphere.h
+		ui_dialogsphere.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QRadioButton \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qregularexpression.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogsphere.o ../Escultor3/dialogsphere.cpp
 
 dialogellipsoid.o: ../Escultor3/dialogellipsoid.cpp ../Escultor3/dialogellipsoid.h \
@@ -2299,7 +2375,29 @@ dialogellipsoid.o: ../Escultor3/dialogellipsoid.cpp ../Escultor3/dialogellipsoid
 		../../../../Qt/5.12.3/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_dialogellipsoid.h
+		ui_dialogellipsoid.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QRadioButton \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QSpinBox \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qregularexpression.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogellipsoid.o ../Escultor3/dialogellipsoid.cpp
 
 dialogvoxel.o: ../Escultor3/dialogvoxel.cpp ../Escultor3/dialogvoxel.h \
@@ -2407,7 +2505,24 @@ dialogvoxel.o: ../Escultor3/dialogvoxel.cpp ../Escultor3/dialogvoxel.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_dialogvoxel.h
+		ui_dialogvoxel.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QRadioButton \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogvoxel.o ../Escultor3/dialogvoxel.cpp
 
 dialogbox.o: ../Escultor3/dialogbox.cpp ../Escultor3/dialogbox.h \
@@ -2515,8 +2630,28 @@ dialogbox.o: ../Escultor3/dialogbox.cpp ../Escultor3/dialogbox.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_dialogbox.h
+		ui_dialogbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QDialogButtonBox \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QRadioButton \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogbox.o ../Escultor3/dialogbox.cpp
+
+sculptor3d.o: ../Escultor3/sculptor3d.cpp ../Escultor3/sculptor3d.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sculptor3d.o ../Escultor3/sculptor3d.cpp
 
 qrc_recursos.o: qrc_recursos.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_recursos.o qrc_recursos.cpp

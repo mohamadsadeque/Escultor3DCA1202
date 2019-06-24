@@ -13,6 +13,7 @@
 #include <QString>
 #include <QColor>
 #include <qdebug.h>
+#include <sculptor3d.h>
 
 Plotter::Plotter(QWidget *parent) : QWidget(parent)
 {
@@ -54,7 +55,6 @@ void Plotter::paintEvent(QPaintEvent *event){
         altura = height()/planos;
         break;
     }
-
 
     brush.setColor(corAtual);
     brush.setStyle(Qt::SolidPattern);
@@ -120,6 +120,11 @@ void Plotter::paintEvent(QPaintEvent *event){
     }
 }
 
+void Plotter::configurarEscultor(int x, int y, int z){
+    escultor = new sculptor3d(x, y, z);
+}
+
+
 void Plotter::mudaLinhas(int l)
 {
     linhas = l;
@@ -165,7 +170,6 @@ void Plotter::clicou(int x, int y)
 {
     int xPos,yPos,zPos;
 
-
     switch (referencia) {
     case 0:
         xPos = x/largura;
@@ -188,12 +192,38 @@ void Plotter::clicou(int x, int y)
 
         switch (forma) {
         case 0:
-            //putSphere
-            qDebug("Inseri Esfera");
+
+            for(int i=xPos-raio; i < xPos+raio; i++)
+                for(int j=yPos-raio; j< yPos+raio; j++)
+                    for(int k=zPos-raio; k < zPos+raio; k++)
+                    {
+                        float calc1 = ((float)pow((i-xPos),2)/(pow(raio,2)));
+                        float calc2 = ((float)pow((j-yPos),2))/(float)(pow(raio,2));
+                        float calc3 = (((float)pow((k-zPos),2))/(float)(pow(raio,2)));
+                        if ((calc1 + calc2 + calc3) <= 1.0)
+                            matriz[i][j][k] = 1;
+                    }
+
+            escultor->putSphere(xPos, yPos, zPos, raio);
+
+            qDebug("Inseri Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
             break;
         case 1:
-            //cutSphere
-            qDebug("Removi Esfera");
+
+            for(int i=xPos-raio; i < xPos+raio; i++)
+                for(int j=yPos-raio; j< yPos+raio; j++)
+                    for(int k=zPos-raio; k < zPos+raio; k++)
+                    {
+                        float calc1 = ((float)pow((i-xPos),2)/(pow(raio,2)));
+                        float calc2 = ((float)pow((j-yPos),2))/(float)(pow(raio,2));
+                        float calc3 = (((float)pow((k-zPos),2))/(float)(pow(raio,2)));
+                        if ((calc1 + calc2 + calc3) <= 1.0)
+                            matriz[i][j][k] = 0;
+                    }
+
+            escultor->cutSphere(xPos, yPos, zPos, raio);
+
+            qDebug("Removi Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
             break;
         case 2:
             //putEllipsoid
@@ -225,9 +255,6 @@ void Plotter::clicou(int x, int y)
 
             break;
         }
-
-
-
     repaint();
 }
 

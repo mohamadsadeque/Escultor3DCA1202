@@ -75,7 +75,10 @@ void MainWindow::abreNovoArquivo()
      ui->widgetPlotter->mudaLinhas(d.getX());
      ui->widgetPlotter->mudaColunas(d.getY());
      ui->widgetPlotter->mudaPlanos(d.getZ());
+
      ui->horizontalSliderPlano->setMaximum((d.getZ()));
+
+     ui->widgetPlotter->configurarEscultor(d.getX(), d.getY(), d.getZ());
    }
 }
 
@@ -88,7 +91,7 @@ void MainWindow::selecionaCor()
 {
     QColor color = QColorDialog::getColor();
     if(color.isValid()){
-    ui->widgetPlotter->mudaCor(color);
+        ui->widgetPlotter->mudaCor(color);
     }
 }
 
