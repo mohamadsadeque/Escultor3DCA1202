@@ -2,7 +2,7 @@
 #define PLOTTER_H
 
 #include <QWidget>
-
+#include <QColor>
 
 class Plotter : public QWidget
 {
@@ -11,6 +11,7 @@ private:
     int linhas,colunas,planos,planoAtual;
     int largura, altura;
     int timerId;
+    QColor corAtual;
     QColor lineColor;
     int cor;
     bool matriz[100][100][100];
@@ -45,6 +46,7 @@ public slots:
     void setRaioX(int);
     void setRaioY(int);
     void setRaioZ(int);
+    void mudaCor(QColor);
 
 
 };

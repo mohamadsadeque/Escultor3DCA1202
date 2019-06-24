@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
             this,
             SLOT(abrirArquivo()));
 
-    connect(ui->pushButtonRefZ,
+   /* connect(ui->pushButtonRefZ,
             SIGNAL(clicked(bool)),
             ui->widgetPlotter,
             SLOT(setRefZ()));
@@ -76,6 +76,8 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(clicked(bool)),
             ui->widgetPlotter,
             SLOT(setRefX()));
+
+*/
 }
 
 MainWindow::~MainWindow()
@@ -103,7 +105,7 @@ void MainWindow::selecionaCor()
 {
     QColor color = QColorDialog::getColor();
     if(color.isValid()){
-
+    ui->widgetPlotter->mudaCor(color);
     }
 }
 
