@@ -26,6 +26,8 @@ public slots:
     void salvarArquivo();
 
 
+private slots:
+
 private:
     Ui::MainWindow *ui;
 };

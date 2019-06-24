@@ -28,6 +28,7 @@ public:
     void mouseMoveEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void configurarEscultor(int x, int y, int z);
+    void extrairArquivo(QString filename);
 
 signals:
     void moveX(int);

@@ -124,6 +124,10 @@ void Plotter::configurarEscultor(int x, int y, int z){
     escultor = new sculptor3d(x, y, z);
 }
 
+void Plotter::extrairArquivo(QString filename)
+{
+    escultor->writeOFF(filename.toUtf8().constData());
+}
 
 void Plotter::mudaLinhas(int l)
 {
@@ -191,69 +195,89 @@ void Plotter::clicou(int x, int y)
         matriz[xPos][yPos][zPos] = !matriz[xPos][yPos][zPos];
 
         switch (forma) {
-        case 0:
+            case 0:
+                for(int i=xPos-raio; i < xPos+raio; i++)
+                    for(int j=yPos-raio; j< yPos+raio; j++)
+                        for(int k=zPos-raio; k < zPos+raio; k++)
+                        {
+                            float calc1 = ((float)pow((i-xPos),2)/(pow(raio,2)));
+                            float calc2 = ((float)pow((j-yPos),2))/(float)(pow(raio,2));
+                            float calc3 = (((float)pow((k-zPos),2))/(float)(pow(raio,2)));
+                            if ((calc1 + calc2 + calc3) <= 1.0)
+                                    matriz[i][j][k] = 1;
+                        }
 
-            for(int i=xPos-raio; i < xPos+raio; i++)
-                for(int j=yPos-raio; j< yPos+raio; j++)
-                    for(int k=zPos-raio; k < zPos+raio; k++)
-                    {
-                        float calc1 = ((float)pow((i-xPos),2)/(pow(raio,2)));
-                        float calc2 = ((float)pow((j-yPos),2))/(float)(pow(raio,2));
-                        float calc3 = (((float)pow((k-zPos),2))/(float)(pow(raio,2)));
-                        if ((calc1 + calc2 + calc3) <= 1.0)
-                            matriz[i][j][k] = 1;
-                    }
+                escultor->putSphere(xPos, yPos, zPos, raio);
 
-            escultor->putSphere(xPos, yPos, zPos, raio);
+                qDebug("linhas: %d, colunas: %d, planos: %d", linhas, colunas, planos);
+                qDebug("Inseri Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
+                break;
+            case 1:
+                for(int i=xPos-raio; i < xPos+raio; i++)
+                    for(int j=yPos-raio; j< yPos+raio; j++)
+                        for(int k=zPos-raio; k < zPos+raio; k++)
+                        {
+                            float calc1 = ((float)pow((i-xPos),2)/(pow(raio,2)));
+                            float calc2 = ((float)pow((j-yPos),2))/(float)(pow(raio,2));
+                            float calc3 = (((float)pow((k-zPos),2))/(float)(pow(raio,2)));
+                            if ((calc1 + calc2 + calc3) <= 1.0)
+                                matriz[i][j][k] = 0;
+                        }
 
-            qDebug("Inseri Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
-            break;
-        case 1:
+                escultor->cutSphere(xPos, yPos, zPos, raio);
 
-            for(int i=xPos-raio; i < xPos+raio; i++)
-                for(int j=yPos-raio; j< yPos+raio; j++)
-                    for(int k=zPos-raio; k < zPos+raio; k++)
-                    {
-                        float calc1 = ((float)pow((i-xPos),2)/(pow(raio,2)));
-                        float calc2 = ((float)pow((j-yPos),2))/(float)(pow(raio,2));
-                        float calc3 = (((float)pow((k-zPos),2))/(float)(pow(raio,2)));
-                        if ((calc1 + calc2 + calc3) <= 1.0)
-                            matriz[i][j][k] = 0;
-                    }
+                qDebug("Removi Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
+                break;
+            case 2:
+                for(int i=xPos-raioX; i< xPos+raioX; i++)
+                    for(int j=yPos-raioY; j< yPos+raioY; j++)
+                        for(int k=zPos-raioZ; k < zPos+raioZ; k++){
+                            float calc1 = ((float)pow((i-xPos),2)/(pow(raioX,2)));
+                            float calc2 = ((float)pow((j-yPos),2)/(pow(raioY,2)));
+                            float calc3 = ((float)pow((k-zPos),2)/(pow(raioZ,2)));
+                            if ((calc1 + calc2 + calc3) <=1.0) {
+                                matriz[i][j][k] = 1;
+                            }
+                        }
 
-            escultor->cutSphere(xPos, yPos, zPos, raio);
+                escultor->putEllipsoid(xPos, yPos, zPos, raioX, raioY, raioZ);
 
-            qDebug("Removi Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
-            break;
-        case 2:
-            //putEllipsoid
-            qDebug("Inseri Elipsóide");
+                qDebug("Inseri Elipsóide x: %d, y: %d, z: %d", xPos, yPos, zPos);
+                break;
+            case 3:
+                for(int i=xPos-raioX; i< xPos+raioX; i++)
+                    for(int j=yPos-raioY; j< yPos+raioY; j++)
+                        for(int k=zPos-raioZ; k < zPos+raioZ; k++){
+                            float calc1 = ((float)pow((i-xPos),2)/(pow(raioX,2)));
+                            float calc2 = ((float)pow((j-yPos),2)/(pow(raioY,2)));
+                            float calc3 = ((float)pow((k-zPos),2)/(pow(raioZ,2)));
+                            if ((calc1 + calc2 + calc3) <=1.0) {
+                                matriz[i][j][k] = 0;
+                            }
+                        }
 
-            break;
-        case 3:
-            //cutEllipsoid
-            qDebug("Removi Elipsóide");
-            break;
-        case 4:
-            //putVoxel
-            qDebug("Inseri Voxel");
+                escultor->cutEllipsoid(xPos, yPos, zPos, raioX, raioY, raioZ);
 
-            break;
-        case 5:
-            //cutVoxel
-            qDebug("Removi Voxel");
+                qDebug("Removi Elipsóide x: %d, y: %d, z: %d", xPos, yPos, zPos);
+                break;
+            case 4:
+                matriz[xPos][yPos][zPos] = 1;
+                escultor->putVoxel(xPos, yPos, zPos);
+                qDebug("Inseri Voxel x: %d, y: %d, z: %d", xPos, yPos, zPos);
+                break;
+            case 5:
+                matriz[xPos][yPos][zPos] = 0;
+                escultor->cutVoxel(xPos, yPos, zPos);
+                qDebug("Removi Voxel x: %d, y: %d, z: %d", xPos, yPos, zPos);
+                break;
+            case 6:
 
-            break;
-        case 6:
-            //putBox
-            qDebug("Inseri Caixa");
+                qDebug("Inseri Caixa x: %d, y: %d, z: %d", xPos, yPos, zPos);
+                break;
+            case 7:
 
-            break;
-        case 7:
-            //cutBox
-            qDebug("Removi Caixa");
-
-            break;
+                qDebug("Removi Caixa x: %d, y: %d, z: %d", xPos, yPos, zPos);
+                break;
         }
     repaint();
 }
