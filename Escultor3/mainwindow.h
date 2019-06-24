@@ -24,6 +24,7 @@ public slots:
     void configuraBox();
     void abrirArquivo();
     void salvarArquivo();
+    void visualizarTemporario();
 
 
 private slots:

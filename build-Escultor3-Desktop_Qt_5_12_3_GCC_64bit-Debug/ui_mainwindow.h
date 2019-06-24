@@ -36,6 +36,7 @@ public:
     QAction *actionCaixa;
     QAction *actionSave;
     QAction *actionOpen;
+    QAction *actionVisualizar;
     QWidget *centralWidget;
     QSlider *horizontalSliderPlano;
     Plotter *widgetPlotter;
@@ -99,6 +100,12 @@ public:
         QIcon icon7;
         icon7.addFile(QString::fromUtf8(":/icones/recursos/open.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionOpen->setIcon(icon7);
+        actionVisualizar = new QAction(MainWindow);
+        actionVisualizar->setObjectName(QString::fromUtf8("actionVisualizar"));
+        actionVisualizar->setCheckable(false);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/icones/recursos/hdodec.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionVisualizar->setIcon(icon8);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         horizontalSliderPlano = new QSlider(centralWidget);
@@ -181,6 +188,7 @@ public:
         mainToolBar->addAction(actionElipsoide);
         mainToolBar->addAction(actionVoxel);
         mainToolBar->addAction(actionCaixa);
+        mainToolBar->addAction(actionVisualizar);
 
         retranslateUi(MainWindow);
         QObject::connect(widgetPlotter, SIGNAL(moveX(int)), lcdNumberX, SLOT(display(int)));
@@ -203,6 +211,7 @@ public:
         actionCaixa->setText(QApplication::translate("MainWindow", "Caixa", nullptr));
         actionSave->setText(QApplication::translate("MainWindow", "Save", nullptr));
         actionOpen->setText(QApplication::translate("MainWindow", "Open", nullptr));
+        actionVisualizar->setText(QApplication::translate("MainWindow", "Visualizar", nullptr));
         label->setText(QApplication::translate("MainWindow", "Plano Z:", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "X", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "Y", nullptr));

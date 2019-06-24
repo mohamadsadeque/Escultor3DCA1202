@@ -217,6 +217,7 @@
    <addaction name="actionElipsoide"/>
    <addaction name="actionVoxel"/>
    <addaction name="actionCaixa"/>
+   <addaction name="actionVisualizar"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNovoArquivo">
@@ -290,6 +291,18 @@
    </property>
    <property name="text">
     <string>Open</string>
+   </property>
+  </action>
+  <action name="actionVisualizar">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="recursos.qrc">
+     <normaloff>:/icones/recursos/hdodec.png</normaloff>:/icones/recursos/hdodec.png</iconset>
+   </property>
+   <property name="text">
+    <string>Visualizar</string>
    </property>
   </action>
  </widget>

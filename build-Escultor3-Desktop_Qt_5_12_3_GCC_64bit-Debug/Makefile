@@ -693,7 +693,8 @@ qrc_recursos.cpp: ../Escultor3/recursos.qrc \
 		../Escultor3/recursos/sphere.png \
 		../Escultor3/recursos/save-icon-31.png \
 		../Escultor3/recursos/voxel.png \
-		../Escultor3/recursos/cubo.png
+		../Escultor3/recursos/cubo.png \
+		../Escultor3/recursos/hdodec.png
 	/home/emerson/Qt/5.12.3/gcc_64/bin/rcc -name recursos ../Escultor3/recursos.qrc -o qrc_recursos.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -921,6 +922,7 @@ moc_plotter.cpp: ../Escultor3/plotter.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor \
+		../Escultor3/sculptor3d.h \
 		moc_predefs.h \
 		../../../../Qt/5.12.3/gcc_64/bin/moc
 	/home/emerson/Qt/5.12.3/gcc_64/bin/moc $(DEFINES) --include /home/emerson/workspace/DCA1202/Escultor3DCA1202/build-Escultor3-Desktop_Qt_5_12_3_GCC_64bit-Debug/moc_predefs.h -I/home/emerson/Qt/5.12.3/gcc_64/mkspecs/linux-g++ -I/home/emerson/workspace/DCA1202/Escultor3DCA1202/Escultor3 -I/home/emerson/Qt/5.12.3/gcc_64/include -I/home/emerson/Qt/5.12.3/gcc_64/include/QtWidgets -I/home/emerson/Qt/5.12.3/gcc_64/include/QtGui -I/home/emerson/Qt/5.12.3/gcc_64/include/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Escultor3/plotter.h -o moc_plotter.cpp
@@ -1583,7 +1585,8 @@ ui_mainwindow.h: ../Escultor3/mainwindow.ui \
 		../../../../Qt/5.12.3/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor
+		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor \
+		../Escultor3/sculptor3d.h
 	/home/emerson/Qt/5.12.3/gcc_64/bin/uic ../Escultor3/mainwindow.ui -o ui_mainwindow.h
 
 ui_novoarquivo.h: ../Escultor3/novoarquivo.ui \
@@ -1870,6 +1873,7 @@ mainwindow.o: ../Escultor3/mainwindow.cpp ../Escultor3/mainwindow.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QWidget \
 		../Escultor3/plotter.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor \
+		../Escultor3/sculptor3d.h \
 		../Escultor3/novoarquivo.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.12.3/gcc_64/include/QtWidgets/qdialog.h \
@@ -1991,6 +1995,7 @@ plotter.o: ../Escultor3/plotter.cpp ../Escultor3/plotter.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/QColor \
+		../Escultor3/sculptor3d.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/QPainter \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qpainter.h \
 		../../../../Qt/5.12.3/gcc_64/include/QtGui/qtextoption.h \

@@ -8,5 +8,6 @@
         <file>recursos/voxel.png</file>
         <file>recursos/save-icon-31.png</file>
         <file>recursos/open.png</file>
+        <file>recursos/hdodec.png</file>
     </qresource>
 </RCC>

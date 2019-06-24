@@ -66,6 +66,11 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(triggered(bool)),
             this,
             SLOT(salvarArquivo()));
+
+    connect(ui->actionVisualizar,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(visualizarTemporario()));
 }
 
 MainWindow::~MainWindow()
@@ -172,5 +177,10 @@ void MainWindow::salvarArquivo()
                                                     "~/" ,
                                                     tr("Arquivo (*.off)"));
     ui->widgetPlotter->extrairArquivo(filename);
+}
+
+void MainWindow::visualizarTemporario(){
+    ui->widgetPlotter->extrairArquivo("/tmp/arquivo-temporario.off");
+    system("geomview /tmp/arquivo-temporario.off &");
 }
 
