@@ -180,23 +180,18 @@ void Plotter::clicou(int x, int y)
         switch (forma) {
             case 0:
                 escultor->putSphere(xPos, yPos, zPos, raio);
-
-                qDebug("linhas: %d, colunas: %d, planos: %d", linhas, colunas, planos);
                 qDebug("Inseri Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 1:
                 escultor->cutSphere(xPos, yPos, zPos, raio);
-
                 qDebug("Removi Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 2:
                 escultor->putEllipsoid(xPos, yPos, zPos, raioX, raioY, raioZ);
-
                 qDebug("Inseri Elipsóide x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 3:
                 escultor->cutEllipsoid(xPos, yPos, zPos, raioX, raioY, raioZ);
-
                 qDebug("Removi Elipsóide x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 4:
@@ -208,16 +203,6 @@ void Plotter::clicou(int x, int y)
                 qDebug("Removi Voxel x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 6:
-                qDebug() << "============================" <<
-                         "xPos :" << xPos <<
-                         "yPos :" << yPos <<
-                         "zPos :" << zPos<<
-                         "============================" <<
-                         "xPos+Largura" << xPos+boxLargura <<
-                         "yPos+Altura" << yPos+boxAltura <<
-                         "yPos+Profundidade" << zPos+boxProfundidade
-                ;
-
                 escultor->putBox(xPos, xPos+boxLargura, yPos, yPos+boxAltura, zPos, zPos+boxProfundidade);
                 qDebug("Inseri Caixa x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
@@ -263,12 +248,7 @@ void Plotter::setRaioZ(int r)
 void Plotter::mudaCor(QColor cor)
 {
     corAtual = cor;
-
-    escultor->setColor(corAtual.redF(),
-                       corAtual.greenF(),
-                       corAtual.blueF(),
-                       corAtual.alphaF());
-
+    escultor->setColor(corAtual.redF(), corAtual.greenF(), corAtual.blueF(), corAtual.alphaF());
 }
 
 void Plotter::setRefX()
