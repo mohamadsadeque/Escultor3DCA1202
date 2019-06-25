@@ -194,22 +194,41 @@ void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
         //exit(0);
     }
 
-    for(int i=xcenter-radius; i< xcenter+radius; i++)
-        for(int j=ycenter-radius; j< ycenter+radius; j++)
+    for(int i=xcenter-radius; i< xcenter+radius; i++){
+        if(i == nx) break;
+        for(int j=ycenter-radius; j< ycenter+radius; j++){
+            if(j == ny) break;
             for(int k=zcenter-radius; k< zcenter+radius; k++)
             {
+                if(k == nz) break;
+
+                if(i < 0) i = 0;
+                if(j < 0) j = 0;
+                if(k < 0) k = 0;
+
                 float calc1 = ((float)pow((i-xcenter),2)/(pow(radius,2)));
                 float calc2 = ((float)pow((j-ycenter),2))/(float)(pow(radius,2));
                 float calc3 = (((float)pow((k-zcenter),2))/(float)(pow(radius,2)));
                 if ((calc1 + calc2 + calc3) <= 1.0)
                     v[i][j][k].isOn = false;
             }
+        }
+    }
 };
 
 void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
-    for(int i=xcenter-rx; i< xcenter+rx; i++)
-        for(int j=ycenter-ry; j< ycenter+ry; j++)
+    for(int i=xcenter-rx; i< xcenter+rx; i++){
+        if(i == nx) break;
+        for(int j=ycenter-ry; j< ycenter+ry; j++){
+
+            if(j == ny) break;
             for(int k=zcenter - rz; k< zcenter + rz; k++){
+                if(k == nz) break;
+
+                if(i < 0) i = 0;
+                if(j < 0) j = 0;
+                if(k < 0) k = 0;
+
                 float calc1 = ((float)pow((i-xcenter),2)/(pow(rx,2)));
                 float calc2 = ((float)pow((j-ycenter),2)/(pow(ry,2)));
                 float calc3 = ((float)pow((k-zcenter),2)/(pow(rz,2)));
@@ -221,12 +240,21 @@ void sculptor3d::putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
                     v[i][j][k].a = a;
                 }
             }
+        }
+    }
 }
 
 void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz){
-    for(int i=xcenter-rx; i< xcenter+rx; i++)
-        for(int j=ycenter-ry; j< ycenter+ry; j++)
+    for(int i=xcenter-rx; i< xcenter+rx; i++){
+        if(i == nx) break;
+        for(int j=ycenter-ry; j< ycenter+ry; j++){
+            if(j == ny) break;
             for(int k=zcenter - rz; k< zcenter + rz; k++){
+                if(k == nz) break;
+
+                if(i < 0) i = 0;
+                if(j < 0) j = 0;
+                if(k < 0) k = 0;
                 float calc1 = ((float)pow((i-xcenter),2)/(pow(rx,2)));
                 float calc2 = ((float)pow((j-ycenter),2)/(pow(ry,2)));
                 float calc3 = ((float)pow((k-zcenter),2)/(pow(rz,2)));
@@ -234,6 +262,8 @@ void sculptor3d::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int
                     v[i][j][k].isOn = false;
 
             }
+        }
+    }
 }
 
 void sculptor3d::writeOFF(string filename){
