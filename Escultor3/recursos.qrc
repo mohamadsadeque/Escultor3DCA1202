@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/icones">
+        <file>recursos/NovoArquivoIMG.png</file>
+        <file>recursos/RGBIMG.png</file>
+        <file>recursos/sphere.png</file>
+        <file>recursos/ellipse.jpg</file>
+        <file>recursos/cubo.png</file>
+        <file>recursos/voxel.png</file>
+        <file>recursos/save-icon-31.png</file>
+        <file>recursos/open.png</file>
+        <file>recursos/hdodec.png</file>
+    </qresource>
+</RCC>
