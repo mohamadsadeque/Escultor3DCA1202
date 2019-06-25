@@ -88,6 +88,7 @@ void MainWindow::abreNovoArquivo()
 
      ui->horizontalSliderPlano->setMaximum((d.getZ()));
 
+     ui->widgetPlotter->limparMatriz();
      ui->widgetPlotter->configurarEscultor(d.getX(), d.getY(), d.getZ());
    }
 }

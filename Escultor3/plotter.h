@@ -14,6 +14,10 @@ private:
     int timerId;
     QColor corAtual;
     QColor lineColor;
+    int  r=0;
+    int  g=0;
+    int b=0;
+int a=0;
     int cor;
     bool matriz[100][100][100];
     int referencia;
@@ -29,6 +33,7 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void configurarEscultor(int x, int y, int z);
     void extrairArquivo(QString filename);
+    void limparMatriz();
 
 signals:
     void moveX(int);

@@ -180,6 +180,7 @@ public:
    * @return nz
    */
   int getNz();
+  bool voxelIsOn(int x, int y,int z,int &r,int &g,int &b, int &a);
 };
 
 #endif // SCULPTOR3D_H

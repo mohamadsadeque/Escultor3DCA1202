@@ -17,16 +17,13 @@
 
 Plotter::Plotter(QWidget *parent) : QWidget(parent)
 {
-    linhas = 10;
-    colunas = 10;
-    planos = 10;
+    linhas = 100;
+    colunas = 100;
+    planos = 100;
     planoAtual = 0;
     referencia = 0;
-
-    for(int k =0;k<100;k++)
-        for(int i =0; i<100; i++)
-            for(int j=0;j<100;j++)
-                matriz[i][j][k] = false;
+    raio = 20;
+    escultor = new sculptor3d(linhas,colunas,planos);
 
     setMouseTracking(true);
     corAtual = QColor(150,200,255);
@@ -42,8 +39,9 @@ void Plotter::paintEvent(QPaintEvent *event){
 
     switch (referencia) {
     case 0:
-        largura = width()/(colunas+1);
-        altura = height()/(linhas+1);
+        largura = width()/(colunas);
+        altura = height()/(linhas);
+        qDebug()<< largura << altura;
         break;
 
     case 1:
@@ -58,66 +56,36 @@ void Plotter::paintEvent(QPaintEvent *event){
 
     brush.setColor(corAtual);
     brush.setStyle(Qt::SolidPattern);
-    brush2.setColor(QColor(0,150,100));
+    brush2.setColor(QColor(255,255,255));
     brush2.setStyle(Qt::SolidPattern);
 
     pen.setColor(QColor(255,0,0));
-    pen.setWidth(1);
+    pen.setWidth(0.5);
 
     painter.setBrush(brush);
     painter.setPen(pen);
-    painter.drawRect(0,0,width(),height());
     pen.setColor(QColor(255,0,0));
     painter.setBrush(brushSeta);
 
     painter.setPen(penSeta);
-    painter.drawLine(0,0,width(),0);
 
     painter.setBrush(brush);
     painter.setPen(pen);
 
-    switch (referencia) {
-    case 0:
-        for(int i = 0; i<linhas;i++){
-            for(int j = 0; j<colunas; j++){
-                if(matriz[i][j][planoAtual]){
-                    painter.setBrush(brush);
-                }
-                else{
-                    painter.setBrush(brush2);
-                }
-                painter.drawRect(largura*i,altura*j,largura,altura);
-            }
-        }
-        break;
-    case 1:
-        for(int i = 0; i<linhas;i++){
-            for(int j = 0; j<planos; j++){
-                if(matriz[i][planoAtual][j]){
-                    painter.setBrush(brush);
-                }
-                else{
-                    painter.setBrush(brush2);
-                }
-                painter.drawRect(largura*i+1,altura*j+1,largura+1,altura+1);
-            }
-        }
 
-        break;
-    case 2:
-        for(int i = 0; i<colunas;i++){
-            for(int j = 0; j<planos; j++){
-                if(matriz[planoAtual][i][j]){
-                    painter.setBrush(brush);
-                }
-                else{
-                    painter.setBrush(brush2);
-                }
-                painter.drawRect(largura*i+1,altura*j+1,largura+1,altura+1);
+    for(int i = 0; i<colunas;i++){
+        for(int j = 0; j<linhas; j++){
+            if(escultor->voxelIsOn(i,j,planoAtual,r,g,b,a)){
+                corAtual = QColor(r,g,b,a);
+                brush.setColor(corAtual);
+                painter.setBrush(brush);
+            }else{
+                painter.setBrush(brush2);
             }
+            painter.drawRect(largura*i,altura*j,largura,altura);
         }
-        break;
     }
+
 }
 
 void Plotter::configurarEscultor(int x, int y, int z){
@@ -127,6 +95,14 @@ void Plotter::configurarEscultor(int x, int y, int z){
 void Plotter::extrairArquivo(QString filename)
 {
     escultor->writeOFF(filename.toUtf8().constData());
+}
+
+void Plotter::limparMatriz()
+{
+    for(int k =0;k<100;k++)
+        for(int i =0; i<100; i++)
+            for(int j=0;j<100;j++)
+                matriz[i][j][k] = false;
 }
 
 void Plotter::mudaLinhas(int l)
@@ -167,7 +143,6 @@ void Plotter::olhaPlano(int p)
 
     }
     repaint();
-
 }
 
 void Plotter::clicou(int x, int y)
@@ -196,34 +171,12 @@ void Plotter::clicou(int x, int y)
 
         switch (forma) {
             case 0:
-                for(int i=xPos-raio; i < xPos+raio; i++)
-                    for(int j=yPos-raio; j< yPos+raio; j++)
-                        for(int k=zPos-raio; k < zPos+raio; k++)
-                        {
-                            float calc1 = ((float)pow((i-xPos),2)/(pow(raio,2)));
-                            float calc2 = ((float)pow((j-yPos),2))/(float)(pow(raio,2));
-                            float calc3 = (((float)pow((k-zPos),2))/(float)(pow(raio,2)));
-                            if ((calc1 + calc2 + calc3) <= 1.0)
-                                    matriz[i][j][k] = 1;
-                        }
-
                 escultor->putSphere(xPos, yPos, zPos, raio);
 
                 qDebug("linhas: %d, colunas: %d, planos: %d", linhas, colunas, planos);
                 qDebug("Inseri Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 1:
-                for(int i=xPos-raio; i < xPos+raio; i++)
-                    for(int j=yPos-raio; j< yPos+raio; j++)
-                        for(int k=zPos-raio; k < zPos+raio; k++)
-                        {
-                            float calc1 = ((float)pow((i-xPos),2)/(pow(raio,2)));
-                            float calc2 = ((float)pow((j-yPos),2))/(float)(pow(raio,2));
-                            float calc3 = (((float)pow((k-zPos),2))/(float)(pow(raio,2)));
-                            if ((calc1 + calc2 + calc3) <= 1.0)
-                                matriz[i][j][k] = 0;
-                        }
-
                 escultor->cutSphere(xPos, yPos, zPos, raio);
 
                 qDebug("Removi Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
@@ -236,7 +189,7 @@ void Plotter::clicou(int x, int y)
                             float calc2 = ((float)pow((j-yPos),2)/(pow(raioY,2)));
                             float calc3 = ((float)pow((k-zPos),2)/(pow(raioZ,2)));
                             if ((calc1 + calc2 + calc3) <=1.0) {
-                                matriz[i][j][k] = 1;
+                                matriz[i][j][k] = true;
                             }
                         }
 
@@ -252,7 +205,7 @@ void Plotter::clicou(int x, int y)
                             float calc2 = ((float)pow((j-yPos),2)/(pow(raioY,2)));
                             float calc3 = ((float)pow((k-zPos),2)/(pow(raioZ,2)));
                             if ((calc1 + calc2 + calc3) <=1.0) {
-                                matriz[i][j][k] = 0;
+                                matriz[i][j][k] = false;
                             }
                         }
 
@@ -316,6 +269,12 @@ void Plotter::setRaioZ(int r)
 void Plotter::mudaCor(QColor cor)
 {
     corAtual = cor;
+
+    escultor->setColor(corAtual.redF(),
+                       corAtual.greenF(),
+                       corAtual.blueF(),
+                       corAtual.alphaF());
+
 }
 
 void Plotter::setRefX()

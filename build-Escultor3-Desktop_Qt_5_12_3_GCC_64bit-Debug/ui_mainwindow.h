@@ -59,7 +59,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1220, 641);
+        MainWindow->resize(1430, 982);
         actionNovoArquivo = new QAction(MainWindow);
         actionNovoArquivo->setObjectName(QString::fromUtf8("actionNovoArquivo"));
         QIcon icon;
@@ -114,7 +114,7 @@ public:
         horizontalSliderPlano->setOrientation(Qt::Horizontal);
         widgetPlotter = new Plotter(centralWidget);
         widgetPlotter->setObjectName(QString::fromUtf8("widgetPlotter"));
-        widgetPlotter->setGeometry(QRect(20, 70, 1161, 471));
+        widgetPlotter->setGeometry(QRect(110, 100, 1291, 741));
         label = new QLabel(centralWidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(100, 20, 221, 41));
@@ -151,9 +151,19 @@ public:
         lcdNumber->setObjectName(QString::fromUtf8("lcdNumber"));
         lcdNumber->setGeometry(QRect(400, 10, 141, 51));
         MainWindow->setCentralWidget(centralWidget);
+        horizontalSliderPlano->raise();
+        label->raise();
+        lcdNumberX->raise();
+        label_2->raise();
+        lcdNumberY->raise();
+        label_3->raise();
+        lcdNumber_4->raise();
+        label_4->raise();
+        lcdNumber->raise();
+        widgetPlotter->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1220, 25));
+        menuBar->setGeometry(QRect(0, 0, 1430, 25));
         menuArquivos = new QMenu(menuBar);
         menuArquivos->setObjectName(QString::fromUtf8("menuArquivos"));
         menuEdi_o = new QMenu(menuBar);

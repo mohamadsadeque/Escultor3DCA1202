@@ -2,6 +2,7 @@
 #include <string.h>
 #include <cmath>
 #include <fstream>
+#include <qdebug.h>
 
 bool vPos(int x, int y,int z, int nx, int ny, int nz);
 bool vCol(float r,float g,float b,float a);
@@ -45,8 +46,8 @@ sculptor3d::~sculptor3d(){
 
 void sculptor3d::setColor(float _r, float _g, float _b, float _alpha){
     if(!vCol(_r,_g,_b,_alpha)){
-        cout << "Erro: cor invalida" << endl;
-        exit(0);
+        qDebug("Erro: cor invalida");
+        //exit(0);
     }
 
     this->r = _r;
@@ -57,8 +58,8 @@ void sculptor3d::setColor(float _r, float _g, float _b, float _alpha){
 
 void sculptor3d::putVoxel(int x, int y, int z){
     if(!vPos(x,y,z,nx,ny,nz)){
-        cout << "A posicao que deseja acessar nao existe" << endl;
-        exit(0);
+        qDebug("A posicao que deseja acessar nao existe");
+        //exit(0);
     }
 
     v[x][y][z].isOn = true;
@@ -70,25 +71,39 @@ void sculptor3d::putVoxel(int x, int y, int z){
 
 void sculptor3d::cutVoxel(int x, int y, int z){
     if(!vPos(x,y,z,nx,ny,nz)){
-        cout << "A posicao que deseja acessar nao existe" << endl;
-        exit(0);
+        qDebug( "A posicao que deseja acessar nao existe");
+        //exit(0);
     }
 
     v[x][y][z].isOn = false;
 };
 
+bool sculptor3d::voxelIsOn(int x, int y,int z,int &r,int &g,int &b,int &a){
+    if(v[x][y][z].isOn){
+        r = 255*v[x][y][z].r;
+        g= 255*v[x][y][z].g;
+        b= 255*v[x][y][z].b;
+       a = 255*v[x][y][z].a;
+       return true;
+    }
+    else {
+        return false;
+    }
+
+}
+
 void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
     if(!vPos(x0,y0,z0,nx,ny,nz)){
-        cout << "Erro: posição invalida" << endl;
-        exit(0);
+        qDebug( "Erro: posição invalida");
+        //exit(0);
     }
     if(!vPos(x1,y1,z1,nx,ny,nz)){
-        cout << "Erro: posição invalida" << endl;
-        exit(0);
+        qDebug( "Erro: posição invalida");
+        //exit(0);
     }
     if(x0>=x1 || z0>=z1 || z0>=z1){
-        cout << "Erro: posição trocado. Fim menor que o inicio" << endl;
-        exit(0);
+        qDebug( "Erro: posição trocado. Fim menor que o inicio");
+        //exit(0);
     }
 
     for(int i = x0; i < x1; i++)
@@ -104,18 +119,18 @@ void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
 
 void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
     if(!vPos(x0,y0,z0,nx,ny,nz)){
-        cout << "Erro: posição invalida" << endl;
-        exit(0);
+        qDebug( "Erro: posição invalida");
+        //exit(0);
     }
 
     if(!vPos(x1,y1,z1,nx,ny,nz)){
-        cout << "Erro: posição invalida" << endl;
-        exit(0);
+        qDebug( "Erro: posição invalida");
+        //exit(0);
     }
 
     if(x0>=x1 || z0>=z1 || z0>=z1){
-        cout << "Erro: Parametros finais menor que os iniciais. Necessario correcao" << endl;
-        exit(0);
+        qDebug( "Erro: Parametros finais menor que os iniciais. Necessario correcao");
+        //exit(0);
     }
 
     for(int i = x0; i < x1 ; i++)
@@ -126,42 +141,53 @@ void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
 };
 
 void sculptor3d::putSphere(int xcenter, int ycenter, int zcenter, int radius){
-    if(!vPos(xcenter,ycenter,zcenter,nx,ny,nz)){
-        cout << "Erro: posição invalida" << endl;
-        exit(0);
-    }
+        if(!vPos(xcenter,ycenter,zcenter,nx,ny,nz)){
+            qDebug( "Erro: posição invalida");
+            //exit(0);
+        }
 
-    if(radius == 0){
-        cout << "Erro: raio invalido" << endl;
-        exit(0);
-    }
+        if(radius == 0){
+            qDebug( "Erro: raio invalido");
+            //exit(0);
+        }
 
-    for(int i=xcenter-radius; i< xcenter+radius; i++)
-        for(int j=ycenter-radius; j< ycenter+radius; j++)
-            for(int k=zcenter-radius; k< zcenter+radius; k++)
-            {
-                float calc1 = ((float)pow((i-xcenter),2)/(pow(radius,2)));
-                float calc2 = ((float)pow((j-ycenter),2))/(float)(pow(radius,2));
-                float calc3 = (((float)pow((k-zcenter),2))/(float)(pow(radius,2)));
-                if ((calc1 + calc2 + calc3) <= 1.0) {
-                    v[i][j][k].isOn = true;
-                    v[i][j][k].r = r;
-                    v[i][j][k].g = g;
-                    v[i][j][k].b = b;
-                    v[i][j][k].a = a;
+        for(int i=xcenter-radius; i< xcenter+radius; i++){
+            if(i == nx) break;
+            for(int j=ycenter-radius; j< ycenter+radius; j++){
+                if(j == ny) break;
+                for(int k=zcenter-radius; k< zcenter+radius; k++)
+                {
+                    if(k == nz) break;
+
+                    if(i < 0) i = 0;
+                    if(j < 0) j = 0;
+                    if(k < 0) k = 0;
+
+                    float calc1 = ((float)pow((i-xcenter),2)/(pow(radius,2)));
+                    float calc2 = ((float)pow((j-ycenter),2))/(float)(pow(radius,2));
+                    float calc3 = (((float)pow((k-zcenter),2))/(float)(pow(radius,2)));
+
+                    if ((calc1 + calc2 + calc3) <= 1.0) {
+                        v[i][j][k].isOn = true;
+                        v[i][j][k].r = r;
+                        v[i][j][k].g = g;
+                        v[i][j][k].b = b;
+                        v[i][j][k].a = a;
+                    }
                 }
             }
+        }
 };
 
 void sculptor3d::cutSphere(int xcenter, int ycenter, int zcenter, int radius){
     if(!vPos(xcenter,ycenter,zcenter,nx,ny,nz)){
-        cout <<"Erro: posição invalida" << endl;
-        exit(0);
+        qDebug("Erro: posição invalida");
+        //exit(0);
     }
 
     if(radius == 0){
-        cout << "Erro: raio invalido" << endl;
-        exit(0);
+        qDebug( "Erro: raio invalido");
+        //exit(0);
     }
 
     for(int i=xcenter-radius; i< xcenter+radius; i++)
