@@ -15,6 +15,9 @@ public:
     explicit DialogBox(QWidget *parent = nullptr);
     ~DialogBox();
     bool getPut();
+    int getLargura();
+    int getProfundidade();
+    int getAltura();
 
 private:
     Ui::DialogBox *ui;

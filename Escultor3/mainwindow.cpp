@@ -57,8 +57,6 @@ MainWindow::MainWindow(QWidget *parent) :
             this,
             SLOT(configuraBox()));
 
-
-
     connect(ui->actionSave,
             SIGNAL(triggered(bool)),
             this,
@@ -156,9 +154,12 @@ void MainWindow::configuraBox()
     if(b.exec()  == QDialog::Accepted){
         if(b.getPut()){
            ui->widgetPlotter->mudaForma(6);
+           ui->widgetPlotter->setBoxLargura(b.getLargura());
+           ui->widgetPlotter->setBoxProfundidade(b.getProfundidade());
+           ui->widgetPlotter->setBoxAltura((b.getAltura()));
         }
         else{
-            ui->widgetPlotter->mudaForma(7);
+           ui->widgetPlotter->mudaForma(7);
         }
     }
 }

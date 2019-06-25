@@ -101,10 +101,10 @@ void sculptor3d::putBox(int x0, int x1, int y0, int y1, int z0, int z1){
         qDebug( "Erro: posição invalida");
         //exit(0);
     }
-    if(x0>=x1 || z0>=z1 || z0>=z1){
-        qDebug( "Erro: posição trocado. Fim menor que o inicio");
-        //exit(0);
-    }
+
+    if(x1 >= nx) x1 = nx;
+    if(y1 >= ny) y1 = ny;
+    if(z1 >= nz) z1 = nz;
 
     for(int i = x0; i < x1; i++)
         for(int j = y0; j < y1; j++)
@@ -132,6 +132,10 @@ void sculptor3d::cutBox(int x0, int x1, int y0, int y1, int z0, int z1){
         qDebug( "Erro: Parametros finais menor que os iniciais. Necessario correcao");
         //exit(0);
     }
+
+    if(x1 >= nx) x1 = nx;
+    if(y1 >= ny) y1 = ny;
+    if(z1 >= nz) z1 = nz;
 
     for(int i = x0; i < x1 ; i++)
         for(int j = y0; j < y1; j++)

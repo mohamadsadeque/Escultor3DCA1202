@@ -25,6 +25,7 @@ int a=0;
     //parametros das figuras:
     int raio,raioX,raioY,raioZ;
     sculptor3d *escultor;
+    int boxAltura, boxProfundidade, boxLargura;
 
 public:
     explicit Plotter(QWidget *parent = nullptr);
@@ -56,7 +57,9 @@ public slots:
     void setRaioY(int);
     void setRaioZ(int);
     void mudaCor(QColor);
-
+    void setBoxLargura(int);
+    void setBoxProfundidade(int);
+    void setBoxAltura(int);
 
 };
 

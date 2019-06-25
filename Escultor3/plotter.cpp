@@ -68,10 +68,6 @@ void Plotter::paintEvent(QPaintEvent *event){
     pen.setColor(QColor(0,0,0));
     painter.setBrush(brushSeta);
 
-
-
-
-
     for(int i = 0; i<colunas;i++){
         for(int j = 0; j<linhas; j++){
             if(escultor->voxelIsOn(i,j,planoAtual,r,g,b,a)){
@@ -87,6 +83,18 @@ void Plotter::paintEvent(QPaintEvent *event){
         }
     }
 
+}
+
+void Plotter::setBoxLargura(int x){
+    boxLargura = x;
+}
+
+void Plotter::setBoxProfundidade(int x){
+    boxProfundidade = x;
+}
+
+void Plotter::setBoxAltura(int x){
+    boxAltura = x;
 }
 
 void Plotter::configurarEscultor(int x, int y, int z){
@@ -141,7 +149,6 @@ void Plotter::olhaPlano(int p)
         if(planoAtual >= linhas) planoAtual = linhas-1;
 
         break;
-
     }
     repaint();
 }
@@ -183,53 +190,39 @@ void Plotter::clicou(int x, int y)
                 qDebug("Removi Esfera x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 2:
-                for(int i=xPos-raioX; i< xPos+raioX; i++)
-                    for(int j=yPos-raioY; j< yPos+raioY; j++)
-                        for(int k=zPos-raioZ; k < zPos+raioZ; k++){
-                            float calc1 = ((float)pow((i-xPos),2)/(pow(raioX,2)));
-                            float calc2 = ((float)pow((j-yPos),2)/(pow(raioY,2)));
-                            float calc3 = ((float)pow((k-zPos),2)/(pow(raioZ,2)));
-                            if ((calc1 + calc2 + calc3) <=1.0) {
-                                matriz[i][j][k] = true;
-                            }
-                        }
-
                 escultor->putEllipsoid(xPos, yPos, zPos, raioX, raioY, raioZ);
 
                 qDebug("Inseri Elipsóide x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 3:
-                for(int i=xPos-raioX; i< xPos+raioX; i++)
-                    for(int j=yPos-raioY; j< yPos+raioY; j++)
-                        for(int k=zPos-raioZ; k < zPos+raioZ; k++){
-                            float calc1 = ((float)pow((i-xPos),2)/(pow(raioX,2)));
-                            float calc2 = ((float)pow((j-yPos),2)/(pow(raioY,2)));
-                            float calc3 = ((float)pow((k-zPos),2)/(pow(raioZ,2)));
-                            if ((calc1 + calc2 + calc3) <=1.0) {
-                                matriz[i][j][k] = false;
-                            }
-                        }
-
                 escultor->cutEllipsoid(xPos, yPos, zPos, raioX, raioY, raioZ);
 
                 qDebug("Removi Elipsóide x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 4:
-                matriz[xPos][yPos][zPos] = 1;
                 escultor->putVoxel(xPos, yPos, zPos);
                 qDebug("Inseri Voxel x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 5:
-                matriz[xPos][yPos][zPos] = 0;
                 escultor->cutVoxel(xPos, yPos, zPos);
                 qDebug("Removi Voxel x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 6:
+                qDebug() << "============================" <<
+                         "xPos :" << xPos <<
+                         "yPos :" << yPos <<
+                         "zPos :" << zPos<<
+                         "============================" <<
+                         "xPos+Largura" << xPos+boxLargura <<
+                         "yPos+Altura" << yPos+boxAltura <<
+                         "yPos+Profundidade" << zPos+boxProfundidade
+                ;
 
+                escultor->putBox(xPos, xPos+boxLargura, yPos, yPos+boxAltura, zPos, zPos+boxProfundidade);
                 qDebug("Inseri Caixa x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
             case 7:
-
+                escultor->cutBox(xPos, xPos+boxLargura, yPos, yPos+boxAltura, zPos, zPos+boxProfundidade);
                 qDebug("Removi Caixa x: %d, y: %d, z: %d", xPos, yPos, zPos);
                 break;
         }
